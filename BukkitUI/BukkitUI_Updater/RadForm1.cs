@@ -43,6 +43,9 @@ namespace BukkitUI_Updater {
 
         private void loadUpdates() {
 
+            incrementProgress = true;
+            showLoadBar();
+
             // Clear DataGridView before doing anything else.
             dataGridView1.Rows.Clear();
 
@@ -124,31 +127,50 @@ namespace BukkitUI_Updater {
                                             continue;
                                         }
                                         if (line.Trim().ToLower().StartsWith("dllink")) {
-                                            minVersion = Regex.Split(line, "[\"]")[1];
+                                            dlLink = Regex.Split(line, "[\"]")[1];
                                             continue;
                                         }
                                         if (line.Trim().ToLower().StartsWith("updatetype")) {
                                             #region Parse update type
-                                            switch (Regex.Split(line, "[\"]")[1].ToLower()) {
-                                                case "update":
-                                                    type = UpdateType.Update;
-                                                    break;
-                                                case "patch":
-                                                    type = UpdateType.Patch;
-                                                    break;
-                                                case "quickfix":
-                                                    type = UpdateType.QuickFix;
-                                                    break;
-                                                default:
-                                                    type = UpdateType.Patch;
-                                                    break;
-                                            }
+                                            if (!line.Contains("=\"") && !line.EndsWith("\""))
+                                                switch (Regex.Split(line, "[\"]")[1].ToLower()) {
+                                                    case "update":
+                                                        type = UpdateType.Update;
+                                                        break;
+                                                    case "patch":
+                                                        type = UpdateType.Patch;
+                                                        break;
+                                                    case "quickfix":
+                                                        type = UpdateType.QuickFix;
+                                                        break;
+                                                    default:
+                                                        type = UpdateType.Patch;
+                                                        break;
+                                                }
+                                            else
+                                                switch (Regex.Split(line, "[=]")[1].ToLower()) {
+                                                    case "update":
+                                                        type = UpdateType.Update;
+                                                        break;
+                                                    case "patch":
+                                                        type = UpdateType.Patch;
+                                                        break;
+                                                    case "quickfix":
+                                                        type = UpdateType.QuickFix;
+                                                        break;
+                                                    default:
+                                                        type = UpdateType.Patch;
+                                                        break;
+                                                }
                                             #endregion
                                             continue;
                                         }
 
                                     }
                                     #endregion
+
+                                    if ((type == UpdateType.Patch && !showPatches) || (type == UpdateType.QuickFix && !showQuickFixes))
+                                        continue;
 
                                     // Put all the values in the DataGridView
                                     dataGridView1.Rows.Add(1);
@@ -167,12 +189,18 @@ namespace BukkitUI_Updater {
                                 }
                             }
 
+                            sReader.Close();
+                            sReader.Dispose();
+
                         }
                         webC.Dispose();
                     }
                     
                 });
             }).Start();
+
+            incrementProgress = false;
+
         }
 
         private void showLoadBar() {
@@ -213,6 +241,23 @@ namespace BukkitUI_Updater {
                 showQuickFixes = false;
                 loadUpdates();
             }
+        }
+
+        private void radButton1_Click(object sender, EventArgs e) {
+            this.Enabled = false;
+            WebClient webC = new WebClient();
+            webC.DownloadProgressChanged += (s, evt) => {
+                radProgressBar1.Text = "Downloading " + dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0] + "... [" + evt.ProgressPercentage + "%]";
+                radProgressBar1.Value1 = evt.ProgressPercentage;
+            };
+            webC.DownloadFileCompleted += (s, evt) => {
+                radProgressBar1.Text = ">> Idle <<";
+                radProgressBar1.Value1 = 0;
+                this.Enabled = true;
+                if (MessageBox.Show(this, 
+                    "The update has been successfully downloaded!\nWould you like to update BukkitUI?", 
+                    "Install Update?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            };
         }
     }
 }

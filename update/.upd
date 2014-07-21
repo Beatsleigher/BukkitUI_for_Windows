@@ -18,6 +18,8 @@ program="BukkitUI for Windows" >>
 	--> Enjoy.
 	update=>[name="Test", desc="A test update package", priority="Low"] >>
 		minAppVersion="1.0.0.0"
+		--> I'd like to note, that maxAppVersion basically is the newer version. 
+		--> I had a brainfart and I'm too lazy to "fix" the parser, so the variable name stays :)
 		maxAppVersion="1.1.0.0"
 		dlLink="https://github.com/Beatsleigher/BukkitUI_for_Windows/releases/download/Test/BukkitUI.exe"
 		updateType="Patch"
