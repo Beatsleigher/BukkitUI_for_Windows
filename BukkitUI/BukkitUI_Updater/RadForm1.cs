@@ -42,155 +42,134 @@ namespace BukkitUI_Updater {
         }
 
         private void loadUpdates() {
+
+            // Clear DataGridView before doing anything else.
+            dataGridView1.Rows.Clear();
+
             new Thread(() => {
                 Invoke((MethodInvoker)delegate {
+                    using (WebClient webC = new WebClient()) {
+                        String rawUpdateInfo = webC.DownloadString("https://raw.githubusercontent.com/Beatsleigher/BukkitUI_for_Windows/master/update/.upd");
+                        using (StringReader sReader = new StringReader(rawUpdateInfo)) {
+                            // Variables
+                            String line = "";
+                            String name = "";
+                            String desc = "";
+                            UpdatePriority priority = UpdatePriority.Normal;
+                            String minVersion = "";
+                            String maxVersion = "";
+                            String dlLink = "";
+                            UpdateType type = UpdateType.Update;
+                            int idx = 0;
 
-                    incrementProgress = true;
-                    showLoadBar();
+                            while ((line = sReader.ReadLine()) != null) {
 
-                    Thread.Sleep(1000);
+                                // Clear all variables
+                                name = "";
+                                desc = "";
+                                priority = UpdatePriority.Normal;
+                                minVersion = "";
+                                maxVersion = "";
+                                dlLink = "";
+                                type = UpdateType.Update;
 
-                    using (WebClient webC = new WebClient()) 
-                    using (StringReader sReader = new StringReader(
-                        webC.DownloadString("https://raw.githubusercontent.com/Beatsleigher/BukkitUI_for_Windows/master/update/.upd"))) {
-                        String line;
-                        String updateName = "";
-                        String updateDescription = "";
-                        UpdatePriority priority = UpdatePriority.Normal;
-                        int tableIndex = 0;
-                        Version minVersion = null;
-                        Version maxVersion = null;
-                        String url = "";
-                        UpdateType updateType = UpdateType.Update;
-                        
-                        #region Parser
-                        while ((line = sReader.ReadLine()) != null) {
+                                if (line.Trim().ToLower().StartsWith("update=>") && line.EndsWith(">>")) {
+                                    #region Parser
+                                    // Get all the attributes in the "method" header
+                                    String[] details = Regex.Split(Regex.Split(Regex.Split(line, "\\[")[1], "\\]")[0], "[,]");
+                                    
+                                    // Get values from the attributes
+                                    foreach (String str in details)
+                                        if (str.Trim().ToLower().StartsWith("name"))
+                                            name = Regex.Split(str, "[\"]")[1];
+                                        else if (str.Trim().ToLower().StartsWith("desc"))
+                                            desc = Regex.Split(str, "[\"]")[1];
+                                        else if (str.Trim().ToLower().StartsWith("priority"))
+                                            #region Parse update priority
+                                            switch (Regex.Split(str, "[\"]")[1].ToLower()) {
+                                                case "higher":
+                                                    priority = UpdatePriority.Higher;
+                                                    break;
+                                                case "high":
+                                                    priority = UpdatePriority.High;
+                                                    break;
+                                                case "above_normal":
+                                                    priority = UpdatePriority.Above_Normal;
+                                                    break;
+                                                case "normal":
+                                                    priority = UpdatePriority.Normal;
+                                                    break;
+                                                case "below_normal":
+                                                    priority = UpdatePriority.Below_Normal;
+                                                    break;
+                                                case "low":
+                                                    priority = UpdatePriority.Low;
+                                                    break;
+                                                case "lower":
+                                                    priority = UpdatePriority.Lower;
+                                                    break;
+                                                default:
+                                                    priority = UpdatePriority.Normal;
+                                                    break;
+                                            }
+                                            #endregion
 
-                            if (line.StartsWith("program=") && line.Contains("BukkitUI for Windows") && line.EndsWith(">>")) {
-                                while (!(line = sReader.ReadLine()).Equals("<<")) {
-
-                                    Debug.WriteLine("Flushing variables...");
-                                    // Wipe variables clean
-                                    updateName = "";
-                                    updateDescription = "";
-                                    priority = UpdatePriority.Normal;
-                                    minVersion = null;
-                                    maxVersion = null;
-                                    url = "";
-                                    updateType = UpdateType.Update;
-
-                                    Debug.WriteLine("Searching for update classes...");
-                                    if (line.Contains("update=>") && (line.Contains(">>") || line.EndsWith(">>"))) {
-                                        Debug.WriteLine("Found update class... Gathering details...");
-                                        String[] details = Regex.Split((Regex.Split(Regex.Split(line, @"\[")[1], @"\]")[0]), "[,]");
-                                        foreach (String detail in details) {
-                                            Debug.WriteLine("Found detail: " + (Regex.Split(detail, "[=]"))[0]);
-                                            Debug.WriteLine("(" + Regex.Split(detail, "[\"]")[1] + ")");
-                                            if (detail.StartsWith("name"))
-                                                updateName = Regex.Split(detail, "[\"]")[1];
-                                            else if (detail.StartsWith("desc"))
-                                                updateDescription = Regex.Split(detail, "[\"]")[1];
-                                            else if (detail.StartsWith("priority"))
-                                                #region Priority Switch
-                                                switch (Regex.Split(detail, "[\"]")[1].ToLower()) {
-                                                    case "higher":
-                                                        priority = UpdatePriority.Higher;
-                                                        break;
-                                                    case "high":
-                                                        priority = UpdatePriority.High;
-                                                        break;
-                                                    case "above_normal":
-                                                        priority = UpdatePriority.Above_Normal;
-                                                        break;
-                                                    case "normal":
-                                                        priority = UpdatePriority.Normal;
-                                                        break;
-                                                    case "below_normal":
-                                                        priority = UpdatePriority.Below_Normal;
-                                                        break;
-                                                    case "low":
-                                                        priority = UpdatePriority.Low;
-                                                        break;
-                                                    case "lower":
-                                                        priority = UpdatePriority.Lower;
-                                                        break;
-                                                    default:
-                                                        priority = UpdatePriority.Normal;
-                                                        break;
-                                                }
-                                                #endregion
+                                    while (!(line = sReader.ReadLine()).EndsWith("<<")) {
+                                        if (line.Trim().ToLower().StartsWith("minappversion")) {
+                                            minVersion = Regex.Split(line, "[\"]")[1];
+                                            continue;
                                         }
-
-                                        while (!(line = sReader.ReadLine()).EndsWith("<<")) {
-                                            Debug.WriteLine(line);
-                                            if (line.ToLower().Contains("minappversion"))
-                                                minVersion = new Version(Regex.Split(line, "[\"]")[1]);
-                                            if (line.ToLower().Contains("maxappversion"))
-                                                maxVersion = new Version(Regex.Split(line, "[\"]")[1]);
-
-                                            if (line.ToLower().Contains("dllink"))
-                                                url = Regex.Split(line, "[\"]")[1];
-
-                                            if (line.ToLower().Contains("updatetype"))
-                                                #region Update Type Switch
-                                                switch (Regex.Split(line.ToLower(), "[=]")[1]) {
-                                                    case "update":
-                                                        updateType = UpdateType.Update;
-                                                        break;
-                                                    case "patch":
-                                                        updateType = UpdateType.Patch;
-                                                        break;
-                                                    case "quickfix":
-                                                        updateType = UpdateType.QuickFix;
-                                                        break;
-                                                    default:
-                                                        updateType = UpdateType.Patch;
-                                                        break;
-                                                }
-                                                #endregion
+                                        if (line.Trim().ToLower().StartsWith("maxappversion")) {
+                                            maxVersion = Regex.Split(line, "[\"]")[1];
+                                            continue;
                                         }
-
-                                        if (String.IsNullOrWhiteSpace(updateName)) continue;
-                                        // Assume no update/patch was found in this particular loop
-
-                                        Debug.WriteLine("Checking if update matches search criteria... (searching for patches...)");
-                                        // Check if update matches criteria to be added to DataGridView
-                                        if (!(updateType == UpdateType.Patch && showPatches)) continue;
-                                        Debug.WriteLine("Checking if update matches search criteria... (searching for quick fixes...)");
-                                        if (!(updateType == UpdateType.QuickFix && showQuickFixes)) continue;
-
-
-
-                                        // Add data to table
-                                        dataGridView1.Rows.Add(1);
-                                        dataGridView1.Rows[tableIndex].Cells[0].Value = updateName;
-                                        dataGridView1.Rows[tableIndex].Cells[1].Value = updateDescription;
-                                        dataGridView1.Rows[tableIndex].Cells[2].Value = priority.ToString();
-                                        dataGridView1.Rows[tableIndex].Cells[3].Value = minVersion.ToString();
-                                        dataGridView1.Rows[tableIndex].Cells[4].Value = maxVersion.ToString();
-                                        dataGridView1.Rows[tableIndex].Cells[5].Value = url;
-                                        dataGridView1.Rows[tableIndex].Cells[6].Value = updateType.ToString();
-
-                                        // Increment tableIndex
-                                        tableIndex++;
+                                        if (line.Trim().ToLower().StartsWith("dllink")) {
+                                            minVersion = Regex.Split(line, "[\"]")[1];
+                                            continue;
+                                        }
+                                        if (line.Trim().ToLower().StartsWith("updatetype")) {
+                                            #region Parse update type
+                                            switch (Regex.Split(line, "[\"]")[1].ToLower()) {
+                                                case "update":
+                                                    type = UpdateType.Update;
+                                                    break;
+                                                case "patch":
+                                                    type = UpdateType.Patch;
+                                                    break;
+                                                case "quickfix":
+                                                    type = UpdateType.QuickFix;
+                                                    break;
+                                                default:
+                                                    type = UpdateType.Patch;
+                                                    break;
+                                            }
+                                            #endregion
+                                            continue;
+                                        }
 
                                     }
+                                    #endregion
 
+                                    // Put all the values in the DataGridView
+                                    dataGridView1.Rows.Add(1);
+                                    DataGridViewRow row = dataGridView1.Rows[idx];
+                                    row.Cells[0].Value = name;
+                                    row.Cells[1].Value = desc;
+                                    row.Cells[2].Value = priority.ToString();
+                                    row.Cells[3].Value = minVersion;
+                                    row.Cells[4].Value = maxVersion;
+                                    row.Cells[5].Value = dlLink;
+                                    row.Cells[6].Value = type.ToString();
+
+                                    // Increment idx variable so that next time, the next row is used.
+                                    idx++;
+                                        
                                 }
-                            
-
                             }
 
                         }
-                        #endregion
-
-                        // Close and dispose of sReader to prevent mem leaks
-                        sReader.Close();
-                        sReader.Dispose();
-                        // Do the same to webC
                         webC.Dispose();
                     }
-                    incrementProgress = false;
                     
                 });
             }).Start();
