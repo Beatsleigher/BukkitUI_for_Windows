@@ -8,9 +8,22 @@ using System.Windows.Forms;
 using Telerik.WinControls;
 using System.Net;
 using System.Threading;
+using System.IO;
+using System.Text.RegularExpressions;
 
 namespace BukkitUI_Updater {
     public partial class RadForm1 : Telerik.WinControls.UI.RadForm {
+
+        enum UpdatePriority {
+            Higher,
+            High,
+            Above_Normal,
+            Normal,
+            Below_Normal,
+            Low,
+            Lower
+        }
+
         public RadForm1() {
             InitializeComponent();
         }
@@ -21,11 +34,39 @@ namespace BukkitUI_Updater {
         }
 
         private void loadUpdates() {
-            new Thread(() => {
-                Invoke((MethodInvoker)delegate {
+            //new Thread(() => {
+                //Invoke((MethodInvoker)delegate {
+                    using (WebClient webC = new WebClient()) {
+                        using (StringReader sReader = new StringReader(webC.DownloadString("https://github.com/Beatsleigher/BukkitUI_for_Windows/blob/master/update/.upd"))) {
+                            String line;
+                            String updateName;
+                            String updateDescription;
+                            UpdatePriority priority;
+                            int tableIndex = 0;
 
-                });
-            }).Start();
+                            while ((line = sReader.ReadLine()) != null) {
+
+                                if (line.StartsWith("program=") && line.Contains("BukkitUI for Windows") && line.EndsWith(">>")) {
+                                    while (!(line = sReader.ReadLine()).Equals("<<")) {
+
+                                        if (line.Contains("update=>")) {
+                                            String[] details = Regex.Split((Regex.Split(Regex.Split(line, @"\[")[1], @"\]")[0]), "[,]");
+                                            foreach (String detail in details) MessageBox.Show(this, detail);
+                                            while (!(line = sReader.ReadLine()).EndsWith("<<")) {
+
+                                            }
+
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+                //});
+            //}).Start();
         }
     }
 }
