@@ -1,0 +1,13 @@
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\bin\Debug\BukkitUI.exe.config
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\bin\Debug\BukkitUI.exe
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\bin\Debug\BukkitUI.pdb
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.csprojResolveAssemblyReference.cache
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.Form1.resources
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.Properties.Resources.resources
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.csproj.GenerateResource.Cache
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.exe
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.pdb
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.AboutBox1.resources
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.SplashScreen.resources
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.BukkitCmdBrowser.resources
+C:\Users\Beatsleigher\code\C#\BukkitUI\BukkitUI\obj\Debug\BukkitUI.GetPlayerNameDialog.resources
