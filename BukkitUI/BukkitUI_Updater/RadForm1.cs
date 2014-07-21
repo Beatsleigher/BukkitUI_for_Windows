@@ -34,10 +34,10 @@ namespace BukkitUI_Updater {
         }
 
         private void loadUpdates() {
-            //new Thread(() => {
-                //Invoke((MethodInvoker)delegate {
+            new Thread(() => {
+                Invoke((MethodInvoker)delegate {
                     using (WebClient webC = new WebClient()) {
-                        using (StringReader sReader = new StringReader(webC.DownloadString("https://github.com/Beatsleigher/BukkitUI_for_Windows/blob/master/update/.upd"))) {
+                        using (StringReader sReader = new StringReader(webC.DownloadString("https://raw.githubusercontent.com/Beatsleigher/BukkitUI_for_Windows/master/update/.upd"))) {
                             String line;
                             String updateName;
                             String updateDescription;
@@ -51,7 +51,27 @@ namespace BukkitUI_Updater {
 
                                         if (line.Contains("update=>")) {
                                             String[] details = Regex.Split((Regex.Split(Regex.Split(line, @"\[")[1], @"\]")[0]), "[,]");
-                                            foreach (String detail in details) MessageBox.Show(this, detail);
+                                            foreach (String detail in details)
+                                                if (detail.StartsWith("name"))
+                                                    updateName = Regex.Split(detail, "[\"]")[1];
+                                                else if (detail.StartsWith("desc"))
+                                                    updateDescription = Regex.Split(detail, "[\"]")[1];
+                                                else if (detail.StartsWith("priority"))
+                                                    switch (Regex.Split(detail, "[\"]")[1].ToLower()) {
+                                                        case "higher":
+                                                            priority = UpdatePriority.Higher;
+                                                            break;
+                                                        case "high":
+                                                            priority = UpdatePriority.High;
+                                                            break;
+                                                        case "above_normal":
+                                                            priority = UpdatePriority.Above_Normal;
+                                                            break;
+                                                        case "normal":
+                                                            priority = UpdatePriority.Normal;
+                                                            case 
+                                                    }
+
                                             while (!(line = sReader.ReadLine()).EndsWith("<<")) {
 
                                             }
@@ -65,8 +85,8 @@ namespace BukkitUI_Updater {
                             }
                         }
                     }
-                //});
-            //}).Start();
+                });
+            }).Start();
         }
     }
 }
