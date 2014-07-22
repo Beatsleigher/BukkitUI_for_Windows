@@ -24,4 +24,10 @@ program="BukkitUI for Windows" >>
 		dlLink="https://github.com/Beatsleigher/BukkitUI_for_Windows/releases/download/Test/BukkitUI.exe"
 		updateType="Patch"
 	<<
+	update=>[name="Test 2", desc="Another test package.", priority="Low"] >>
+		minAppVersion="1.0.0.0"
+		maxAppVersion="1.2.0.0"
+		dlLink="https://github.com/Beatsleigher/BukkitUI_for_Windows/releases/download/AnotherTest/Debug.exe"
+		updateType="Update"
+	<<
 << 
