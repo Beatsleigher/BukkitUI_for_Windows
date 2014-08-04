@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>Read Method (fileName, options)</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="554e5329-cb85-7d08-e34b-b6279b5ff744" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="M:Ionic.Zip.ZipFile.Read(System.String,Ionic.Zip.ReadOptions)" /><MSHelp:Keyword Index="A" Term="M:Ionic.Zip.ZipFile.Read(System.String,Ionic.Zip.ReadOptions)" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileClassReadTopic" /><MSHelp:Keyword Index="K" Term="Read method" /><MSHelp:Keyword Index="K" Term="ZipFile.Read method" /><MSHelp:Keyword Index="F" Term="Read" /><MSHelp:Keyword Index="F" Term="ZipFile.Read" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipFile.Read" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.Read" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="Reads a zip file archive from the named filesystem file using the specified options." /></xml><link type="text/css" rel="stylesheet" /><script type="text/javascript"></script><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="Read method" /><meta name="Microsoft.Help.Keywords" content="ZipFile.Read method" /><meta name="Microsoft.Help.F1" content="Read" /><meta name="Microsoft.Help.F1" content="ZipFile.Read" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipFile.Read" /><meta name="Description" content="Reads a zip file archive from the named filesystem file using the specified options." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="M:Ionic.Zip.ZipFile.Read(System.String,Ionic.Zip.ReadOptions)" /><meta name="Microsoft.Help.TocParent" content="M:Ionic.Zip.ZipFile.Read(System.IO.Stream)" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="3" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">Read Method (fileName, options)</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a> ► <span class="selflink">Read(String, ReadOptions)</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               Reads a zip file archive from the named filesystem file using the
+               specified options.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="keyword">static</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a> <span class="identifier">Read</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">string</a> <span class="parameter">fileName</span>,
+	<a href="ms-xhelp://?Id=T:Ionic.Zip.ReadOptions">ReadOptions</a> <span class="parameter">options</span>
+)</pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Shared</span> <span class="keyword">Function</span> <span class="identifier">Read</span> ( _
+	<span class="parameter">fileName</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>, _
+	<span class="parameter">options</span> <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ReadOptions">ReadOptions</a> _
+) <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a></pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span>:
+<span class="keyword">static</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a>^ <span class="identifier">Read</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>^ <span class="parameter">fileName</span>, 
+	<a href="ms-xhelp://?Id=T:Ionic.Zip.ReadOptions">ReadOptions</a>^ <span class="parameter">options</span>
+)</pre></div></div></div></div></div><div id="parameters"><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Parameters</div><div class="sectionContent"><dl paramName="fileName"><dt><span class="parameter">fileName</span> (<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>)</dt><dd>
+             The name of the zip archive to open.
+             This can be a fully-qualified or relative pathname.
+             </dd></dl><dl paramName="options"><dt><span class="parameter">options</span> (<a href="ms-xhelp://?Id=T:Ionic.Zip.ReadOptions">ReadOptions</a>)</dt><dd>
+             The set of options to use when reading the zip file.
+             </dd></dl></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Return Value</div><div class="sectionContent">The ZipFile instance read from the zip archive.</div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               This version of the <span class="code">Read()</span> method allows the caller to pass
+               in a <span class="code">TextWriter</span> an <span class="code">Encoding</span>, via an instance of the
+               <span class="code">ReadOptions</span> class.  The <span class="code">ZipFile</span> is read in using the
+               specified encoding for entries where UTF-8 encoding is not
+               explicitly specified.
+             </p></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent"><p>
+               This example shows how to read a zip file using the Big-5 Chinese
+               code page (950), and extract each entry in the zip file, while
+               sending status messages out to the Console.
+             </p><p>
+               For this code to work as intended, the zipfile must have been
+               created using the big5 code page (CP950). This is typical, for
+               example, when using WinRar on a machine with CP950 set as the
+               default code page.  In that case, the names of entries within the
+               Zip archive will be stored in that code page, and reading the zip
+               archive must be done using that code page.  If the application did
+               not use the correct code page in ZipFile.Read(), then names of
+               entries within the zip archive would not be correctly retrieved.
+             </p><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">string</span> zipToExtract = <span class="highlight-literal">"MyArchive.zip"</span>;
+<span class="highlight-keyword">string</span> extractDirectory = <span class="highlight-literal">"extract"</span>;
+var options = <span class="highlight-keyword">new</span> ReadOptions
+{
+  StatusMessageWriter = System.Console.Out,
+  Encoding = System.Text.Encoding.GetEncoding(<span class="highlight-number">950</span>)
+};
+<span class="highlight-keyword">using</span> (ZipFile zip = ZipFile.Read(zipToExtract, options))
+{
+  <span class="highlight-keyword">foreach</span> (ZipEntry e <span class="highlight-keyword">in</span> zip)
+  {
+     e.Extract(extractDirectory);
+  }
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Dim</span> zipToExtract <span class="highlight-keyword">as</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">"MyArchive.zip"</span>
+<span class="highlight-keyword">Dim</span> extractDirectory <span class="highlight-keyword">as</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">"extract"</span>
+<span class="highlight-keyword">Dim</span> options <span class="highlight-keyword">as</span> <span class="highlight-keyword">New</span> ReadOptions
+options.Encoding = System.Text.Encoding.GetEncoding(<span class="highlight-number">950</span>)
+options.StatusMessageWriter = System.Console.Out
+<span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = ZipFile.Read(zipToExtract, options)
+    <span class="highlight-keyword">Dim</span> e <span class="highlight-keyword">As</span> ZipEntry
+    <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> e <span class="highlight-keyword">In</span> zip
+     e.Extract(extractDirectory)
+    <span class="highlight-keyword">Next</span>
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre></div></span></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent"><p>
+               This example shows how to read a zip file using the default
+               code page, to remove entries that have a modified date before a given threshold,
+               sending status messages out to a <span class="code">StringWriter</span>.
+             </p><span id="cbc_3" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve">var options = <span class="highlight-keyword">new</span> ReadOptions
+{
+  StatusMessageWriter = <span class="highlight-keyword">new</span> System.IO.StringWriter()
+};
+<span class="highlight-keyword">using</span> (ZipFile zip =  ZipFile.Read(<span class="highlight-literal">"PackedDocuments.zip"</span>, options))
+{
+  var Threshold = <span class="highlight-keyword">new</span> DateTime(<span class="highlight-number">2007</span>,<span class="highlight-number">7</span>,<span class="highlight-number">4</span>);
+  <span class="highlight-comment">// We cannot remove the entry from the list, within the context of</span>
+  <span class="highlight-comment">// an enumeration of said list.</span>
+  <span class="highlight-comment">// So we add the doomed entry to a list to be removed later.</span>
+  <span class="highlight-comment">// pass 1: mark the entries for removal</span>
+  var MarkedEntries = <span class="highlight-keyword">new</span> System.Collections.Generic.List&lt;ZipEntry&gt;();
+  <span class="highlight-keyword">foreach</span> (ZipEntry e <span class="highlight-keyword">in</span> zip)
+  {
+    <span class="highlight-keyword">if</span> (e.LastModified &lt; Threshold)
+      MarkedEntries.Add(e);
+  }
+  <span class="highlight-comment">// pass 2: actually remove the entry.</span>
+  <span class="highlight-keyword">foreach</span> (ZipEntry zombie <span class="highlight-keyword">in</span> MarkedEntries)
+     zip.RemoveEntry(zombie);
+  zip.Comment = <span class="highlight-literal">"This archive has been updated."</span>;
+  zip.Save();
+}
+<span class="highlight-comment">// can now use contents of sw, eg store in an audit log</span></pre></div></span><span id="cbc_4" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Dim</span> options <span class="highlight-keyword">as</span> <span class="highlight-keyword">New</span> ReadOptions
+options.StatusMessageWriter = <span class="highlight-keyword">New</span> System.IO.StringWriter
+<span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = ZipFile.Read(<span class="highlight-literal">"PackedDocuments.zip"</span>, options)
+    <span class="highlight-keyword">Dim</span> Threshold <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> DateTime(<span class="highlight-number">2007</span>, <span class="highlight-number">7</span>, <span class="highlight-number">4</span>)
+    <span class="highlight-comment">' We cannot remove the entry from the list, within the context of</span>
+    <span class="highlight-comment">' an enumeration of said list.</span>
+    <span class="highlight-comment">' So we add the doomed entry to a list to be removed later.</span>
+    <span class="highlight-comment">' pass 1: mark the entries for removal</span>
+    <span class="highlight-keyword">Dim</span> MarkedEntries <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> System.Collections.Generic.List(<span class="highlight-keyword">Of</span> ZipEntry)
+    <span class="highlight-keyword">Dim</span> e <span class="highlight-keyword">As</span> ZipEntry
+    <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> e <span class="highlight-keyword">In</span> zip
+        <span class="highlight-keyword">If</span> (e.LastModified &lt; Threshold) <span class="highlight-keyword">Then</span>
+            MarkedEntries.Add(e)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+    <span class="highlight-keyword">Next</span>
+    <span class="highlight-comment">' pass 2: actually remove the entry.</span>
+    <span class="highlight-keyword">Dim</span> zombie <span class="highlight-keyword">As</span> ZipEntry
+    <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> zombie <span class="highlight-keyword">In</span> MarkedEntries
+        zip.RemoveEntry(zombie)
+    <span class="highlight-keyword">Next</span>
+    zip.Comment = <span class="highlight-literal">"This archive has been updated."</span>
+    zip.Save
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-comment">' can now use contents of sw, eg store in an audit log</span></pre></div></span></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Exceptions</div><div class="sectionContent"><table class="exceptions"><tr><th class="exceptionNameColumn">Exception</th><th class="exceptionConditionColumn">Condition</th></tr><tr><td><a href="http://msdn2.microsoft.com/en-us/library/c18k6c59" target="_blank">Exception</a></td><td>
+               Thrown if the zipfile cannot be read. The implementation of
+               this method relies on <span class="code">System.IO.File.OpenRead</span>, which
+               can throw a variety of exceptions, including specific
+               exceptions if a file is not found, an unauthorized access
+               exception, exceptions for poorly formatted filenames, and so
+               on.
+             <br /></td></tr></table></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> See Also</div><div class="sectionContent"><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Read(System.IO.Stream,Ionic.Zip.ReadOptions)">Read(Stream, ReadOptions)</a><br /></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

@@ -16,12 +16,12 @@ program="BukkitUI for Windows" >>
 	--> This file contains update information.
 	--> I'm calling this file type SML. Simple Markup Language.
 	--> Enjoy.
-	update=>[name="Test", desc="A test update package", priority="Low"] >>
-		minAppVersion="1.0.0.0"
+	update=>[name="v0.1-alpha", desc="First public release of BukkitUI for Windows", priority="Lower"] >>
+		minAppVersion="0.0.0.0"
 		--> I'd like to note, that maxAppVersion basically is the newer version. 
 		--> I had a brainfart and I'm too lazy to "fix" the parser, so the variable name stays :)
-		maxAppVersion="1.1.0.0"
-		dlLink="https://github.com/Beatsleigher/BukkitUI_for_Windows/releases/download/Test/BukkitUI.exe"
-		updateType="Patch"
+		maxAppVersion="0.0.1.0"
+		dlLink="https://github.com/Beatsleigher/BukkitUI_for_Windows/releases/download/v0.1-alpha/BukkitUI-win32_setup_x86-x64-0.1-alpha.exe"
+		updateType="Update"
 	<<
 << 

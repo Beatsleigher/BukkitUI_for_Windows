@@ -246,17 +246,37 @@ namespace BukkitUI_Updater {
         private void radButton1_Click(object sender, EventArgs e) {
             this.Enabled = false;
             WebClient webC = new WebClient();
+
+            String installLoc = 
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), 
+                "BukkitUI_for_Win32", "BukkitUI." + dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value + ".exe");
+
+            if (!Directory.Exists(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "BukkitUI_for_Win32")))
+                Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "BukkitUI_for_Win32"));
+
+            webC.DownloadFileAsync(new Uri(dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[5].Value.ToString()),
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+                "BukkitUI_for_Win32", "BukkitUI." + dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[4].Value + ".exe"));
+
             webC.DownloadProgressChanged += (s, evt) => {
-                radProgressBar1.Text = "Downloading " + dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0] + "... [" + evt.ProgressPercentage + "%]";
+                radProgressBar1.Text = "Downloading " 
+                    + dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[0].Value 
+                    + "... [" + evt.ProgressPercentage + "%]";
                 radProgressBar1.Value1 = evt.ProgressPercentage;
             };
             webC.DownloadFileCompleted += (s, evt) => {
                 radProgressBar1.Text = ">> Idle <<";
                 radProgressBar1.Value1 = 0;
                 this.Enabled = true;
-                if (MessageBox.Show(this, 
-                    "The update has been successfully downloaded!\nWould you like to update BukkitUI?", 
+                if (MessageBox.Show(this,
+                    "The update has been successfully downloaded!\nWould you like to update BukkitUI?",
                     "Install Update?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    Process.Start(installLoc);
+                else
+                    MessageBox.Show(this, "Fair enough. I understand. The update file can be found here: " + installLoc + ".",
+                        "Suit Yourself", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             };
         }
     }

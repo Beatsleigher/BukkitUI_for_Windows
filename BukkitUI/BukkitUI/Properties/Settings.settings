@@ -47,5 +47,8 @@
     <Setting Name="serverAllocationMode" Description="The selected memory (heap size) allocation mode." Type="System.String" Scope="User">
       <Value Profile="(Default)">Auto</Value>
     </Setting>
+    <Setting Name="useColourStars" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -262,5 +262,17 @@ namespace BukkitUI.Properties {
                 this["serverAllocationMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool useColourStars {
+            get {
+                return ((bool)(this["useColourStars"]));
+            }
+            set {
+                this["useColourStars"] = value;
+            }
+        }
     }
 }

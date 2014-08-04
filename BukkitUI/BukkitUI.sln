@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitUI", "BukkitUI\Bukkit
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BukkitUI_Updater", "BukkitUI_Updater\BukkitUI_Updater.csproj", "{8802D055-C0DC-43C7-ADAB-E2298D2D8FB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerManager", "ServerManager\ServerManager.csproj", "{7AAE92C1-0201-42D7-895E-00133B108BB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegExText", "RegExText\RegExText.csproj", "{1127A7C4-18B3-455D-8F6F-94F698161681}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,8 +41,38 @@ Global
 		{8802D055-C0DC-43C7-ADAB-E2298D2D8FB4}.Release|Mixed Platforms.Build.0 = Release|x86
 		{8802D055-C0DC-43C7-ADAB-E2298D2D8FB4}.Release|x86.ActiveCfg = Release|x86
 		{8802D055-C0DC-43C7-ADAB-E2298D2D8FB4}.Release|x86.Build.0 = Release|x86
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7AAE92C1-0201-42D7-895E-00133B108BB0}.Release|x86.ActiveCfg = Release|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{1127A7C4-18B3-455D-8F6F-94F698161681}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VSCustomBkgrdPaint = True
+		VSUseSystemFonts = False
+		VSSkinToggleButtons = True
+		VSSkinFlatStyles = True
+		VSTextShadow = True
+		VSToolStripStyle = Mixed
+		VSTargetControls = FormsAndControls
+		VSStyle = Office2010 (Silver).vssf
 	EndGlobalSection
 EndGlobal

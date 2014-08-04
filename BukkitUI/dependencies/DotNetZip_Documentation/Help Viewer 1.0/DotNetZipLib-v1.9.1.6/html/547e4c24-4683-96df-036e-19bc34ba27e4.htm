@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>ZipFile Class</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="547e4c24-4683-96df-036e-19bc34ba27e4" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="T:Ionic.Zip.ZipFile" /><MSHelp:Keyword Index="A" Term="T:Ionic.Zip.ZipFile" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileClassTopic" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileMembersTopic" /><MSHelp:Keyword Index="K" Term="ZipFile class" /><MSHelp:Keyword Index="K" Term="Ionic.Zip.ZipFile class" /><MSHelp:Keyword Index="F" Term="ZipFile" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipFile" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="The ZipFile type represents a zip archive file." /></xml><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="ZipFile class" /><meta name="Microsoft.Help.Keywords" content="Ionic.Zip.ZipFile class" /><meta name="Microsoft.Help.F1" content="ZipFile" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipFile" /><meta name="Description" content="The ZipFile type represents a zip archive file." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="T:Ionic.Zip.ZipFile" /><meta name="Microsoft.Help.TocParent" content="N:Ionic.Zip" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="28" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">ZipFile Class</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <span class="selflink">ZipFile</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               The ZipFile type represents a zip archive file.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="identifier">ZipFile</span> : <a href="http://msdn2.microsoft.com/en-us/library/9eekhta0" target="_blank">IEnumerable</a>&lt;<a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a>&gt;, 
+	<a href="http://msdn2.microsoft.com/en-us/library/h1x9x1b1" target="_blank">IEnumerable</a>, <a href="http://msdn2.microsoft.com/en-us/library/aax125c9" target="_blank">IDisposable</a></pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Class</span> <span class="identifier">ZipFile</span> _
+	<span class="keyword">Implements</span> <a href="http://msdn2.microsoft.com/en-us/library/9eekhta0" target="_blank">IEnumerable</a>(<span class="keyword">Of</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a>), <a href="http://msdn2.microsoft.com/en-us/library/h1x9x1b1" target="_blank">IEnumerable</a>,  _
+	<a href="http://msdn2.microsoft.com/en-us/library/aax125c9" target="_blank">IDisposable</a></pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="keyword">ref class</span> <span class="identifier">ZipFile</span> : <a href="http://msdn2.microsoft.com/en-us/library/9eekhta0" target="_blank">IEnumerable</a>&lt;<a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a>^&gt;, 
+	<a href="http://msdn2.microsoft.com/en-us/library/h1x9x1b1" target="_blank">IEnumerable</a>, <a href="http://msdn2.microsoft.com/en-us/library/aax125c9" target="_blank">IDisposable</a></pre></div></div></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Members</div><div class="sectionContent"><div id="allMembersSection"><table class="filter"><tr class="tabs" id="memberTabs"><td class="tab" value="all" onclick="toggleClass('memberTabs','value','all','activeTab','tab'); processSubgroup('all', 'member'); processList('memberList','filterElement','member');">All Members</td><td class="tab" value="constructor" onclick="toggleClass('memberTabs','value','constructor','activeTab','tab'); processSubgroup('constructor','member');processList('memberList','filterElement','member');">Constructors</td><td class="tab" value="method" onclick="toggleClass('memberTabs','value','method','activeTab','tab'); processSubgroup('method','member'); processList('memberList','filterElement','member');">Methods</td><td class="tab" value="property" onclick="toggleClass('memberTabs','value','property','activeTab','tab'); processSubgroup('property','member'); processList('memberList','filterElement','member');">Properties</td><td class="tab" value="field" onclick="toggleClass('memberTabs','value','field','activeTab','tab'); processSubgroup('field','member'); processList('memberList','filterElement','member');">Fields</td><td class="tab" value="event" onclick="toggleClass('memberTabs','value','event','activeTab','tab'); processSubgroup('event','member'); processList('memberList','filterElement','member');">Events</td></tr><tr><td class="line" colspan="2"><label for="public"><input id="public" type="checkbox" checked="true" onclick="toggleCheckState('public',this.checked); processList('memberList','filterElement','member');" />Public</label><br /><label for="protected"><input id="protected" type="checkbox" checked="true" onclick="toggleCheckState('protected',this.checked); processList('memberList','filterElement','member');" />Protected</label></td><td class="line" colspan="2"><label for="instance"><input id="instance" type="checkbox" checked="true" onclick="toggleCheckState('instance',this.checked); processList('memberList','filterElement','member');" />Instance</label><br /><label for="static"><input id="static" type="checkbox" checked="true" onclick="toggleCheckState('static',this.checked); processList('memberList','filterElement','member');" />Static</label></td><td class="line" colspan="2"><label for="declared"><input id="declared" type="checkbox" checked="true" onclick="toggleCheckState('declared',this.checked); processList('memberList','filterElement','member');" />Declared</label><br /><label for="inherited"><input id="inherited" type="checkbox" checked="true" onclick="toggleCheckState('inherited',this.checked); processList('memberList','filterElement','member');" />Inherited</label></td></tr></table><table class="membersMHS" id="memberList"><tr><th class="iconColumn">Icon</th><th class="nameColumn">Member</th><th class="descriptionColumn">Description</th></tr><tr data="constructor; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.%23ctor(System.String)">ZipFile(String)</a></td><td><div class="summary">
+               Creates a new <span class="code">ZipFile</span> instance, using the specified filename.
+             </div><br /></td></tr><tr data="constructor; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.%23ctor(System.String,System.Text.Encoding)">ZipFile(String, Encoding)</a></td><td><div class="summary">
+               Creates a new <span class="code">ZipFile</span> instance, using the specified name for the
+               filename, and the specified Encoding.
+             </div><br /></td></tr><tr data="constructor; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.%23ctor">ZipFile<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">
+               Create a zip file, without specifying a target filename or stream to save to.
+             </div><br /></td></tr><tr data="constructor; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.%23ctor(System.Text.Encoding)">ZipFile(Encoding)</a></td><td><div class="summary">
+               Create a zip file, specifying a text Encoding, but without specifying a
+               target filename or stream to save to.
+             </div><br /></td></tr><tr data="constructor; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.%23ctor(System.String,System.IO.TextWriter)">ZipFile(String, TextWriter)</a></td><td><div class="summary">
+               Creates a new <span class="code">ZipFile</span> instance, using the specified name for the
+               filename, and the specified status message writer.
+             </div><br /></td></tr><tr data="constructor; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.%23ctor(System.String,System.IO.TextWriter,System.Text.Encoding)">ZipFile(String, TextWriter, Encoding)</a></td><td><div class="summary">
+               Creates a new <span class="code">ZipFile</span> instance, using the specified name for the
+               filename, the specified status message writer, and the specified Encoding.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddDirectory(System.String)">AddDirectory(String)</a></td><td><div class="summary">
+               Adds the contents of a filesystem directory to a Zip file archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddDirectory(System.String,System.String)">AddDirectory(String, String)</a></td><td><div class="summary">
+               Adds the contents of a filesystem directory to a Zip file archive,
+               overriding the path to be used for entries in the archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddDirectoryByName(System.String)">AddDirectoryByName(String)</a></td><td><div class="summary">
+               Creates a directory in the zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.AddDirectoryWillTraverseReparsePoints">AddDirectoryWillTraverseReparsePoints</a></td><td><div class="summary">
+               Indicates whether NTFS Reparse Points, like junctions, should be
+               traversed during calls to <span class="code">AddDirectory()</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddEntry(System.String,System.String)">AddEntry(String, String)</a></td><td><div class="summary">
+               Adds a named entry into the zip archive, taking content for the entry
+               from a string.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddEntry(System.String,System.String,System.Text.Encoding)">AddEntry(String, String, Encoding)</a></td><td><div class="summary">
+               Adds a named entry into the zip archive, taking content for the entry
+               from a string, and using the specified text encoding.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddEntry(System.String,System.IO.Stream)">AddEntry(String, Stream)</a></td><td><div class="summary">
+               Create an entry in the <span class="code">ZipFile</span> using the given <span class="code">Stream</span>
+               as input.  The entry will have the given filename.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddEntry(System.String,Ionic.Zip.WriteDelegate)">AddEntry(String, WriteDelegate)</a></td><td><div class="summary">
+               Add a ZipEntry for which content is written directly by the application.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddEntry(System.String,Ionic.Zip.OpenDelegate,Ionic.Zip.CloseDelegate)">AddEntry(String, OpenDelegate, CloseDelegate)</a></td><td><div class="summary">
+               Add an entry, for which the application will provide a stream,
+               just-in-time.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddEntry(System.String,System.Byte[])">AddEntry(String, <span class="languageSpecificText"><span class="cpp">array&lt;</span></span>Byte<span class="languageSpecificText"><span class="cpp">&gt;</span><span class="cs">[]</span><span class="vb">()</span><span class="nu">[]</span><span class="fs">[]</span></span>)</a></td><td><div class="summary">
+               Add an entry into the zip archive using the given filename and
+               directory path within the archive, and the given content for the
+               file. No file is created in the filesystem.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddFile(System.String)">AddFile(String)</a></td><td><div class="summary">
+               Adds a File to a Zip file archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddFile(System.String,System.String)">AddFile(String, String)</a></td><td><div class="summary">
+               Adds a File to a Zip file archive, potentially overriding the path to be
+               used within the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddFiles(System.Collections.Generic.IEnumerable{System.String})">AddFiles(IEnumerable<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>String<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>)</a></td><td><div class="summary">
+               This method adds a set of files to the <span class="code">ZipFile</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddFiles(System.Collections.Generic.IEnumerable{System.String},System.String)">AddFiles(IEnumerable<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>String<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>, String)</a></td><td><div class="summary">
+               Adds a set of files to the <span class="code">ZipFile</span>, using the
+               specified directory path in the archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddFiles(System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.String)">AddFiles(IEnumerable<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>String<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>, Boolean, String)</a></td><td><div class="summary">
+               Adds a set of files to the <span class="code">ZipFile</span>, using the specified directory
+               path in the archive, and preserving the full directory structure in the
+               filenames.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddItem(System.String)">AddItem(String)</a></td><td><div class="summary">
+               Adds an item, either a file or a directory, to a zip file archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddItem(System.String,System.String)">AddItem(String, String)</a></td><td><div class="summary">
+               Adds an item, either a file or a directory, to a zip file archive,
+               explicitly specifying the directory path to be used in the archive.
+             </div><br /></td></tr><tr data="event; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.AddProgress">AddProgress</a></td><td><div class="summary">
+             An event handler invoked before, during, and after Adding entries to a zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddSelectedFiles(System.String)">AddSelectedFiles(String)</a></td><td><div class="summary">
+               Adds to the ZipFile a set of files from the current working directory on
+               disk, that conform to the specified criteria.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddSelectedFiles(System.String,System.Boolean)">AddSelectedFiles(String, Boolean)</a></td><td><div class="summary">
+               Adds to the ZipFile a set of files from the disk that conform to the
+               specified criteria, optionally recursing into subdirectories.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddSelectedFiles(System.String,System.String)">AddSelectedFiles(String, String)</a></td><td><div class="summary">
+               Adds to the ZipFile a set of files from a specified directory in the
+               filesystem, that conform to the specified criteria.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddSelectedFiles(System.String,System.String,System.Boolean)">AddSelectedFiles(String, String, Boolean)</a></td><td><div class="summary">
+               Adds to the ZipFile a set of files from the specified directory on disk,
+               that conform to the specified criteria.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddSelectedFiles(System.String,System.String,System.String)">AddSelectedFiles(String, String, String)</a></td><td><div class="summary">
+               Adds to the ZipFile a selection of files from the specified directory on
+               disk, that conform to the specified criteria, and using a specified root
+               path for entries added to the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddSelectedFiles(System.String,System.String,System.String,System.Boolean)">AddSelectedFiles(String, String, String, Boolean)</a></td><td><div class="summary">
+               Adds to the ZipFile a selection of files from the specified directory on
+               disk, that conform to the specified criteria, optionally recursing through
+               subdirectories, and using a specified root path for entries added to the
+               zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.AlternateEncoding">AlternateEncoding</a></td><td><div class="summary">
+              A Text Encoding to use when encoding the filenames and comments for
+              all the ZipEntry items, during a ZipFile.Save() operation.
+            </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.AlternateEncodingUsage">AlternateEncodingUsage</a></td><td><div class="summary">
+              A flag that tells if and when this instance should apply
+              AlternateEncoding to encode the filenames and comments associated to
+              of ZipEntry objects contained within this instance.
+            </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.BufferSize">BufferSize</a></td><td><div class="summary">
+               Size of the IO buffer used while saving.
+             </div><br /></td></tr><tr data="field; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=F:Ionic.Zip.ZipFile.BufferSizeDefault">BufferSizeDefault</a></td><td><div class="summary">
+              Default size of the buffer used for IO.
+            </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.CaseSensitiveRetrieval">CaseSensitiveRetrieval</a></td><td><div class="summary">
+               Indicates whether to perform case-sensitive matching on the filename when
+               retrieving entries in the zipfile via the string-based indexer.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.CheckZip(System.String)">CheckZip(String)</a></td><td><div class="summary">
+               Checks a zip file to see if its directory is consistent.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.CheckZip(System.String,System.Boolean,System.IO.TextWriter)">CheckZip(String, Boolean, TextWriter)</a></td><td><div class="summary">
+               Checks a zip file to see if its directory is consistent,
+               and optionally fixes the directory if necessary.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.CheckZipPassword(System.String,System.String)">CheckZipPassword(String, String)</a></td><td><div class="summary">
+               Verify the password on a zip file.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.CodecBufferSize">CodecBufferSize</a></td><td><div class="summary">
+               Size of the work buffer to use for the ZLIB codec during compression.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Comment">Comment</a></td><td><div class="summary">
+               A comment attached to the zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.CompressionLevel">CompressionLevel</a></td><td><div class="summary">
+               Sets the compression level to be used for entries subsequently added to
+               the zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.CompressionMethod">CompressionMethod</a></td><td><div class="summary">
+              The compression method for the zipfile.
+            </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ContainsEntry(System.String)">ContainsEntry(String)</a></td><td><div class="summary">
+               Returns true if an entry by the given name exists in the ZipFile.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Count">Count</a></td><td><div class="summary">
+            Returns the number of entries in the Zip archive.
+            </div><br /></td></tr><tr data="property; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.DefaultEncoding">DefaultEncoding</a></td><td><div class="summary">
+            The default text encoding used in zip archives.  It is numeric 437, also
+            known as IBM437.
+            </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Dispose">Dispose<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">
+               Closes the read and write streams associated
+               to the <span class="code">ZipFile</span>, if necessary.
+             </div><br /></td></tr><tr data="method; protected; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Dispose(System.Boolean)">Dispose(Boolean)</a></td><td><div class="summary">
+               Disposes any managed resources, if the flag is set, then marks the
+               instance disposed.  This method is typically not called explicitly from
+               application code.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.EmitTimesInUnixFormatWhenSaving">EmitTimesInUnixFormatWhenSaving</a></td><td><div class="summary">
+             Specifies whether the Creation, Access, and Modified times
+             for entries added to the zip file will be emitted in "Unix(tm)
+             format" when the zip archive is saved.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.EmitTimesInWindowsFormatWhenSaving">EmitTimesInWindowsFormatWhenSaving</a></td><td><div class="summary">
+               Specifies whether the Creation, Access, and Modified times for entries
+               added to the zip file will be emitted in Windows format
+               when the zip archive is saved.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Encryption">Encryption</a></td><td><div class="summary">
+               The Encryption to use for entries added to the <span class="code">ZipFile</span>.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Entries">Entries</a></td><td><div class="summary">
+               Returns the readonly collection of entries in the Zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.EntriesSorted">EntriesSorted</a></td><td><div class="summary">
+               Returns a readonly collection of entries in the Zip archive, sorted by FileName.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.EntryFileNames">EntryFileNames</a></td><td><div class="summary">
+               The list of filenames for the entries contained within the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; inherited"><td><img /></td><td><a href="http://msdn2.microsoft.com/en-us/library/bsc2ak47" target="_blank">Equals(Object)</a></td><td><div class="summary">Determines whether the specified <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a> is equal to the current <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.</div> (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)<br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractAll(System.String)">ExtractAll(String)</a></td><td><div class="summary">
+             Extracts all of the items in the zip archive, to the specified path in the
+             filesystem.  The path can be relative or fully-qualified.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractAll(System.String,Ionic.Zip.ExtractExistingFileAction)">ExtractAll(String, ExtractExistingFileAction)</a></td><td><div class="summary">
+             Extracts all of the items in the zip archive, to the specified path in the
+             filesystem, using the specified behavior when extraction would overwrite an
+             existing file.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ExtractExistingFile">ExtractExistingFile</a></td><td><div class="summary">
+               The action the library should take when extracting a file that already
+               exists.
+             </div><br /></td></tr><tr data="event; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.ExtractProgress">ExtractProgress</a></td><td><div class="summary">
+               An event handler invoked before, during, and after extraction of
+               entries in the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractSelectedEntries(System.String)">ExtractSelectedEntries(String)</a></td><td><div class="summary">
+             Selects and Extracts a set of Entries from the ZipFile.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractSelectedEntries(System.String,Ionic.Zip.ExtractExistingFileAction)">ExtractSelectedEntries(String, ExtractExistingFileAction)</a></td><td><div class="summary">
+             Selects and Extracts a set of Entries from the ZipFile.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractSelectedEntries(System.String,System.String)">ExtractSelectedEntries(String, String)</a></td><td><div class="summary">
+             Selects and Extracts a set of Entries from the ZipFile.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractSelectedEntries(System.String,System.String,System.String)">ExtractSelectedEntries(String, String, String)</a></td><td><div class="summary">
+             Selects and Extracts a set of Entries from the ZipFile.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ExtractSelectedEntries(System.String,System.String,System.String,Ionic.Zip.ExtractExistingFileAction)">ExtractSelectedEntries(String, String, String, ExtractExistingFileAction)</a></td><td><div class="summary">
+             Selects and Extracts a set of Entries from the ZipFile.
+             </div><br /></td></tr><tr data="method; protected; instance; inherited"><td><img /></td><td><a href="http://msdn2.microsoft.com/en-us/library/4k87zsw7" target="_blank">Finalize<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">Allows an <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a> to attempt to free resources and perform other cleanup operations before the <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a> is reclaimed by garbage collection.</div> (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)<br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.FixZipDirectory(System.String)">FixZipDirectory(String)</a></td><td><div class="summary">
+               Rewrite the directory within a zipfile.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.FlattenFoldersOnExtract">FlattenFoldersOnExtract</a></td><td><div class="summary">
+               Indicates whether extracted files should keep their paths as
+               stored in the zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.FullScan">FullScan</a></td><td><div class="summary">
+             Indicates whether to perform a full scan of the zip file when reading it.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.GetEnumerator">GetEnumerator<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">
+             Generic IEnumerator support, for use of a ZipFile in an enumeration.
+             </div><br /></td></tr><tr data="method; public; instance; inherited"><td><img /></td><td><a href="http://msdn2.microsoft.com/en-us/library/zdee4b3y" target="_blank">GetHashCode<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">Serves as a hash function for a particular type. </div> (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)<br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.GetNewEnum">GetNewEnum<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">
+             An IEnumerator, for use of a ZipFile in a foreach construct.
+             </div><br /></td></tr><tr data="method; public; instance; inherited"><td><img /></td><td><a href="http://msdn2.microsoft.com/en-us/library/dfwy45w9" target="_blank">GetType<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">Gets the <a href="http://msdn2.microsoft.com/en-us/library/42892f65" target="_blank">Type</a> of the current instance.</div> (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)<br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Info">Info</a></td><td><div class="summary">
+               Provides a human-readable string with information about the ZipFile.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Initialize(System.String)">Initialize(String)</a></td><td><div class="summary">
+               Initialize a <span class="code">ZipFile</span> instance by reading in a zip file.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.InputUsesZip64">InputUsesZip64</a></td><td><div class="summary">
+               Indicates whether the most recent <span class="code">Read()</span> operation read a zip file that uses
+               ZIP64 extensions.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.IsZipFile(System.String)">IsZipFile(String)</a></td><td><div class="summary">
+             Checks the given file to see if it appears to be a valid zip file.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.IsZipFile(System.String,System.Boolean)">IsZipFile(String, Boolean)</a></td><td><div class="summary">
+             Checks a file to see if it is a valid zip file.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.IsZipFile(System.IO.Stream,System.Boolean)">IsZipFile(Stream, Boolean)</a></td><td><div class="summary">
+             Checks a stream to see if it contains a valid zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Item(System.Int32)">Item<span class="languageSpecificText"><span class="cs">[</span><span class="vb">(</span><span class="cpp">[</span><span class="nu">(</span><span class="fs"></span></span>Int32<span class="languageSpecificText"><span class="cs">]</span><span class="vb">)</span><span class="cpp">]</span><span class="nu">)</span><span class="fs"></span></span></a></td><td><div class="summary">
+               This is an integer indexer into the Zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Item(System.String)">Item<span class="languageSpecificText"><span class="cs">[</span><span class="vb">(</span><span class="cpp">[</span><span class="nu">(</span><span class="fs"></span></span>String<span class="languageSpecificText"><span class="cs">]</span><span class="vb">)</span><span class="cpp">]</span><span class="nu">)</span><span class="fs"></span></span></a></td><td><div class="summary">
+               This is a name-based indexer into the Zip archive.
+             </div><br /></td></tr><tr data="property; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.LibraryVersion">LibraryVersion</a></td><td><div class="summary">
+             Returns the version number on the DotNetZip assembly.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.MaxOutputSegmentSize">MaxOutputSegmentSize</a></td><td><div class="summary">
+             The maximum size of an output segment, when saving a split Zip file.
+             </div><br /></td></tr><tr data="method; protected; instance; inherited"><td><img /></td><td><a href="http://msdn2.microsoft.com/en-us/library/57ctke0a" target="_blank">MemberwiseClone<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">Creates a shallow copy of the current <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.</div> (Inherited from <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.)<br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Name">Name</a></td><td><div class="summary">
+               The name of the <span class="code">ZipFile</span>, on disk.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.NumberOfSegmentsForMostRecentSave">NumberOfSegmentsForMostRecentSave</a></td><td><div class="summary">
+              Returns the number of segments used in the most recent Save() operation.
+            </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.OutputUsedZip64">OutputUsedZip64</a></td><td><div class="summary">
+               Indicates whether the most recent <span class="code">Save()</span> operation used ZIP64 extensions.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ParallelDeflateMaxBufferPairs">ParallelDeflateMaxBufferPairs</a></td><td><div class="summary">
+               The maximum number of buffer pairs to use when performing
+               parallel compression.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ParallelDeflateThreshold">ParallelDeflateThreshold</a></td><td><div class="summary">
+               The size threshold for an entry, above which a parallel deflate is used.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Password">Password</a></td><td><div class="summary">
+             Sets the password to be used on the <span class="code">ZipFile</span> instance.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ProvisionalAlternateEncoding">ProvisionalAlternateEncoding</a></td><td><span class="obsolete">Obsolete.</span><div class="summary">
+               The text encoding to use when writing new entries to the <span class="code">ZipFile</span>,
+               for those entries that cannot be encoded with the default (IBM437)
+               encoding; or, the text encoding that was used when reading the entries
+               from the <span class="code">ZipFile</span>.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Read(System.String)">Read(String)</a></td><td><div class="summary">
+             Reads a zip file archive and returns the instance.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Read(System.String,Ionic.Zip.ReadOptions)">Read(String, ReadOptions)</a></td><td><div class="summary">
+               Reads a zip file archive from the named filesystem file using the
+               specified options.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Read(System.IO.Stream)">Read(Stream)</a></td><td><div class="summary">
+               Reads a zip archive from a stream.
+             </div><br /></td></tr><tr data="method; public; static; declared"><td><img /><img title="static member" /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Read(System.IO.Stream,Ionic.Zip.ReadOptions)">Read(Stream, ReadOptions)</a></td><td><div class="summary">
+               Reads a zip file archive from the given stream using the
+               specified options.
+             </div><br /></td></tr><tr data="event; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.ReadProgress">ReadProgress</a></td><td><div class="summary">
+             An event handler invoked before, during, and after the reading of a zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.RemoveEntries(System.Collections.Generic.ICollection{Ionic.Zip.ZipEntry})">RemoveEntries(ICollection<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>ZipEntry<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>)</a></td><td><div class="summary">
+               This method removes a collection of entries from the <span class="code">ZipFile</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.RemoveEntries(System.Collections.Generic.ICollection{System.String})">RemoveEntries(ICollection<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>String<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>)</a></td><td><div class="summary">
+               This method removes a collection of entries from the <span class="code">ZipFile</span>, by name.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.RemoveEntry(Ionic.Zip.ZipEntry)">RemoveEntry(ZipEntry)</a></td><td><div class="summary">
+               Removes the given <span class="code">ZipEntry</span> from the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.RemoveEntry(System.String)">RemoveEntry(String)</a></td><td><div class="summary">
+             Removes the <span class="code">ZipEntry</span> with the given filename from the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.RemoveSelectedEntries(System.String)">RemoveSelectedEntries(String)</a></td><td><div class="summary">
+             Remove entries from the zipfile by specified criteria.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.RemoveSelectedEntries(System.String,System.String)">RemoveSelectedEntries(String, String)</a></td><td><div class="summary">
+             Remove entries from the zipfile by specified criteria, and within the specified
+             path in the archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.RequiresZip64">RequiresZip64</a></td><td><div class="summary">
+               Indicates whether the archive requires ZIP64 extensions.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Save">Save<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">
+               Saves the Zip archive to a file, specified by the Name property of the
+               <span class="code">ZipFile</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Save(System.String)">Save(String)</a></td><td><div class="summary">
+             Save the file to a new zipfile, with the given name.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.Save(System.IO.Stream)">Save(Stream)</a></td><td><div class="summary">
+               Save the zip archive to the specified stream.
+             </div><br /></td></tr><tr data="event; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.SaveProgress">SaveProgress</a></td><td><div class="summary">
+               An event handler invoked when a Save() starts, before and after each
+               entry has been written to the archive, when a Save() completes, and
+               during other Save events.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.SaveSelfExtractor(System.String,Ionic.Zip.SelfExtractorFlavor)">SaveSelfExtractor(String, SelfExtractorFlavor)</a></td><td><div class="summary">
+             Saves the ZipFile instance to a self-extracting zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.SaveSelfExtractor(System.String,Ionic.Zip.SelfExtractorSaveOptions)">SaveSelfExtractor(String, SelfExtractorSaveOptions)</a></td><td><div class="summary">
+               Saves the ZipFile instance to a self-extracting zip archive, using
+               the specified save options.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.SelectEntries(System.String)">SelectEntries(String)</a></td><td><div class="summary">
+             Retrieve entries from the zipfile by specified criteria.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.SelectEntries(System.String,System.String)">SelectEntries(String, String)</a></td><td><div class="summary">
+             Retrieve entries from the zipfile by specified criteria.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.SetCompression">SetCompression</a></td><td><div class="summary">
+               A callback that allows the application to specify the compression level
+               to use for entries subsequently added to the zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.SortEntriesBeforeSaving">SortEntriesBeforeSaving</a></td><td><div class="summary">
+               Whether to sort the ZipEntries before saving the file.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.StatusMessageTextWriter">StatusMessageTextWriter</a></td><td><div class="summary">
+             Gets or sets the <span class="code">TextWriter</span> to which status messages are delivered
+             for the instance.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Strategy">Strategy</a></td><td><div class="summary">
+               The compression strategy to use for all entries.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.TempFileFolder">TempFileFolder</a></td><td><div class="summary">
+               Gets or sets the name for the folder to store the temporary file
+               this library writes when saving a zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.ToString">ToString<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a></td><td><div class="summary">Provides a string representation of the instance.</div> (Overrides <a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a>.<a href="http://msdn2.microsoft.com/en-us/library/7bxwbwt2" target="_blank">ToString<span class="languageSpecificText"><span class="cs">()</span><span class="cpp">()</span><span class="nu">()</span><span class="fs">()</span></span></a>.)<br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateDirectory(System.String)">UpdateDirectory(String)</a></td><td><div class="summary">
+               Add or update a directory in a zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateDirectory(System.String,System.String)">UpdateDirectory(String, String)</a></td><td><div class="summary">
+               Add or update a directory in the zip archive at the specified root
+               directory in the archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateEntry(System.String,System.String)">UpdateEntry(String, String)</a></td><td><div class="summary">
+               Updates the given entry in the <span class="code">ZipFile</span>, using the given
+               string as content for the <span class="code">ZipEntry</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateEntry(System.String,System.String,System.Text.Encoding)">UpdateEntry(String, String, Encoding)</a></td><td><div class="summary">
+               Updates the given entry in the <span class="code">ZipFile</span>, using the given string as
+               content for the <span class="code">ZipEntry</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateEntry(System.String,Ionic.Zip.WriteDelegate)">UpdateEntry(String, WriteDelegate)</a></td><td><div class="summary">
+               Updates the given entry in the <span class="code">ZipFile</span>, using the given delegate
+               as the source for content for the <span class="code">ZipEntry</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateEntry(System.String,Ionic.Zip.OpenDelegate,Ionic.Zip.CloseDelegate)">UpdateEntry(String, OpenDelegate, CloseDelegate)</a></td><td><div class="summary">
+               Updates the given entry in the <span class="code">ZipFile</span>, using the given delegates
+               to open and close the stream that provides the content for the <span class="code">ZipEntry</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateEntry(System.String,System.IO.Stream)">UpdateEntry(String, Stream)</a></td><td><div class="summary">
+               Updates the given entry in the <span class="code">ZipFile</span>, using the given stream as
+               input, and the given filename and given directory Path.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateEntry(System.String,System.Byte[])">UpdateEntry(String, <span class="languageSpecificText"><span class="cpp">array&lt;</span></span>Byte<span class="languageSpecificText"><span class="cpp">&gt;</span><span class="cs">[]</span><span class="vb">()</span><span class="nu">[]</span><span class="fs">[]</span></span>)</a></td><td><div class="summary">
+               Updates the given entry in the <span class="code">ZipFile</span>, using the given byte
+               array as content for the entry.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateFile(System.String)">UpdateFile(String)</a></td><td><div class="summary">
+               Adds or Updates a File in a Zip file archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateFile(System.String,System.String)">UpdateFile(String, String)</a></td><td><div class="summary">
+               Adds or Updates a File in a Zip file archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateFiles(System.Collections.Generic.IEnumerable{System.String})">UpdateFiles(IEnumerable<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>String<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>)</a></td><td><div class="summary">
+               Adds or updates a set of files in the <span class="code">ZipFile</span>.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateFiles(System.Collections.Generic.IEnumerable{System.String},System.String)">UpdateFiles(IEnumerable<span class="languageSpecificText"><span class="cs">&lt;</span><span class="vb">(Of </span><span class="cpp">&lt;</span><span class="fs">&lt;'</span><span class="nu">(</span></span>String<span class="languageSpecificText"><span class="cs">&gt;</span><span class="vb">)</span><span class="cpp">&gt;</span><span class="fs">&gt;</span><span class="nu">)</span></span>, String)</a></td><td><div class="summary">
+               Adds or updates a set of files to the <span class="code">ZipFile</span>, using the specified
+               directory path in the archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateItem(System.String)">UpdateItem(String)</a></td><td><div class="summary">
+               Add or update a file or directory in the zip archive.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateItem(System.String,System.String)">UpdateItem(String, String)</a></td><td><div class="summary">
+               Add or update a file or directory.
+             </div><br /></td></tr><tr data="method; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateSelectedFiles(System.String,System.String,System.String,System.Boolean)">UpdateSelectedFiles(String, String, String, Boolean)</a></td><td><div class="summary">
+               Updates the ZipFile with a selection of files from the disk that conform
+               to the specified criteria.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.UseUnicodeAsNecessary">UseUnicodeAsNecessary</a></td><td><span class="obsolete">Obsolete.</span><div class="summary">
+               Indicates whether to encode entry filenames and entry comments using Unicode
+               (UTF-8).
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.UseZip64WhenSaving">UseZip64WhenSaving</a></td><td><div class="summary">
+               Specify whether to use ZIP64 extensions when saving a zip archive.
+             </div><br /></td></tr><tr data="event; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.ZipError">ZipError</a></td><td><div class="summary">
+             An event that is raised when an error occurs during open or read of files
+             while saving a zip archive.
+             </div><br /></td></tr><tr data="property; public; instance; declared"><td><img /></td><td><a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ZipErrorAction">ZipErrorAction</a></td><td><div class="summary">
+               The action the library should take when an error is encountered while
+               opening or reading files as they are saved into a zip archive.
+             </div><br /></td></tr></table></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               This is the main type in the DotNetZip class library. This class reads and
+               writes zip files, as defined in the <a href="http://www.pkware.com/documents/casestudies/APPNOTE.TXT" target="_blank">specification
+               for zip files described by PKWare</a>.  The compression for this
+               implementation is provided by a managed-code version of Zlib, included with
+               DotNetZip in the classes in the Ionic.Zlib namespace.
+             </p><p>
+               This class provides a general purpose zip file capability.  Use it to read,
+               create, or update zip files.  When you want to create zip files using a
+               <span class="code">Stream</span> type to write the zip file, you may want to consider the <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipOutputStream">ZipOutputStream</a> class.
+             </p><p>
+               Both the <span class="code">ZipOutputStream</span> class and the <span class="code">ZipFile</span> class can
+               be used to create zip files. Both of them support many of the common zip
+               features, including Unicode, different compression methods and levels,
+               and ZIP64. They provide very similar performance when creating zip
+               files.
+             </p><p>
+               The <span class="code">ZipFile</span> class is generally easier to use than
+               <span class="code">ZipOutputStream</span> and should be considered a higher-level interface.  For
+               example, when creating a zip file via calls to the <span class="code">PutNextEntry()</span> and
+               <span class="code">Write()</span> methods on the <span class="code">ZipOutputStream</span> class, the caller is
+               responsible for opening the file, reading the bytes from the file, writing
+               those bytes into the <span class="code">ZipOutputStream</span>, setting the attributes on the
+               <span class="code">ZipEntry</span>, and setting the created, last modified, and last accessed
+               timestamps on the zip entry. All of these things are done automatically by a
+               call to <a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddFile(System.String,System.String)">ZipFile.AddFile()</a>.
+               For this reason, the <span class="code">ZipOutputStream</span> is generally recommended for use
+               only when your application emits arbitrary data, not necessarily data from a
+               filesystem file, directly into a zip file, and does so using a <span class="code">Stream</span>
+               metaphor.
+             </p><p>
+               Aside from the differences in programming model, there are other
+               differences in capability between the two classes.
+             </p><ul><li><span class="code">ZipFile</span> can be used to read and extract zip files, in addition to
+                 creating zip files. <span class="code">ZipOutputStream</span> cannot read zip files. If you want
+                 to use a stream to read zip files, check out the <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipInputStream">ZipInputStream</a> class.
+               </li><li><span class="code">ZipOutputStream</span> does not support the creation of segmented or spanned
+                 zip files.
+               </li><li><span class="code">ZipOutputStream</span> cannot produce a self-extracting archive.
+               </li></ul><p>
+               Be aware that the <span class="code">ZipFile</span> class implements the <a href="http://msdn2.microsoft.com/en-us/library/aax125c9" target="_blank">IDisposable</a> interface.  In order for <span class="code">ZipFile</span> to
+               produce a valid zip file, you use use it within a using clause (<span class="code">Using</span>
+               in VB), or call the <span class="code">Dispose()</span> method explicitly.  See the examples
+               for how to employ a using clause.
+             </p></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Inheritance Hierarchy</div><div class="sectionContent"><table cellspacing="0" cellpadding="0"><tr><td colspan="2"><a href="http://msdn2.microsoft.com/en-us/library/e5kfa45b" target="_blank">Object</a></td></tr><tr><td><img /></td><td><span class="selflink">ZipFile</span></td></tr></table></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

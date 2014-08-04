@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace BukkitUI.Bukkit {
-    enum ServerDifficulty {
+    public enum ServerDifficulty {
 
         Peaceful, 
         Easy, 

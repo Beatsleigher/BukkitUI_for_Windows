@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace BukkitUI.Bukkit {
-    enum Gamemode {
+    public enum Gamemode {
 
         Survival,
         Creative,

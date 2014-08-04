@@ -45,3 +45,4 @@ C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\BukkitUI_Updater\obj
 C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\BukkitUI_Updater\obj\x86\Debug\BukkitUI_Updater.csproj.GenerateResource.Cache
 C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\BukkitUI_Updater\obj\x86\Debug\BukkitUI_Updater.exe
 C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\BukkitUI_Updater\obj\x86\Debug\BukkitUI_Updater.pdb
+C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\BukkitUI_Updater\obj\x86\Debug\BukkitUI_Updater.csprojResolveAssemblyReference.cache

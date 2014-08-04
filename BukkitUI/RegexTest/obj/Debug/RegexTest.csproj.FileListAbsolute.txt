@@ -1,5 +1,0 @@
-C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\RegexTest\bin\Debug\RegexTest.exe.config
-C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\RegexTest\bin\Debug\RegexTest.exe
-C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\RegexTest\bin\Debug\RegexTest.pdb
-C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\RegexTest\obj\Debug\RegexTest.exe
-C:\Users\Beatsleigher\code\C#\BukkitUI_for_Windows\BukkitUI\RegexTest\obj\Debug\RegexTest.pdb

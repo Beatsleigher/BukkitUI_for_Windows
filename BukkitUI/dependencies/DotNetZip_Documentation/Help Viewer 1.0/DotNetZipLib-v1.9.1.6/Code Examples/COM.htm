@@ -1,0 +1,692 @@
+
+<html>
+<head>
+<title>COM - ASP, PHP, VB6, JavaScript, VBScript</title>
+<style>
+p,body,a,tr,td
+             { font-family: Verdana, Arial, Helvetica; font-size: 10pt }
+h1,h2,h3,h4,h5,h6
+             { font-family: Verdana, Arial, Helvetica; font-weight: normal; font-style: normal; }
+h1           { font-size: 20pt }
+h2           { font-size: 18pt; font-weight:bold; color: navy }
+h3           { font-size: 16pt; font-weight:bold; color: #483d8b }
+h4           { font-size: 14pt; font-weight:bold; color:#C71585; margin-bottom:2px; }
+</style>
+<link type='text/css' rel='stylesheet' href='../styles/highlight.css' /><script type='text/javascript' src='../scripts/highlight.js'></script></head>
+
+<!-- @SortOrder 70 -->
+
+<body>
+<h1>DotNetZip can be used from COM Environments</h1>
+
+<p>You can use DotNetZip from COM environments, via an
+IDispatch (late bound) interface. This means you can call into the DotNetZip
+library (the Ionic.Zip.dll assembly) from programming environments like PHP,
+Perl, Javascript, and VBScript (including old-school ASP pages), among others.
+</p>
+
+<p>If you download and install the DotNetZip Runtime MSI package, it
+will set up DotNetZip for use with COM.  </p>
+
+<p>If for some reason you prefer to not use the MSI package, then you will need to perform some manual steps to enable DotNetZip for COM usage. </p>
+
+<ol>
+<li>open a CMD.exe prompt.</li>
+<li>Install into the GAC: <span style="font-family: Courier;">gacutil -i Ionic.Zip.dll</span></li>
+<li>Register for COM use: <span style="font-family: Courier;">regasm Ionic.Zip.dll</span></li>
+</ol>
+
+<p><i>Notes:</i> You will need to be local administrator in order to
+perform these steps. You need to perform those steps just once, on each
+computer where COM applications will run that use DotNetZip. The gacutil
+and regasm tools are included in the .NET Framework SDK. </p>
+
+
+<h2>Using the COM interface to DotNetZip</h2>
+
+<p>Via the COM exposure, applications written in COM-capable environments like
+old-school ASP using VBScript or Javascript, VBScript or Javascript running in Windows
+Script Host, PHP, Perl, and others, can create instances of the ZipFile class, add
+entries, and save archives, as any .NET application could.  Most of DotNetZip's advanced
+features are available to these COM environments, including ZIP64 support,
+self-extracting archives, password-protected zip files, AES Encryption, spanned Zip
+files, and Unicode support. Beyond creating zips, COM environments can also read zips,
+modify them, or extract files from zip files.</p>
+
+<p> Some of the advanced features of DotNetZip are not available through
+COM, including eventing, and streaming. </p>
+
+<h3>IDispatch</h3>
+
+<p> The key classes in DotNetZip that are exposed to COM are: ZipFile,
+ZipEntry, and the various ZipExceptions.  These are all exposed via
+IDispatch interfaces - late binding only.  (For those familiar with
+.NET, DotNetZip is decorated with <span style="font-family:
+Courier;">ClassInterfaceType.AutoDispatch</span>.)  There is no explicit
+typelib exposed by DotNetZip.  </p>
+
+<p>COM supports calling instance methods and properties on .NET classes; COM does not
+support calling static methods on .NET objects via interop.  To allow the various static
+methods on the ZipFile class, such as <span style="font-family:
+Courier;">ZipFile.CheckZip()</span> and <span style="font-family:
+Courier;">ZipFile.IsZipFile()</span>, to be called from COM, DotNetZip includes a
+ComHelper class. Instead of calling <span style="font-family:
+Courier;">ZipFile.IsZipFile()</span>, which is inaccessible to COM clients because it is
+a static method, COM clients should call <span style="font-family:
+Courier;">Ionic.Zip.ComHelper.IsZipFile()</span>.  Use ComHelper as you would, any other
+class. The methods on the class are documented as with all the other classes in
+DotNetZip.  If you are not programming DotNetZip from COM, you don't need the ComHelper
+class. </p>
+
+
+<h3>Overloaded Methods</h3>
+
+<p> COM does not directly support calling overloaded methods.  In a .NET
+assembbly exposed to COM via interop, only the simplest method in a
+method group is directly available to COM callers.  For example,
+consider <span style="font-family: Courier;">ZipFile.AddFile</span>.  There are two overloads.  Only the overload
+that accepts a single string will be accessible via the name "AddFile"
+to COM clients. </p>
+
+<p> In most cases the thing you need to accomplish is achievable anyway.
+In the <span style="font-family: Courier;">AddFile()</span> case, setting the FileName on the entry after calling
+<span style="font-family: Courier;">AddFile()</span> will do the trick.  </p>
+
+<p>Also, the overloaded methods <em>are available</em>, via "mangled"
+names: each successive overload gets a numeric suffix.  Consider the
+<span style="font-family: Courier;">ZipFile.ExtractSelectedEntries</span> method group; there are 5 overloads. The first,
+simplest, is available via the name <span style="font-family: Courier;">ExtractSelectedEntries</span>.  Then,
+additional overloads are available via <span style="font-family: Courier;">ExtractSelectedEntries_2</span>,
+<span style="font-family: Courier;">ExtractSelectedEntries_3</span>, and so on. The same is true for other
+overloaded methods on the ZipFile and ZipEntry classes.
+</p>
+
+
+<h4>For the ZipFile class:</h4>
+<table border='1'>
+<tr>
+<td style='color:white;Background:Navy;'><strong>Method Overload</strong></td>
+<td style='color:white;Background:Navy;'><strong>IDispatch name</strong></td>
+</tr>
+
+<tr>
+<td>AddItem(string)</td>
+<td>AddItem</td>
+</tr>
+<tr>
+<td>AddItem(string, string)</td>
+<td>AddItem_2</td>
+</tr>
+
+<tr>
+<td>AddFile(string)</td>
+<td>AddFile</td>
+</tr>
+<tr>
+<td>AddFile(string, string)</td>
+<td>AddFile_2</td>
+</tr>
+
+<tr>
+<td>UpdateFile(string)</td>
+<td>UpdateFile</td>
+</tr>
+<tr>
+<td>UpdateFile(string, string)</td>
+<td>UpdateFile_2</td>
+</tr>
+
+<tr>
+<td>UpdateDirectory(string)</td>
+<td>UpdateDirectory</td>
+</tr>
+<tr>
+<td>UpdateDirectory(string, string)</td>
+<td>UpdateDirectory_2</td>
+</tr>
+
+
+<tr>
+<td>UpdateItem(string)</td>
+<td>UpdateItem</td>
+</tr>
+<tr>
+<td>UpdateItem(string, string)</td>
+<td>UpdateItem_2</td>
+</tr>
+
+
+
+<tr>
+<td>AddEntry(string,string)</td>
+<td>AddEntry</td>
+</tr>
+<tr>
+<td>AddEntry(string,string,Encoding)</td>
+<td>AddEntry_2</td>
+</tr>
+<tr>
+<td>AddEntry(string,Stream)</td>
+<td>AddEntry_3</td>
+</tr>
+<tr>
+<td>AddEntry(string,byte[])</td>
+<td>AddEntry_4</td>
+</tr>
+
+<tr>
+<td>UpdateEntry(string,string)</td>
+<td>UpdateEntry</td>
+</tr>
+<tr>
+<td>UpdateEntry(string,string,Encoding)</td>
+<td>UpdateEntry_2</td>
+</tr>
+<tr>
+<td>UpdateEntry(string,Stream)</td>
+<td>UpdateEntry_3</td>
+</tr>
+<tr>
+<td>UpdateEntry(string,byte[])</td>
+<td>UpdateEntry_4</td>
+</tr>
+
+
+<tr>
+<td>AddDirectory(string)</td>
+<td>AddDirectory</td>
+</tr>
+<tr>
+<td>AddDirectory(string,string)</td>
+<td>AddDirectory_2</td>
+</tr>
+
+<tr>
+<td>RemoveEntry(ZipEntry)</td>
+<td>RemoveEntry</td>
+</tr>
+<tr>
+<td>RemoveEntry(string)</td>
+<td>RemoveEntry_2</td>
+</tr>
+
+<tr>
+<td>ExtractAll(string)</td>
+<td>ExtractAll</td>
+</tr>
+<tr>
+<td>ExtractAll(string, bool)</td>
+<td>ExtractAll_2</td>
+</tr>
+<tr>
+<td>ExtractAll(string, ExtractExistingFileAction)</td>
+<td>ExtractAll_3</td>
+</tr>
+
+
+<tr>
+<td>Save()</td>
+<td>Save</td>
+</tr>
+<tr>
+<td>Save(string)</td>
+<td>Save_2</td>
+</tr>
+<tr>
+<td>Save(Stream)</td>
+<td>Save_3</td>
+</tr>
+
+<tr>
+<td>AddSelectedFiles(string)</td>
+<td>AddSelectedFiles</td>
+</tr>
+<tr>
+<td>AddSelectedFiles(string, bool)</td>
+<td>AddSelectedFiles_2</td>
+</tr>
+<tr>
+<td>AddSelectedFiles(string, string)</td>
+<td>AddSelectedFiles_3</td>
+</tr>
+<tr>
+<td>AddSelectedFiles(string, string, bool)</td>
+<td>AddSelectedFiles_4</td>
+</tr>
+<tr>
+<td>AddSelectedFiles(string, string, string)</td>
+<td>AddSelectedFiles_5</td>
+</tr>
+<tr>
+<td>AddSelectedFiles(string, string, string, bool)</td>
+<td>AddSelectedFiles_6</td>
+</tr>
+
+<tr>
+<td>RemoveSelectedEntries(string)</td>
+<td>RemoveSelectedEntries</td>
+</tr>
+<tr>
+<td>AddSelectedFiles(string, string)</td>
+<td>RemoveSelectedEntries_2</td>
+</tr>
+
+<tr>
+<td>ExtractSelectedEntries(string)</td>
+<td>ExtractSelectedEntries</td>
+</tr>
+<tr>
+<td>ExtractSelectedEntries(string, ExtractExistingFileAction)</td>
+<td>ExtractSelectedEntries_2</td>
+</tr>
+<tr>
+<td>ExtractSelectedEntries(string, string)</td>
+<td>ExtractSelectedEntries_3</td>
+</tr>
+<tr>
+<td>ExtractSelectedEntries(string, string, string)</td>
+<td>ExtractSelectedEntries_4</td>
+</tr>
+<tr>
+<td>ExtractSelectedEntries(string, string, string, ExtractExistingFileAction)</td>
+<td>ExtractSelectedEntries_5</td>
+</tr>
+
+<tr>
+<td>SaveSelfExtractor(string, SelfExtractorFlavor)</td>
+<td>SaveSelfExtractor</td>
+</tr>
+<tr>
+<td>SaveSelfExtractor(string, SelfExtractorFlavor, string)</td>
+<td>SaveSelfExtractor_2</td>
+</tr>
+<tr>
+<td>SaveSelfExtractor(string, SelfExtractorFlavor, string, string)</td>
+<td>SaveSelfExtractor_3</td>
+</tr>
+
+
+</table>
+
+
+
+
+<h4>For the ZipEntry class:</h4>
+<table border='1'>
+<tr>
+<td style='color:white;Background:Navy;'><strong>Method Overload</strong></td>
+<td style='color:white;Background:Navy;'><strong>IDispatch name</strong></td>
+</tr>
+
+<tr>
+<td>Extract()</td>
+<td>Extract</td>
+</tr>
+
+
+<tr>
+<td>Extract(ExtractExistingFileAction)</td>
+<td>Extract_2</td>
+</tr>
+
+<tr>
+<td>Extract(Stream)</td>
+<td>Extract_3</td>
+</tr>
+
+<tr>
+<td>Extract(string)</td>
+<td>Extract_4</td>
+</tr>
+
+<tr>
+<td>Extract(string, ExtractExistingFileAction)</td>
+<td>Extract_5</td>
+</tr>
+
+<tr>
+<td>ExtractWithPassword(string)</td>
+<td>ExtractWithPassword</td>
+</tr>
+
+<tr>
+<td>ExtractWithPassword(string,string)</td>
+<td>ExtractWithPassword_2</td>
+</tr>
+
+<tr>
+<td>ExtractWithPassword(ExtractExistingFileAction,string)</td>
+<td>ExtractWithPassword_3</td>
+</tr>
+
+<tr>
+<td>ExtractWithPassword(string, ExtractExistingFileAction, string)</td>
+<td>ExtractWithPassword_4</td>
+</tr>
+
+<tr>
+<td>ExtractWithPassword(Stream, string)</td>
+<td>ExtractWithPassword_5</td>
+</tr>
+
+</table>
+
+
+<p>The bad news is that the mappings between names and actual methods
+will change over releases of DotNetZip.  This means depending on these
+names is a bit fragile, but it will work.</p>
+
+
+
+<h3>Destroy the ZipFile object</h3>
+
+<p>After you call .Dispose() on the ZipFile object, you should destroy
+it completely.  In VBSCript, this is done by setting the object
+reference to Nothing.
+</p>
+
+<h3>The usage model for the ZipFile object</h3>
+
+<p> After you initialize a ZipFile object, you can't reuse the same
+object instance for another zip file.  If for example, you have a set of
+6 zip files, and you want to read and extract them in a loop, then
+you'll need to instantiate a new ZipFile object to read each one.  You
+should call Dispose() on each one when you're finished, and then set it
+to null/Nothing.  </p>
+
+
+<h3>For enumerations</h3>
+
+<p>DotNetZip exposes various enumerations to specify behavior in the
+interface - for example, the Ionic.Zlib.CompressionLevel enum, and the
+Ionic.Zip.ExtractExistingFileAction enum.  Enums are not available to
+IDispatch clients.  COM applications that need to use enum values can
+simply use the integer equivalent for those enums.  In most cases those
+integer values are specified in the documentation for the enum.  For
+example, for Ionic.Zip.ExtractExistingFileAction, the value of Throw is
+0, while OverwriteSilently is 1.  </p>
+
+<p>
+Some examples follow.
+</p>
+
+<hr>
+
+<h2>Using DotNetZip in PHP</h2>
+
+<p>
+This is a PHP script that dynamically creates a ZIP file on the server,
+then downloads it to the requesting client.  The Zip archive will use
+256-bit AES encryption.
+</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$fname = "zip-generated-from-php-" . date('Y-m-d-His') . ".zip";
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zipOutput = "c:\\temp\\" . $fname;
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip = new COM("Ionic.Zip.ZipFile");
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip->Name = $zipOutput;
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$dirToZip= "c:\\temp\\psh";
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip->Encryption = 3;
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip->Password = "AES-Encryption-Is-Secure";
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip->AddDirectory($dirToZip);
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip->Save();
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>$zip->Dispose();
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>if (file_exists($zipOutput))
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  header('Cache-Control: no-cache, must-revalidate');
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  header('Content-Type: application/x-zip');
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  header('Content-Disposition: attachment; filename=' . $fname);
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  header('Content-Length: ' . filesize($zipOutput));
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  readfile($zipOutput);
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  unlink($zipOutput);
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}</pre>
+
+
+
+
+<h2>Using DotNetZip in Javascript</h2>
+
+<p> This example dynamically creates a zipfile, using AES 256-bit encryption.
+</p>
+
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">var</span> filename = <span class="highlight-literal">&quot;C:\\temp\\ZipFile-created-from-javascript-&quot;</span> + generateTimestamp() + <span class="highlight-literal">&quot;.zip&quot;</span>;
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">try</span>
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Instantiating a ZipFile object...&quot;</span>);
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> zip = <span class="highlight-keyword">new</span> <span class="highlight-keyword">ActiveXObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ZipFile&quot;</span>);
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;setting the encryption...&quot;</span>);
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">// 3 = AES256, 2 = AES128, 1 = PKZIP, 0 = none</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Encryption = <span class="highlight-number">3</span>;
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;setting the password...&quot;</span>);
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Password = <span class="highlight-literal">&quot;This is the Password.&quot;</span>;
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;adding a selection of files...&quot;</span>);
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddSelectedFiles(<span class="highlight-literal">&quot;*.js&quot;</span>);
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddSelectedFiles(<span class="highlight-literal">&quot;*.vbs&quot;</span>);
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;setting the save name...&quot;</span>);
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Name = filename;
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Saving...&quot;</span>);
+<span class="highlight-lineno">23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Save();
+<span class="highlight-lineno">24</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">25</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Disposing...&quot;</span>);
+<span class="highlight-lineno">26</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Dispose();
+<span class="highlight-lineno">27</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">28</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Done.&quot;</span>);
+<span class="highlight-lineno">29</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">30</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">catch</span> (e2)
+<span class="highlight-lineno">31</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">32</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(e2.number + <span class="highlight-literal">&quot;: &quot;</span> + e2.name);
+<span class="highlight-lineno">33</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(e2.message);
+<span class="highlight-lineno">34</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}</pre>
+
+<p> This example lists the entries in a zipfile.
+</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Listing entries in a Zip archive</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">var</span> filename = <span class="highlight-literal">&quot;C:\\temp\\CompressedData.zip&quot;</span>;
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">try</span>
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Instantiating a ZipFile object...&quot;</span>);
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> zip = <span class="highlight-keyword">new</span> <span class="highlight-keyword">ActiveXObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ZipFile&quot;</span>);
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Initialize (Read)...(&quot;</span> + filename + <span class="highlight-literal">&quot;)&quot;</span>);
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Initialize(filename);
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;listing entries...&quot;</span>);
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> e = <span class="highlight-keyword">new</span> <span class="highlight-keyword">Enumerator</span>(zip);
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">for</span> (; !e.atEnd(); e.moveNext())
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">var</span> entry= e.item();
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        WScript.Echo (<span class="highlight-literal">&quot;  &quot;</span> + entry.FileName);
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Disposing...&quot;</span>)
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Dispose();
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(<span class="highlight-literal">&quot;Done.&quot;</span>);
+<span class="highlight-lineno">23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">24</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">catch</span> (e2)
+<span class="highlight-lineno">25</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">26</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(e2.number + <span class="highlight-literal">&quot;: &quot;</span> + e2.name);
+<span class="highlight-lineno">27</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.echo(e2.message);
+<span class="highlight-lineno">28</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}</pre>
+
+
+
+<p> This example checks a ZipFile using the ComHelper class.
+</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Checking a file to see if it is a Zip archive</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">function</span> checkZip(filename)
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> obj = <span class="highlight-keyword">new</span> <span class="highlight-keyword">ActiveXObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ComHelper&quot;</span>);
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">return</span> obj.IsZipFile(filename);
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">function</span> checkZipWithExtract(filename)
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> obj = <span class="highlight-keyword">new</span> <span class="highlight-keyword">ActiveXObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ComHelper&quot;</span>);
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">return</span> obj.IsZipFileWithExtract(filename);
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">function</span> main()
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> result;
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">var</span> args = WScript.Arguments;
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">if</span> (args.Length == <span class="highlight-number">1</span>)
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        result = checkZip(args(<span class="highlight-number">0</span>));
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">else</span> <span class="highlight-keyword">if</span> (args.Length == <span class="highlight-number">2</span> &amp;&amp; args(<span class="highlight-number">0</span>) == <span class="highlight-literal">&quot;-x&quot;</span>)
+<span class="highlight-lineno">23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">24</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        result = checkZipWithExtract(args(<span class="highlight-number">1</span>));
+<span class="highlight-lineno">25</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">26</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">else</span>
+<span class="highlight-lineno">27</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">28</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        WScript.Echo(<span class="highlight-literal">&quot;TestCheckZip.js - check a zipfile using Javascript.&quot;</span>);
+<span class="highlight-lineno">29</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        WScript.Echo(<span class="highlight-literal">&quot;  usage: TestCheckZip.js [-x]  &lt;pathToZip&gt;&quot;</span>);
+<span class="highlight-lineno">30</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        WScript.Quit(<span class="highlight-number">1</span>);
+<span class="highlight-lineno">31</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">32</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">33</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.Echo((result==<span class="highlight-number">0</span>)?<span class="highlight-literal">&quot;That zip is not OK&quot;</span>:<span class="highlight-literal">&quot;That zip is OK&quot;</span>);
+<span class="highlight-lineno">34</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    WScript.Quit(<span class="highlight-number">0</span>);
+<span class="highlight-lineno">35</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">36</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">37</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>main();</pre>
+
+
+
+<h2>Using DotNetZip in VBScript</h2>
+
+<p> This example creates a zipfile, using AES 256-bit encryption.
+</p>
+
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">dim</span> filename
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>filename = <span class="highlight-literal">&quot;C:\temp\ZipFile-created-from-VBScript.zip&quot;</span>
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Instantiating a ZipFile object...&quot;</span>)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">dim</span> zip
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">set</span> zip = <span class="highlight-keyword">CreateObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ZipFile&quot;</span>)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Setting the encryption...&quot;</span>)
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">&#39; 3=AES256, 2=AES128, 1=PKZIP, 0=none</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Encryption = <span class="highlight-number">3</span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;setting the password...&quot;</span>)
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Password = <span class="highlight-literal">&quot;This is the Password.&quot;</span>
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;adding a selection of files...&quot;</span>)
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.AddSelectedFiles <span class="highlight-literal">&quot;*.js&quot;</span>
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.AddSelectedFiles <span class="highlight-literal">&quot;*.vbs&quot;</span>
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;setting the save name...&quot;</span>)
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Name = filename
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Saving...&quot;</span>)
+<span class="highlight-lineno">23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Save
+<span class="highlight-lineno">24</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">25</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Disposing...&quot;</span>)
+<span class="highlight-lineno">26</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Dispose
+<span class="highlight-lineno">27</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">28</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip = <span class="highlight-keyword">Nothing</span>
+<span class="highlight-lineno">29</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">30</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Done.&quot;</span>)</pre>
+
+
+
+<p> This example extracts all entries from  a zipfile.
+</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Extract all entries from a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Instantiating a ZipFile object...&quot;</span>)
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">dim</span> zip
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">set</span> zip = <span class="highlight-keyword">CreateObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ZipFile&quot;</span>)
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Initialize (Read)...&quot;</span>)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Initialize(<span class="highlight-literal">&quot;CompressedData.zip&quot;</span>)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;setting the password for extraction...&quot;</span>)
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Password = <span class="highlight-literal">&quot;This is the Password.&quot;</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;extracting all files...&quot;</span>)
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.ExtractAll <span class="highlight-literal">&quot;DotNetZip-extract&quot;</span>
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Disposing...&quot;</span>)
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Dispose
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Done.&quot;</span>)</pre>
+
+
+
+<p> This example lists the entries in a zipfile, and extracts some of them.
+</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>List and Maybe extract entries from a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Dim</span> zip
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Instantiating a ZipFile object...&quot;</span>)
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Set</span> zip = <span class="highlight-keyword">CreateObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ZipFile&quot;</span>)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Initialize (Read)...&quot;</span>)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Initialize filename
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Set</span> fso = <span class="highlight-keyword">CreateObject</span>(<span class="highlight-literal">&quot;Scripting.FileSystemObject&quot;</span>)
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> fso.FolderExists(<span class="highlight-literal">&quot;unpack&quot;</span>) <span class="highlight-keyword">Then</span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    fso.CreateFolder(<span class="highlight-literal">&quot;unpack&quot;</span>)
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">&#39; Any call to ZipEntry.Extract() will put files into the</span>
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">&#39; current working directory.  So set it here:</span>
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Set</span> objShell = <span class="highlight-keyword">CreateObject</span>(<span class="highlight-literal">&quot;Wscript.Shell&quot;</span>)
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>objShell.CurrentDirectory = <span class="highlight-literal">&quot;unpack&quot;</span>
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;listing...&quot;</span>)
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> entry in zip
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>   WScript.echo(<span class="highlight-literal">&quot;  &quot;</span> &amp; entry.FileName)
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>   ext = <span class="highlight-keyword">Right</span>(entry.FileName,<span class="highlight-number">4</span>)
+<span class="highlight-lineno">23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>   <span class="highlight-keyword">If</span> (ext = <span class="highlight-literal">&quot;.vbs&quot;</span>) <span class="highlight-keyword">Then</span>
+<span class="highlight-lineno">24</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      <span class="highlight-comment">&#39; set password for extraction if necessary</span>
+<span class="highlight-lineno">25</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      entry.Password = <span class="highlight-literal">&quot;This is the Password.&quot;</span>
+<span class="highlight-lineno">26</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      entry.Extract
+<span class="highlight-lineno">27</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>   <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-lineno">28</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Next</span>
+<span class="highlight-lineno">29</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">30</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Disposing...&quot;</span>)
+<span class="highlight-lineno">31</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>zip.Dispose
+<span class="highlight-lineno">32</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">33</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>WScript.echo(<span class="highlight-literal">&quot;Done.&quot;</span>)</pre>
+
+
+<p> This example extracts selected entries from a zip archive, via the
+ExtractSelectedEntries overload.  It uses the mangled name to access the
+method, as described above.  </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Extract selected entries from a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Sub</span> extractZip()
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">If</span> <span class="highlight-keyword">Not</span> (extractLocation = <span class="highlight-literal">&quot;&quot;</span>) <span class="highlight-keyword">Then</span>
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      <span class="highlight-keyword">Dim</span> OverwriteSilently
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      OverwriteSilently = <span class="highlight-number">1</span>
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      <span class="highlight-keyword">Dim</span> zip
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      <span class="highlight-keyword">Set</span> zip = <span class="highlight-keyword">CreateObject</span>(<span class="highlight-literal">&quot;Ionic.Zip.ZipFile&quot;</span>)
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      zip.Initialize filename
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      <span class="highlight-keyword">If</span> password &lt;&gt; <span class="highlight-literal">&quot;&quot;</span> <span class="highlight-keyword">Then</span>
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.Password = password
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      zip.ExtractSelectedEntries_5 <span class="highlight-literal">&quot;name = *.xml&quot;</span>, <span class="highlight-keyword">Null</span>, extractLocation, OverwriteSilently
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      zip.Dispose
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      zip = <span class="highlight-keyword">Nothing</span>
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span></pre>
+
+</body>
+</html>

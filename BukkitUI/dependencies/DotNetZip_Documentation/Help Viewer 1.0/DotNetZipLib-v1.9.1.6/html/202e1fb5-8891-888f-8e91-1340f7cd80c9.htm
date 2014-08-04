@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>AddFile Method (fileName, directoryPathInArchive)</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="202e1fb5-8891-888f-8e91-1340f7cd80c9" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="M:Ionic.Zip.ZipFile.AddFile(System.String,System.String)" /><MSHelp:Keyword Index="A" Term="M:Ionic.Zip.ZipFile.AddFile(System.String,System.String)" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileClassAddFileTopic" /><MSHelp:Keyword Index="K" Term="AddFile method" /><MSHelp:Keyword Index="K" Term="ZipFile.AddFile method" /><MSHelp:Keyword Index="F" Term="AddFile" /><MSHelp:Keyword Index="F" Term="ZipFile.AddFile" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipFile.AddFile" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.AddFile" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="Adds a File to a Zip file archive, potentially overriding the path to be used within the zip archive." /></xml><link type="text/css" rel="stylesheet" /><script type="text/javascript"></script><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="AddFile method" /><meta name="Microsoft.Help.Keywords" content="ZipFile.AddFile method" /><meta name="Microsoft.Help.F1" content="AddFile" /><meta name="Microsoft.Help.F1" content="ZipFile.AddFile" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipFile.AddFile" /><meta name="Description" content="Adds a File to a Zip file archive, potentially overriding the path to be used within the zip archive." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="M:Ionic.Zip.ZipFile.AddFile(System.String,System.String)" /><meta name="Microsoft.Help.TocParent" content="M:Ionic.Zip.ZipFile.AddFile(System.String)" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="1" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">AddFile Method (fileName, directoryPathInArchive)</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a> ► <span class="selflink">AddFile(String, String)</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               Adds a File to a Zip file archive, potentially overriding the path to be
+               used within the zip archive.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a> <span class="identifier">AddFile</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">string</a> <span class="parameter">fileName</span>,
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">string</a> <span class="parameter">directoryPathInArchive</span>
+)</pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Function</span> <span class="identifier">AddFile</span> ( _
+	<span class="parameter">fileName</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>, _
+	<span class="parameter">directoryPathInArchive</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a> _
+) <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a></pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span>:
+<a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a>^ <span class="identifier">AddFile</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>^ <span class="parameter">fileName</span>, 
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>^ <span class="parameter">directoryPathInArchive</span>
+)</pre></div></div></div></div></div><div id="parameters"><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Parameters</div><div class="sectionContent"><dl paramName="fileName"><dt><span class="parameter">fileName</span> (<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>)</dt><dd>
+               The name of the file to add.  The name of the file may be a relative path
+               or a fully-qualified path.
+             </dd></dl><dl paramName="directoryPathInArchive"><dt><span class="parameter">directoryPathInArchive</span> (<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>)</dt><dd>
+               Specifies a directory path to use to override any path in the fileName.
+               This path may, or may not, correspond to a real directory in the current
+               filesystem.  If the files within the zip are later extracted, this is the
+               path used for the extracted file.  Passing <span class="code">null</span> (<span class="code">Nothing</span> in
+               VB) will use the path on the fileName, if any.  Passing the empty string
+               ("") will insert the item at the root path within the archive.
+             </dd></dl></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Return Value</div><div class="sectionContent">The <span class="code">ZipEntry</span> corresponding to the file added.</div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               The file added by this call to the <span class="code">ZipFile</span> is not written to the
+               zip file archive until the application calls Save() on the <span class="code">ZipFile</span>.
+             </p><p>
+               This method will throw an exception if an entry with the same name already
+               exists in the <span class="code">ZipFile</span>.
+             </p><p>
+               This version of the method allows the caller to explicitly specify the
+               directory path to be used in the archive.
+             </p><p>
+               For <span class="code">ZipFile</span> properties including <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Encryption">Encryption</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Password">Password</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.SetCompression">SetCompression</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ProvisionalAlternateEncoding">ProvisionalAlternateEncoding</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ExtractExistingFile">ExtractExistingFile</a>,
+               <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ZipErrorAction">ZipErrorAction</a>, and <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.CompressionLevel">CompressionLevel</a>, their
+               respective values at the time of this call will be applied to the
+               <span class="code">ZipEntry</span> added.
+             </p></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent"><p>
+               In this example, three files are added to a Zip archive. The ReadMe.txt
+               file will be placed in the root of the archive. The .png file will be
+               placed in a folder within the zip called images.  The pdf file will be
+               included into a folder within the zip called files\docs, and will be
+               encrypted with the given password.
+             </p><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">try</span>
+{
+  <span class="highlight-keyword">using</span> (ZipFile zip = <span class="highlight-keyword">new</span> ZipFile())
+  {
+    <span class="highlight-comment">// the following entry will be inserted at the root in the archive.</span>
+    zip.AddFile(<span class="highlight-literal">"c:\\datafiles\\ReadMe.txt"</span>, <span class="highlight-literal">""</span>);
+    <span class="highlight-comment">// this image file will be inserted into the "images" directory in the archive.</span>
+    zip.AddFile(<span class="highlight-literal">"c:\\photos\\personal\\7440-N49th.png"</span>, <span class="highlight-literal">"images"</span>);
+    <span class="highlight-comment">// the following will result in a password-protected file called</span>
+    <span class="highlight-comment">// files\\docs\\2008-Regional-Sales-Report.pdf  in the archive.</span>
+    zip.Password = <span class="highlight-literal">"EncryptMe!"</span>;
+    zip.AddFile(<span class="highlight-literal">"c:\\Desktop\\2008-Regional-Sales-Report.pdf"</span>, <span class="highlight-literal">"files\\docs"</span>);
+    zip.Save(<span class="highlight-literal">"Archive.zip"</span>);
+  }
+}
+<span class="highlight-keyword">catch</span> (System.Exception ex1)
+{
+  System.Console.Error.WriteLine(<span class="highlight-literal">"exception: {0}"</span>, ex1);
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Try</span>
+    <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = <span class="highlight-keyword">New</span> ZipFile
+        <span class="highlight-comment">' the following entry will be inserted at the root in the archive.</span>
+        zip.AddFile(<span class="highlight-literal">"c:\datafiles\ReadMe.txt"</span>, <span class="highlight-literal">""</span>)
+        <span class="highlight-comment">' this image file will be inserted into the "images" directory in the archive.</span>
+        zip.AddFile(<span class="highlight-literal">"c:\photos\personal\7440-N49th.png"</span>, <span class="highlight-literal">"images"</span>)
+        <span class="highlight-comment">' the following will result in a password-protected file called</span>
+        <span class="highlight-comment">' files\\docs\\2008-Regional-Sales-Report.pdf  in the archive.</span>
+        zip.Password = <span class="highlight-literal">"EncryptMe!"</span>
+        zip.AddFile(<span class="highlight-literal">"c:\Desktop\2008-Regional-Sales-Report.pdf"</span>, <span class="highlight-literal">"files\documents"</span>)
+        zip.Save(<span class="highlight-literal">"Archive.zip"</span>)
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> Exception
+    Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">"exception: {0}"</span>, ex1)
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre></div></span></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> See Also</div><div class="sectionContent"><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddItem(System.String,System.String)">AddItem(String, String)</a><br /><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.AddDirectory(System.String,System.String)">AddDirectory(String, String)</a><br /><a href="ms-xhelp://?Id=M:Ionic.Zip.ZipFile.UpdateFile(System.String,System.String)">UpdateFile(String, String)</a><br /></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

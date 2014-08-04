@@ -274,4 +274,10 @@
   <data name="_1391650032_Circle_Orange" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1391650032_Circle_Orange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="player_offline_metro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\star_empty.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="player_online_metro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\start_filled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

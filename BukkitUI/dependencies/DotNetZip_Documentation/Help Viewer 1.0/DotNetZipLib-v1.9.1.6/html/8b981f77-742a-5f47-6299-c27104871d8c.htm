@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>Save Method (outputStream)</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="8b981f77-742a-5f47-6299-c27104871d8c" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="M:Ionic.Zip.ZipFile.Save(System.IO.Stream)" /><MSHelp:Keyword Index="A" Term="M:Ionic.Zip.ZipFile.Save(System.IO.Stream)" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileClassSaveTopic" /><MSHelp:Keyword Index="K" Term="Save method" /><MSHelp:Keyword Index="K" Term="ZipFile.Save method" /><MSHelp:Keyword Index="F" Term="Save" /><MSHelp:Keyword Index="F" Term="ZipFile.Save" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipFile.Save" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.Save" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="Save the zip archive to the specified stream." /></xml><link type="text/css" rel="stylesheet" /><script type="text/javascript"></script><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="Save method" /><meta name="Microsoft.Help.Keywords" content="ZipFile.Save method" /><meta name="Microsoft.Help.F1" content="Save" /><meta name="Microsoft.Help.F1" content="ZipFile.Save" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipFile.Save" /><meta name="Description" content="Save the zip archive to the specified stream." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="M:Ionic.Zip.ZipFile.Save(System.IO.Stream)" /><meta name="Microsoft.Help.TocParent" content="M:Ionic.Zip.ZipFile.Save" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="1" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">Save Method (outputStream)</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a> ► <span class="selflink">Save(Stream)</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               Save the zip archive to the specified stream.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="keyword">void</span> <span class="identifier">Save</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a> <span class="parameter">outputStream</span>
+)</pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Sub</span> <span class="identifier">Save</span> ( _
+	<span class="parameter">outputStream</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a> _
+)</pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span>:
+<span class="keyword">void</span> <span class="identifier">Save</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a>^ <span class="parameter">outputStream</span>
+)</pre></div></div></div></div></div><div id="parameters"><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Parameters</div><div class="sectionContent"><dl paramName="outputStream"><dt><span class="parameter">outputStream</span> (<a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a>)</dt><dd>
+               The <span class="code">System.IO.Stream</span> to write to. It must be
+               writable. If you created the ZipFile instanct by calling
+               ZipFile.Read(), this stream must not be the same stream
+               you passed to ZipFile.Read().
+             </dd></dl></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               The <span class="code">ZipFile</span> instance is written to storage - typically a zip file
+               in a filesystem, but using this overload, the storage can be anything
+               accessible via a writable stream - only when the caller calls <span class="code">Save</span>.
+             </p><p>
+               Use this method to save the zip content to a stream directly.  A common
+               scenario is an ASP.NET application that dynamically generates a zip file
+               and allows the browser to download it. The application can call
+               <span class="code">Save(Response.OutputStream)</span> to write a zipfile directly to the
+               output stream, without creating a zip file on the disk on the ASP.NET
+               server.
+             </p><p>
+               Be careful when saving a file to a non-seekable stream, including
+               <span class="code">Response.OutputStream</span>. When DotNetZip writes to a non-seekable
+               stream, the zip archive is formatted in such a way that may not be
+               compatible with all zip tools on all platforms.  It's a perfectly legal
+               and compliant zip file, but some people have reported problems opening
+               files produced this way using the Mac OS archive utility.
+             </p></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent">
+            
+               This example saves the zipfile content into a MemoryStream, and
+               then gets the array of bytes from that MemoryStream.
+            
+             <span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">using</span> (var zip = <span class="highlight-keyword">new</span> Ionic.Zip.ZipFile())
+{
+    zip.CompressionLevel= Ionic.Zlib.CompressionLevel.BestCompression;
+    zip.Password = <span class="highlight-literal">"VerySecret."</span>;
+    zip.Encryption = EncryptionAlgorithm.WinZipAes128;
+    zip.AddFile(sourceFileName);
+    MemoryStream output = <span class="highlight-keyword">new</span> MemoryStream();
+    zip.Save(output);
+
+    <span class="highlight-keyword">byte</span>[] zipbytes = output.ToArray();
+}</pre></div></span></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent"><p>
+               This example shows a pitfall you should avoid. DO NOT read
+               from a stream, then try to save to the same stream.  DO
+               NOT DO THIS:
+             </p><span id="cbc_2" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">using</span> (var fs = <span class="highlight-keyword">new</span> FileSteeam(filename, FileMode.Open))
+{
+  <span class="highlight-keyword">using</span> (var zip = Ionic.Zip.ZipFile.Read(inputStream))
+  {
+    zip.AddEntry(<span class="highlight-literal">"Name1.txt"</span>, <span class="highlight-literal">"this is the content"</span>);
+    zip.Save(inputStream);  <span class="highlight-comment">// NO NO NO!!</span>
+  }
+}</pre></div></span><p>
+               Better like this:
+             </p><span id="cbc_3" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">using</span> (var zip = Ionic.Zip.ZipFile.Read(filename))
+{
+    zip.AddEntry(<span class="highlight-literal">"Name1.txt"</span>, <span class="highlight-literal">"this is the content"</span>);
+    zip.Save();  <span class="highlight-comment">// YES!</span>
+}</pre></div></span></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

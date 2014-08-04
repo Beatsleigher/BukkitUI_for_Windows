@@ -7,7 +7,7 @@ using System.Net;
 using System.ComponentModel;
 
 namespace BukkitUI.Bukkit {
-    class ServerProperties {
+    public class ServerProperties {
 
         #region Properties
         // I'd like to note; I'm going after the Minecraft Wiki, here - I'm using that order...

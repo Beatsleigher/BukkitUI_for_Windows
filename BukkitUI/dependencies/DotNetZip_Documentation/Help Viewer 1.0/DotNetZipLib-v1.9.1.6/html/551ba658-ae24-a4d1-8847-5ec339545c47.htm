@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>ZipErrorAction Enumeration</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="551ba658-ae24-a4d1-8847-5ec339545c47" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="T:Ionic.Zip.ZipErrorAction" /><MSHelp:Keyword Index="A" Term="T:Ionic.Zip.ZipErrorAction" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipErrorActionClassTopic" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipErrorActionMembersTopic" /><MSHelp:Keyword Index="K" Term="ZipErrorAction enumeration" /><MSHelp:Keyword Index="K" Term="Ionic.Zip.ZipErrorAction enumeration" /><MSHelp:Keyword Index="F" Term="ZipErrorAction" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipErrorAction" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipErrorAction" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipErrorAction.Throw" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipErrorAction.Skip" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipErrorAction.Retry" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipErrorAction.InvokeErrorEvent" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="An enum providing the options when an error occurs during opening or reading of a file or directory that is being saved to a zip file." /></xml><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="ZipErrorAction enumeration" /><meta name="Microsoft.Help.Keywords" content="Ionic.Zip.ZipErrorAction enumeration" /><meta name="Microsoft.Help.F1" content="ZipErrorAction" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipErrorAction" /><meta name="Description" content="An enum providing the options when an error occurs during opening or reading of a file or directory that is being saved to a zip file." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="T:Ionic.Zip.ZipErrorAction" /><meta name="Microsoft.Help.TocParent" content="N:Ionic.Zip" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="25" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">ZipErrorAction Enumeration</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <span class="selflink">ZipErrorAction</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+             An enum providing the options when an error occurs during opening or reading
+             of a file or directory that is being saved to a zip file. 
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="keyword">enum</span> <span class="identifier">ZipErrorAction</span></pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Enumeration</span> <span class="identifier">ZipErrorAction</span></pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="keyword">enum class</span> <span class="identifier">ZipErrorAction</span></pre></div></div></div></div></div><div id="enumerationSection"><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Members</div><div class="sectionContent"><table class="membersMHS" id="memberList"><tr><th class="nameColumn">Member</th><th class="descriptionColumn">Description</th></tr><tr><td target="F:Ionic.Zip.ZipErrorAction.Throw"><b><span class="selflink">Throw</span></b></td><td>
+            Throw an exception when an error occurs while zipping.  This is the default
+            behavior.  (For COM clients, this is a 0 (zero).)
+            <br /></td></tr><tr><td target="F:Ionic.Zip.ZipErrorAction.Skip"><b><span class="selflink">Skip</span></b></td><td>
+            When an error occurs during zipping, for example a file cannot be opened,
+            skip the file causing the error, and continue zipping.  (For COM clients,
+            this is a 1.)
+            <br /></td></tr><tr><td target="F:Ionic.Zip.ZipErrorAction.Retry"><b><span class="selflink">Retry</span></b></td><td>
+            When an error occurs during zipping, for example a file cannot be opened,
+            retry the operation that caused the error. Be careful with this option. If
+            the error is not temporary, the library will retry forever.  (For COM
+            clients, this is a 2.)
+            <br /></td></tr><tr><td target="F:Ionic.Zip.ZipErrorAction.InvokeErrorEvent"><b><span class="selflink">InvokeErrorEvent</span></b></td><td>
+            When an error occurs, invoke the zipError event.  The event type used is
+            <a href="ms-xhelp://?Id=F:Ionic.Zip.ZipProgressEventType.Error_Saving">Error_Saving</a>.  A typical use of this option:
+            a GUI application may wish to pop up a dialog to allow the user to view the
+            error that occurred, and choose an appropriate action.  After your
+            processing in the error event, if you want to skip the file, set <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipEntry.ZipErrorAction">ZipErrorAction</a> on the
+            <span class="code">ZipProgressEventArgs.CurrentEntry</span> to <span class="code">Skip</span>.  If you want the
+            exception to be thrown, set <span class="code">ZipErrorAction</span> on the <span class="code">CurrentEntry</span>
+            to <span class="code">Throw</span>.  If you want to cancel the zip, set
+            <span class="code">ZipProgressEventArgs.Cancel</span> to true.  Cancelling differs from using
+            Skip in that a cancel will not save any further entries, if there are any.
+            (For COM clients, the value of this enum is a 3.)
+            <br /></td></tr></table></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+                This enum describes the actions that the library can take when an error occurs
+                opening or reading a file, as it is being saved into a Zip archive. 
+              </p><p>
+                 In some cases an error will occur when DotNetZip tries to open a file to be
+                 added to the zip archive.  In other cases, an error might occur after the
+                 file has been successfully opened, while DotNetZip is reading the file.
+              </p><p>
+                The first problem might occur when calling AddDirectory() on a directory
+                that contains a Clipper .dbf file; the file is locked by Clipper and
+                cannot be opened by another process. An example of the second problem is
+                the ERROR_LOCK_VIOLATION that results when a file is opened by another
+                process, but not locked, and a range lock has been taken on the file.
+                Microsoft Outlook takes range locks on .PST files.
+              </p></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

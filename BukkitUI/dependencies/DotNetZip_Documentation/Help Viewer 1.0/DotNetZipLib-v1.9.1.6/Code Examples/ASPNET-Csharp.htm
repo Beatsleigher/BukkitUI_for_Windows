@@ -1,0 +1,232 @@
+<html>
+<head>
+<title>ASP.NET (C#)</title>
+<style>
+p,body,a,tr,td
+             { font-family: Verdana, Arial, Helvetica; font-size: 10pt }
+h1,h2,h3,h4,h5,h6
+             { font-family: Verdana, Arial, Helvetica; font-weight: normal; font-style: normal; }
+h1           { font-size: 20pt }
+h2           { font-size: 18pt; font-weight:bold; color: navy }
+h3           { font-size: 16pt; font-weight:bold; color: #483d8b }
+h4           { font-size: 14pt; font-weight:bold; color:#C71585; margin-bottom:2px; }
+</style>
+
+<!-- @SortOrder 40 -->
+
+<link type='text/css' rel='stylesheet' href='../styles/highlight.css' /><script type='text/javascript' src='../scripts/highlight.js'></script></head>
+
+<body>
+<h1>DotNetZip - ASP.NET Example in C#</h1>
+
+<h2>ASP.NET Example in C#</h2>
+
+<p>Here's an Example ASP.NET page, using C#, that dynamically creates a
+zip file and saves it to Response.OutStream.  From the browser, the user
+will be prompted with the familiar download dialog box, allowing Open,
+Save, or Cancel of the generated zip file.</p>
+
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>ASP.NET example in C#</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;%@ Page
+<span class="highlight-lineno">&nbsp;&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    Language=<span class="highlight-literal">&quot;C#&quot;</span>
+<span class="highlight-lineno">&nbsp;&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    Debug=<span class="highlight-literal">&quot;true&quot;</span> %&gt;
+<span class="highlight-lineno">&nbsp;&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;%@ Import Namespace=<span class="highlight-literal">&quot;System.Text&quot;</span> %&gt;
+<span class="highlight-lineno">&nbsp;&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;%@ Import Namespace=<span class="highlight-literal">&quot;System.IO&quot;</span> %&gt;
+<span class="highlight-lineno">&nbsp;&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;%@ Import Namespace=<span class="highlight-literal">&quot;Ionic.Zip&quot;</span> %&gt;
+<span class="highlight-lineno">&nbsp;&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;%@ Import Namespace=<span class="highlight-literal">&quot;System.Collections.Generic&quot;</span> %&gt;
+<span class="highlight-lineno">&nbsp;&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;script language=<span class="highlight-literal">&quot;C#&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span>&gt;
+<span class="highlight-lineno">&nbsp;11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// ZipExample.aspx</span>
+<span class="highlight-lineno">&nbsp;13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// This .aspx page demonstrates how to use the DotNetZip library from within ASP.NET.</span>
+<span class="highlight-lineno">&nbsp;15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// To run it,</span>
+<span class="highlight-lineno">&nbsp;17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  1. drop the Ionic.Zip.dll into the \bin directory of your ASP.NET app</span>
+<span class="highlight-lineno">&nbsp;18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  2. create a subdirectory called &quot;fodder&quot; in your web app directory.</span>
+<span class="highlight-lineno">&nbsp;19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  3. copy into that directory a variety of random files.</span>
+<span class="highlight-lineno">&nbsp;20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  4. insure your web.config is properly set up (See below)</span>
+<span class="highlight-lineno">&nbsp;21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// notes:</span>
+<span class="highlight-lineno">&nbsp;24</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  This requies the .NET Framework 3.5 - because it uses the ListView control that is</span>
+<span class="highlight-lineno">&nbsp;25</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  new for ASP.NET in the .NET Framework v3.5.</span>
+<span class="highlight-lineno">&nbsp;26</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;27</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  To use this control, you must add the new web controls.  Also, you must use the v3.5 compiler.</span>
+<span class="highlight-lineno">&nbsp;28</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  IF you build your app in Visual Studio, this is all done for you. If you don&#39;t use VS2008,</span>
+<span class="highlight-lineno">&nbsp;29</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//  here&#39;s an example web.config that works with this aspx file:</span>
+<span class="highlight-lineno">&nbsp;30</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;31</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//    &lt;configuration&gt;</span>
+<span class="highlight-lineno">&nbsp;32</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//      &lt;system.web&gt;</span>
+<span class="highlight-lineno">&nbsp;33</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//        &lt;trust level=&quot;Medium&quot; /&gt;</span>
+<span class="highlight-lineno">&nbsp;34</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//        &lt;compilation defaultLanguage=&quot;c#&quot; /&gt;</span>
+<span class="highlight-lineno">&nbsp;35</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//        &lt;pages&gt;</span>
+<span class="highlight-lineno">&nbsp;36</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//          &lt;controls&gt;</span>
+<span class="highlight-lineno">&nbsp;37</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//            &lt;add tagPrefix=&quot;asp&quot; namespace=&quot;System.Web.UI.WebControls&quot; assembly=&quot;System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31BF3856AD364E35&quot; /&gt;</span>
+<span class="highlight-lineno">&nbsp;38</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//          &lt;/controls&gt;</span>
+<span class="highlight-lineno">&nbsp;39</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//        &lt;/pages&gt;</span>
+<span class="highlight-lineno">&nbsp;40</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//      &lt;/system.web&gt;</span>
+<span class="highlight-lineno">&nbsp;41</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//      &lt;system.codedom&gt;</span>
+<span class="highlight-lineno">&nbsp;42</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//        &lt;compilers&gt;</span>
+<span class="highlight-lineno">&nbsp;43</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//          &lt;compiler language=&quot;c#;cs;csharp&quot; extension=&quot;.cs&quot; warningLevel=&quot;4&quot; type=&quot;Microsoft.CSharp.CSharpCodeProvider, System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089&quot;&gt;</span>
+<span class="highlight-lineno">&nbsp;44</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//            &lt;providerOption name=&quot;CompilerVersion&quot; value=&quot;v3.5&quot; /&gt;</span>
+<span class="highlight-lineno">&nbsp;45</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//            &lt;providerOption name=&quot;WarnAsError&quot; value=&quot;false&quot; /&gt;</span>
+<span class="highlight-lineno">&nbsp;46</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//          &lt;/compiler&gt;</span>
+<span class="highlight-lineno">&nbsp;47</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//        &lt;/compilers&gt;</span>
+<span class="highlight-lineno">&nbsp;48</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//      &lt;/system.codedom&gt;</span>
+<span class="highlight-lineno">&nbsp;49</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">//    &lt;/configuration&gt;</span>
+<span class="highlight-lineno">&nbsp;50</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;51</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;52</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-comment">// </span>
+<span class="highlight-lineno">&nbsp;53</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;54</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;55</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">public</span> String width = <span class="highlight-literal">&quot;100%&quot;</span>;
+<span class="highlight-lineno">&nbsp;56</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;57</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> Page_Load (Object sender, EventArgs e)
+<span class="highlight-lineno">&nbsp;58</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">&nbsp;59</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">try</span>
+<span class="highlight-lineno">&nbsp;60</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">&nbsp;61</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">if</span> ( !Page.IsPostBack ) {
+<span class="highlight-lineno">&nbsp;62</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-comment">// populate the dropdownlist</span>
+<span class="highlight-lineno">&nbsp;63</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-comment">// must have a directory called &quot;fodder&quot; in the web app</span>
+<span class="highlight-lineno">&nbsp;64</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            String homeDir = Server.MapPath(<span class="highlight-literal">&quot;.&quot;</span>);
+<span class="highlight-lineno">&nbsp;65</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            String sMappedPath= Server.MapPath(<span class="highlight-literal">&quot;fodder&quot;</span>);
+<span class="highlight-lineno">&nbsp;66</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;67</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            var fqFilenames= <span class="highlight-keyword">new</span> List&lt;String&gt;(System.IO.Directory.GetFiles(sMappedPath));
+<span class="highlight-lineno">&nbsp;68</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            var filenames= fqFilenames.ConvertAll((s) =&gt; { <span class="highlight-keyword">return</span> s.Replace(sMappedPath+<span class="highlight-literal">&quot;\\&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>); });
+<span class="highlight-lineno">&nbsp;69</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;70</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            ErrorMessage.InnerHtml = <span class="highlight-literal">&quot;&quot;</span>;
+<span class="highlight-lineno">&nbsp;71</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;72</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            FileListView.DataSource = filenames;
+<span class="highlight-lineno">&nbsp;73</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            FileListView.DataBind();
+<span class="highlight-lineno">&nbsp;74</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        }
+<span class="highlight-lineno">&nbsp;75</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;76</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">&nbsp;77</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">catch</span> (Exception)
+<span class="highlight-lineno">&nbsp;78</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">&nbsp;79</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-comment">// Ignored</span>
+<span class="highlight-lineno">&nbsp;80</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">&nbsp;81</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">&nbsp;82</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;83</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;84</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">public</span> <span class="highlight-keyword">void</span> btnGo_Click (Object sender, EventArgs e)
+<span class="highlight-lineno">&nbsp;85</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>{
+<span class="highlight-lineno">&nbsp;86</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    ErrorMessage.InnerHtml =<span class="highlight-literal">&quot;&quot;</span>;   <span class="highlight-comment">// debugging only</span>
+<span class="highlight-lineno">&nbsp;87</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    var filesToInclude= <span class="highlight-keyword">new</span> System.Collections.Generic.List&lt;String&gt;();
+<span class="highlight-lineno">&nbsp;88</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    String sMappedPath= Server.MapPath(<span class="highlight-literal">&quot;fodder&quot;</span>);
+<span class="highlight-lineno">&nbsp;89</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    var source= FileListView.DataKeys <span class="highlight-keyword">as</span> DataKeyArray ;
+<span class="highlight-lineno">&nbsp;90</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;91</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">foreach</span> (var item <span class="highlight-keyword">in</span>  FileListView.Items)
+<span class="highlight-lineno">&nbsp;92</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">&nbsp;93</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        CheckBox chkbox= item.FindControl(<span class="highlight-literal">&quot;include&quot;</span>) <span class="highlight-keyword">as</span> CheckBox ;
+<span class="highlight-lineno">&nbsp;94</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        Label lbl= item.FindControl(<span class="highlight-literal">&quot;label&quot;</span>) <span class="highlight-keyword">as</span> Label ;
+<span class="highlight-lineno">&nbsp;95</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">&nbsp;96</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">if</span> (chkbox!=<span class="highlight-keyword">null</span>  &amp;&amp; lbl != <span class="highlight-keyword">null</span>)
+<span class="highlight-lineno">&nbsp;97</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        {
+<span class="highlight-lineno">&nbsp;98</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-keyword">if</span> (chkbox.Checked)
+<span class="highlight-lineno">&nbsp;99</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            {
+<span class="highlight-lineno">100</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                ErrorMessage.InnerHtml += String.Format(<span class="highlight-literal">&quot;adding file: {0}&lt;br/&gt;\n&quot;</span>, lbl.Text);
+<span class="highlight-lineno">101</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">102</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                filesToInclude.Add(System.IO.Path.Combine(sMappedPath,lbl.Text));
+<span class="highlight-lineno">103</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            }
+<span class="highlight-lineno">104</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        }
+<span class="highlight-lineno">105</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">106</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">107</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">if</span> (filesToInclude.Count==<span class="highlight-number">0</span>)
+<span class="highlight-lineno">108</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">109</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        ErrorMessage.InnerHtml += <span class="highlight-literal">&quot;You did not select any files?&lt;br/&gt;\n&quot;</span>;
+<span class="highlight-lineno">110</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">111</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">112</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">else</span>
+<span class="highlight-lineno">113</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    {
+<span class="highlight-lineno">114</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        Response.Clear();
+<span class="highlight-lineno">115</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">116</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        System.Web.HttpContext c= System.Web.HttpContext.Current;
+<span class="highlight-lineno">117</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        String ReadmeText= String.Format(<span class="highlight-literal">&quot;README.TXT\n\nHello!\n\n&quot;</span>+
+<span class="highlight-lineno">118</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         <span class="highlight-literal">&quot;This is a zip file that was dynamically generated at {0}\n&quot;</span>+
+<span class="highlight-lineno">119</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         <span class="highlight-literal">&quot;by an ASP.NET Page running on the machine named &#39;{1}&#39;.\n&quot;</span>+
+<span class="highlight-lineno">120</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         <span class="highlight-literal">&quot;The server type is: {2}\n&quot;</span>,
+<span class="highlight-lineno">121</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         System.DateTime.Now.ToString(<span class="highlight-literal">&quot;G&quot;</span>),
+<span class="highlight-lineno">122</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         System.Environment.MachineName,
+<span class="highlight-lineno">123</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         c.Request.ServerVariables[<span class="highlight-literal">&quot;SERVER_SOFTWARE&quot;</span>]
+<span class="highlight-lineno">124</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                                         );
+<span class="highlight-lineno">125</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">string</span> archiveName= String.Format(<span class="highlight-literal">&quot;archive-{0}.zip&quot;</span>, DateTime.Now.ToString(<span class="highlight-literal">&quot;yyyy-MMM-dd-HHmmss&quot;</span>));
+<span class="highlight-lineno">126</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        Response.ContentType = <span class="highlight-literal">&quot;application/zip&quot;</span>;
+<span class="highlight-lineno">127</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        Response.AddHeader(<span class="highlight-literal">&quot;content-disposition&quot;</span>, <span class="highlight-literal">&quot;filename=&quot;</span> + archiveName);
+<span class="highlight-lineno">128</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">129</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">using</span> (ZipFile zip = <span class="highlight-keyword">new</span> ZipFile())
+<span class="highlight-lineno">130</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        {
+<span class="highlight-lineno">131</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-keyword">foreach</span> (var f <span class="highlight-keyword">in</span> filesToInclude)
+<span class="highlight-lineno">132</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            {
+<span class="highlight-lineno">133</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                zip.AddFile(f, <span class="highlight-literal">&quot;files&quot;</span>);
+<span class="highlight-lineno">134</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            }
+<span class="highlight-lineno">135</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            zip.AddEntry(<span class="highlight-literal">&quot;Readme.txt&quot;</span>, ReadmeText);
+<span class="highlight-lineno">136</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            zip.Save(Response.OutputStream);
+<span class="highlight-lineno">137</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        }
+<span class="highlight-lineno">138</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        Response.Close();
+<span class="highlight-lineno">139</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    }
+<span class="highlight-lineno">140</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">141</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>}
+<span class="highlight-lineno">142</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">143</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;/script&gt;
+<span class="highlight-lineno">144</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">145</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">146</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">147</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;html&gt;
+<span class="highlight-lineno">148</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  &lt;head&gt;
+<span class="highlight-lineno">149</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    &lt;link rel=<span class="highlight-literal">&quot;stylesheet&quot;</span> href=<span class="highlight-literal">&quot;style/basic.css&quot;</span>&gt;
+<span class="highlight-lineno">150</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  &lt;/head&gt;
+<span class="highlight-lineno">151</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">152</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  &lt;body&gt;
+<span class="highlight-lineno">153</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">154</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    &lt;form id=<span class="highlight-literal">&quot;Form&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span>&gt;
+<span class="highlight-lineno">155</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">156</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;h3&gt; &lt;span id=<span class="highlight-literal">&quot;Title&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span> /&gt;Zip Files from ASP.NET &lt;/h3&gt;
+<span class="highlight-lineno">157</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">158</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;p&gt;This page uses the .NET Zip library
+<span class="highlight-lineno">159</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      (see &lt;a href=<span class="highlight-literal">&quot;http://www.codeplex/com/DotNetZip&quot;</span>&gt;http:<span class="highlight-comment">//www.codeplex/com/DotNetZip&lt;/a&gt;)</span>
+<span class="highlight-lineno">160</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>       to dynamically create a zip archive, and then download it to the browser through Response.OutputStream&lt;/p&gt;
+<span class="highlight-lineno">161</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">162</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;span <span class="highlight-keyword">class</span>=<span class="highlight-literal">&quot;SampleTitle&quot;</span>&gt;&lt;b&gt;Check the boxes to select the files, then click the button to zip them up.&lt;/b&gt;&lt;/span&gt;
+<span class="highlight-lineno">163</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;br/&gt;
+<span class="highlight-lineno">164</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;br/&gt;
+<span class="highlight-lineno">165</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;asp:Button id=<span class="highlight-literal">&quot;btnGo&quot;</span> Text=<span class="highlight-literal">&quot;Zip checked files&quot;</span> AutoPostBack OnClick=<span class="highlight-literal">&quot;btnGo_Click&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span>/&gt;
+<span class="highlight-lineno">166</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">167</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;br/&gt;
+<span class="highlight-lineno">168</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;br/&gt;
+<span class="highlight-lineno">169</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;span style=<span class="highlight-literal">&quot;color:red&quot;</span> id=<span class="highlight-literal">&quot;ErrorMessage&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span>/&gt;
+<span class="highlight-lineno">170</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;br/&gt;
+<span class="highlight-lineno">171</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">172</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;asp:ListView ID=<span class="highlight-literal">&quot;FileListView&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span>&gt;
+<span class="highlight-lineno">173</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">174</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        &lt;LayoutTemplate&gt;
+<span class="highlight-lineno">175</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          &lt;table&gt;
+<span class="highlight-lineno">176</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            &lt;tr ID=<span class="highlight-literal">&quot;itemPlaceholder&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span> /&gt;
+<span class="highlight-lineno">177</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          &lt;/table&gt;
+<span class="highlight-lineno">178</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        &lt;/LayoutTemplate&gt;
+<span class="highlight-lineno">179</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">180</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        &lt;ItemTemplate&gt;
+<span class="highlight-lineno">181</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          &lt;tr&gt;
+<span class="highlight-lineno">182</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            &lt;td&gt;&lt;asp:Checkbox ID=<span class="highlight-literal">&quot;include&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span>/&gt;&lt;/td&gt;
+<span class="highlight-lineno">183</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            &lt;td&gt;&lt;asp:Label id=<span class="highlight-literal">&quot;label&quot;</span> runat=<span class="highlight-literal">&quot;server&quot;</span> Text=<span class="highlight-literal">&quot;&lt;%# Container.DataItem %&gt;&quot;</span> /&gt;&lt;/td&gt;
+<span class="highlight-lineno">184</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          &lt;/tr&gt;
+<span class="highlight-lineno">185</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        &lt;/ItemTemplate&gt;
+<span class="highlight-lineno">186</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">187</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        &lt;EmptyDataTemplate&gt;
+<span class="highlight-lineno">188</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          &lt;div&gt;Nothing to see here...&lt;/div&gt;
+<span class="highlight-lineno">189</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        &lt;/EmptyDataTemplate&gt;
+<span class="highlight-lineno">190</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">191</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>      &lt;/asp:ListView&gt;
+<span class="highlight-lineno">192</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">193</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">194</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    &lt;/form&gt;
+<span class="highlight-lineno">195</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">196</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  &lt;/body&gt;
+<span class="highlight-lineno">197</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">198</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>&lt;/html&gt;</pre>
+
+
+
+</body>
+</html>

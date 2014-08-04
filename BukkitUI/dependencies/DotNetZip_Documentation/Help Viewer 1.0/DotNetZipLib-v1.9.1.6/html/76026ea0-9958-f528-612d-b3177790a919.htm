@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>ZlibStream Constructor (stream, mode, level, leaveOpen)</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="76026ea0-9958-f528-612d-b3177790a919" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="M:Ionic.Zlib.ZlibStream.#ctor(System.IO.Stream,Ionic.Zlib.CompressionMode,Ionic.Zlib.CompressionLevel,System.Boolean)" /><MSHelp:Keyword Index="A" Term="M:Ionic.Zlib.ZlibStream.#ctor(System.IO.Stream,Ionic.Zlib.CompressionMode,Ionic.Zlib.CompressionLevel,System.Boolean)" /><MSHelp:Keyword Index="A" Term="frlrfIonicZlibZlibStreamClassctorTopic" /><MSHelp:Keyword Index="K" Term="ZlibStream constructor" /><MSHelp:Keyword Index="F" Term="ZlibStream" /><MSHelp:Keyword Index="F" Term="ZlibStream.ZlibStream" /><MSHelp:Keyword Index="F" Term="Ionic.Zlib.ZlibStream.ZlibStream" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zlib.ZlibStream..ctor" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="Create a ZlibStream using the specified CompressionMode and the specified CompressionLevel, and explicitly specify whether the stream should be left open after Deflation or Inflation." /></xml><link type="text/css" rel="stylesheet" /><script type="text/javascript"></script><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="ZlibStream constructor" /><meta name="Microsoft.Help.F1" content="ZlibStream" /><meta name="Microsoft.Help.F1" content="ZlibStream.ZlibStream" /><meta name="Microsoft.Help.F1" content="Ionic.Zlib.ZlibStream.ZlibStream" /><meta name="Description" content="Create a ZlibStream using the specified CompressionMode and the specified CompressionLevel, and explicitly specify whether the stream should be left open after Deflation or Inflation." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="M:Ionic.Zlib.ZlibStream.#ctor(System.IO.Stream,Ionic.Zlib.CompressionMode,Ionic.Zlib.CompressionLevel,System.Boolean)" /><meta name="Microsoft.Help.TocParent" content="M:Ionic.Zlib.ZlibStream.#ctor(System.IO.Stream,Ionic.Zlib.CompressionMode)" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="2" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">ZlibStream Constructor (stream, mode, level, leaveOpen)</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zlib">Ionic.Zlib</a> ► <a href="ms-xhelp://?Id=T:Ionic.Zlib.ZlibStream">ZlibStream</a> ► <span class="selflink">ZlibStream(Stream, CompressionMode, CompressionLevel, Boolean)</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               Create a <span class="code">ZlibStream</span> using the specified <span class="code">CompressionMode</span>
+               and the specified <span class="code">CompressionLevel</span>, and explicitly specify
+               whether the stream should be left open after Deflation or Inflation.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <span class="identifier">ZlibStream</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a> <span class="parameter">stream</span>,
+	<a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionMode">CompressionMode</a> <span class="parameter">mode</span>,
+	<a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionLevel">CompressionLevel</a> <span class="parameter">level</span>,
+	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">leaveOpen</span>
+)</pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Sub</span> <span class="identifier">New</span> ( _
+	<span class="parameter">stream</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a>, _
+	<span class="parameter">mode</span> <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionMode">CompressionMode</a>, _
+	<span class="parameter">level</span> <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionLevel">CompressionLevel</a>, _
+	<span class="parameter">leaveOpen</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">Boolean</a> _
+)</pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span>:
+<span class="identifier">ZlibStream</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a>^ <span class="parameter">stream</span>, 
+	<a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionMode">CompressionMode</a> <span class="parameter">mode</span>, 
+	<a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionLevel">CompressionLevel</a> <span class="parameter">level</span>, 
+	<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">bool</a> <span class="parameter">leaveOpen</span>
+)</pre></div></div></div></div></div><div id="parameters"><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Parameters</div><div class="sectionContent"><dl paramName="stream"><dt><span class="parameter">stream</span> (<a href="http://msdn2.microsoft.com/en-us/library/8f86tw9e" target="_blank">Stream</a>)</dt><dd>The stream which will be read or written.</dd></dl><dl paramName="mode"><dt><span class="parameter">mode</span> (<a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionMode">CompressionMode</a>)</dt><dd>Indicates whether the ZlibStream will compress or decompress.</dd></dl><dl paramName="level"><dt><span class="parameter">level</span> (<a href="ms-xhelp://?Id=T:Ionic.Zlib.CompressionLevel">CompressionLevel</a>)</dt><dd>
+             A tuning knob to trade speed for effectiveness. This parameter is
+             effective only when mode is <span class="code">CompressionMode.Compress</span>.
+             </dd></dl><dl paramName="leaveOpen"><dt><span class="parameter">leaveOpen</span> (<a href="http://msdn2.microsoft.com/en-us/library/a28wyd50" target="_blank">Boolean</a>)</dt><dd>
+             true if the application would like the stream to remain open after
+             inflation/deflation.
+             </dd></dl></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               This constructor allows the application to request that the captive
+               stream remain open after the deflation or inflation occurs.  By
+               default, after <span class="code">Close()</span> is called on the stream, the captive
+               stream is also closed. In some cases this is not desired, for example
+               if the stream is a <a href="http://msdn2.microsoft.com/en-us/library/9a84386f" target="_blank">MemoryStream</a> that will be
+               re-read after compression.  Specify true for the <span class="parameter">leaveOpen</span> parameter to leave the stream open.
+             </p><p>
+               When mode is <span class="code">CompressionMode.Decompress</span>, the level parameter is
+               ignored.
+             </p></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent">
+            
+             This example shows how to use a ZlibStream to compress the data from a file,
+             and store the result into another file. The filestream remains open to allow
+             additional data to be written to it.
+            
+             <span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">using</span> (var output = System.IO.File.Create(fileToCompress + <span class="highlight-literal">".zlib"</span>))
+{
+    <span class="highlight-keyword">using</span> (System.IO.Stream input = System.IO.File.OpenRead(fileToCompress))
+    {
+        <span class="highlight-keyword">using</span> (Stream compressor = <span class="highlight-keyword">new</span> ZlibStream(output, CompressionMode.Compress, CompressionLevel.BestCompression, <span class="highlight-keyword">true</span>))
+        {
+            <span class="highlight-keyword">byte</span>[] buffer = <span class="highlight-keyword">new</span> <span class="highlight-keyword">byte</span>[WORKING_BUFFER_SIZE];
+            <span class="highlight-keyword">int</span> n;
+            <span class="highlight-keyword">while</span> ((n= input.Read(buffer, <span class="highlight-number">0</span>, buffer.Length)) != <span class="highlight-number">0</span>)
+            {
+                compressor.Write(buffer, <span class="highlight-number">0</span>, n);
+            }
+        }
+    }
+    <span class="highlight-comment">// can write additional data to the output stream here</span>
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Using</span> output <span class="highlight-keyword">As</span> FileStream = File.Create(fileToCompress &amp; <span class="highlight-literal">".zlib"</span>)
+    <span class="highlight-keyword">Using</span> input <span class="highlight-keyword">As</span> Stream = File.OpenRead(fileToCompress)
+        <span class="highlight-keyword">Using</span> compressor <span class="highlight-keyword">As</span> Stream = <span class="highlight-keyword">New</span> ZlibStream(output, CompressionMode.Compress, CompressionLevel.BestCompression, <span class="highlight-keyword">True</span>)
+            <span class="highlight-keyword">Dim</span> buffer <span class="highlight-keyword">As</span> <span class="highlight-keyword">Byte</span>() = <span class="highlight-keyword">New</span> <span class="highlight-keyword">Byte</span>(<span class="highlight-number">4096</span>) {}
+            <span class="highlight-keyword">Dim</span> n <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span> = <span class="highlight-number">-1</span>
+            <span class="highlight-keyword">Do</span> <span class="highlight-keyword">While</span> (n &lt;&gt; <span class="highlight-number">0</span>)
+                <span class="highlight-keyword">If</span> (n &gt; <span class="highlight-number">0</span>) <span class="highlight-keyword">Then</span>
+                    compressor.Write(buffer, <span class="highlight-number">0</span>, n)
+                <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+                n = input.Read(buffer, <span class="highlight-number">0</span>, buffer.Length)
+            <span class="highlight-keyword">Loop</span>
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+    <span class="highlight-comment">' can write additional data to the output stream here.</span>
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre></div></span></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

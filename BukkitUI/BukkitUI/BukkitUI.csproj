@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -32,11 +32,13 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
+    <Optimize>true</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,6 +53,17 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.BZip2">
+      <HintPath>..\dependencies\bzip2-v1.9\Release\Ionic.BZip2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\dependencies\zip-v1.9\Release\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zlib">
+      <HintPath>..\dependencies\zlib-v1.9\Release\Ionic.Zlib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="SkinSoft.VisualStyler, Version=2.4.0.0, Culture=neutral, PublicKeyToken=0fda9f423e1d9830, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -64,21 +77,29 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.WinControls, Version=2014.2.715.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.WinControls.Themes.VisualStudio2012Dark, Version=2014.2.715.40, Culture=neutral, PublicKeyToken=5bb2a467cbec794e, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox1.cs">
+    <Compile Include="Dialogs\WorldBackupOptionsDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox1.Designer.cs">
+    <Compile Include="Dialogs\WorldBackupOptionsDialog.Designer.cs">
+      <DependentUpon>WorldBackupOptionsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AboutBox1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutBox1.Designer.cs">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AntiLabel.cs">
+    <Compile Include="Classes\AntiLabel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="BukkitCmdBrowser.cs">
+    <Compile Include="Forms\BukkitCmdBrowser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BukkitCmdBrowser.Designer.cs">
+    <Compile Include="Forms\BukkitCmdBrowser.Designer.cs">
       <DependentUpon>BukkitCmdBrowser.cs</DependentUpon>
     </Compile>
     <Compile Include="Bukkit\BukkitYML.cs" />
@@ -86,41 +107,53 @@
     <Compile Include="Bukkit\LevelType.cs" />
     <Compile Include="Bukkit\ServerDifficulty.cs" />
     <Compile Include="Bukkit\ServerProperties.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GetPlayerNameDialog.cs">
+    <Compile Include="Forms\GetPlayerNameDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GetPlayerNameDialog.Designer.cs">
+    <Compile Include="Forms\GetPlayerNameDialog.Designer.cs">
       <DependentUpon>GetPlayerNameDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="MemoryStatusEx.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\MemoryStatusEx.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <SplashScreen Include="SplashScreen.cs">
+    <Compile Include="Forms\WorldMgmt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WorldMgmt.Designer.cs">
+      <DependentUpon>WorldMgmt.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Dialogs\WorldBackupOptionsDialog.resx">
+      <DependentUpon>WorldBackupOptionsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WorldMgmt.resx">
+      <DependentUpon>WorldMgmt.cs</DependentUpon>
+    </EmbeddedResource>
+    <SplashScreen Include="Forms\SplashScreen.cs">
       <SubType>Form</SubType>
     </SplashScreen>
-    <Compile Include="Settings.cs" />
-    <Compile Include="SplashScreen.Designer.cs">
+    <Compile Include="Classes\Settings.cs" />
+    <Compile Include="Forms\SplashScreen.Designer.cs">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="TextProgressBar.cs">
+    <Compile Include="Classes\TextProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
-    <EmbeddedResource Include="AboutBox1.resx">
+    <EmbeddedResource Include="Forms\AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BukkitCmdBrowser.resx">
+    <EmbeddedResource Include="Forms\BukkitCmdBrowser.resx">
       <DependentUpon>BukkitCmdBrowser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GetPlayerNameDialog.resx">
+    <EmbeddedResource Include="Forms\GetPlayerNameDialog.resx">
       <DependentUpon>GetPlayerNameDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -133,7 +166,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SplashScreen.resx">
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
       <DependentUpon>SplashScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -305,6 +338,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\start_filled.png" />
+    <None Include="Resources\star_empty.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
@@ -327,6 +362,19 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BukkitUI_Updater\BukkitUI_Updater.csproj">
+      <Project>{8802d055-c0dc-43c7-adab-e2298d2d8fb4}</Project>
+      <Name>BukkitUI_Updater</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ServerManager\ServerManager.csproj">
+      <Project>{7aae92c1-0201-42d7-895e-00133b108bb0}</Project>
+      <Name>ServerManager</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

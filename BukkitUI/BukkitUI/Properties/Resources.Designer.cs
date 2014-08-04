@@ -427,9 +427,29 @@ namespace BukkitUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap player_offline_metro {
+            get {
+                object obj = ResourceManager.GetObject("player_offline_metro", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap player_online {
             get {
                 object obj = ResourceManager.GetObject("player_online", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap player_online_metro {
+            get {
+                object obj = ResourceManager.GetObject("player_online_metro", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

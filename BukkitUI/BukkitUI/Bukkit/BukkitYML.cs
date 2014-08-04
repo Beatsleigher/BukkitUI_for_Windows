@@ -14,7 +14,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 
 namespace BukkitUI.Bukkit {
-    class BukkitYML {
+    public class BukkitYML {
 
         ///
         /// I'd like to note, that I am not using excessive details for the property names, as this isn't an API.

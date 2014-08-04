@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>AddEntry Method (entryName, opener, closer)</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="88e02061-3787-c10b-8522-a9e045f0bd94" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="M:Ionic.Zip.ZipFile.AddEntry(System.String,Ionic.Zip.OpenDelegate,Ionic.Zip.CloseDelegate)" /><MSHelp:Keyword Index="A" Term="M:Ionic.Zip.ZipFile.AddEntry(System.String,Ionic.Zip.OpenDelegate,Ionic.Zip.CloseDelegate)" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileClassAddEntryTopic" /><MSHelp:Keyword Index="K" Term="AddEntry method" /><MSHelp:Keyword Index="K" Term="ZipFile.AddEntry method" /><MSHelp:Keyword Index="F" Term="AddEntry" /><MSHelp:Keyword Index="F" Term="ZipFile.AddEntry" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipFile.AddEntry" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.AddEntry" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="Add an entry, for which the application will provide a stream, just-in-time." /></xml><link type="text/css" rel="stylesheet" /><script type="text/javascript"></script><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="AddEntry method" /><meta name="Microsoft.Help.Keywords" content="ZipFile.AddEntry method" /><meta name="Microsoft.Help.F1" content="AddEntry" /><meta name="Microsoft.Help.F1" content="ZipFile.AddEntry" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipFile.AddEntry" /><meta name="Description" content="Add an entry, for which the application will provide a stream, just-in-time." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="M:Ionic.Zip.ZipFile.AddEntry(System.String,Ionic.Zip.OpenDelegate,Ionic.Zip.CloseDelegate)" /><meta name="Microsoft.Help.TocParent" content="M:Ionic.Zip.ZipFile.AddEntry(System.String,Ionic.Zip.OpenDelegate,Ionic.Zip.CloseDelegate)" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="0" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">AddEntry Method (entryName, opener, closer)</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a> ► <span class="selflink">AddEntry(String, OpenDelegate, CloseDelegate)</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               Add an entry, for which the application will provide a stream,
+               just-in-time.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a> <span class="identifier">AddEntry</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">string</a> <span class="parameter">entryName</span>,
+	<a href="ms-xhelp://?Id=T:Ionic.Zip.OpenDelegate">OpenDelegate</a> <span class="parameter">opener</span>,
+	<a href="ms-xhelp://?Id=T:Ionic.Zip.CloseDelegate">CloseDelegate</a> <span class="parameter">closer</span>
+)</pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> <span class="keyword">Function</span> <span class="identifier">AddEntry</span> ( _
+	<span class="parameter">entryName</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>, _
+	<span class="parameter">opener</span> <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.OpenDelegate">OpenDelegate</a>, _
+	<span class="parameter">closer</span> <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.CloseDelegate">CloseDelegate</a> _
+) <span class="keyword">As</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a></pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span>:
+<a href="ms-xhelp://?Id=T:Ionic.Zip.ZipEntry">ZipEntry</a>^ <span class="identifier">AddEntry</span>(
+	<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>^ <span class="parameter">entryName</span>, 
+	<a href="ms-xhelp://?Id=T:Ionic.Zip.OpenDelegate">OpenDelegate</a>^ <span class="parameter">opener</span>, 
+	<a href="ms-xhelp://?Id=T:Ionic.Zip.CloseDelegate">CloseDelegate</a>^ <span class="parameter">closer</span>
+)</pre></div></div></div></div></div><div id="parameters"><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Parameters</div><div class="sectionContent"><dl paramName="entryName"><dt><span class="parameter">entryName</span> (<a href="http://msdn2.microsoft.com/en-us/library/s1wwdcbf" target="_blank">String</a>)</dt><dd>the name of the entry to add</dd></dl><dl paramName="opener"><dt><span class="parameter">opener</span> (<a href="ms-xhelp://?Id=T:Ionic.Zip.OpenDelegate">OpenDelegate</a>)</dt><dd>
+              the delegate that will be invoked to open the stream
+             </dd></dl><dl paramName="closer"><dt><span class="parameter">closer</span> (<a href="ms-xhelp://?Id=T:Ionic.Zip.CloseDelegate">CloseDelegate</a>)</dt><dd>
+              the delegate that will be invoked to close the stream
+             </dd></dl></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Return Value</div><div class="sectionContent">the ZipEntry added</div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               In cases where the application wishes to open the stream that holds
+               the content for the ZipEntry, on a just-in-time basis, the application
+               can use this method and provide delegates to open and close the
+               stream.
+             </p><p>
+               For <span class="code">ZipFile</span> properties including <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Encryption">Encryption</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.Password">Password</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.SetCompression">SetCompression</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ProvisionalAlternateEncoding">ProvisionalAlternateEncoding</a>, <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ExtractExistingFile">ExtractExistingFile</a>,
+               <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.ZipErrorAction">ZipErrorAction</a>, and <a href="ms-xhelp://?Id=P:Ionic.Zip.ZipFile.CompressionLevel">CompressionLevel</a>, their
+               respective values at the time of this call will be applied to the
+               <span class="code">ZipEntry</span> added.
+             </p></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent">
+            
+               This example uses anonymous methods in C# to open and close the
+               source stream for the content for a zip entry.  In a real
+               application, the logic for the OpenDelegate would probably be more
+               involved.
+            
+             <span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">using</span>(Ionic.Zip.ZipFile zip = <span class="highlight-keyword">new</span> Ionic.Zip.ZipFile())
+{
+    zip.AddEntry(zipEntryName,
+                 (name) =&gt;  File.Open(filename, FileMode.Open, FileAccess.Read, FileShare.ReadWrite ),
+                 (name, stream) =&gt;  stream.Close()
+                 );
+
+    zip.Save(zipFileName);
+}</pre></div></span></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent">
+            
+               This example uses delegates in VB.NET to open and close the
+               the source stream for the content for a zip entry.  VB 9.0 lacks
+               support for "Sub" lambda expressions, and so the CloseDelegate must
+               be an actual, named Sub.
+            
+             <span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Function</span> MyStreamOpener(<span class="highlight-keyword">ByVal</span> entryName <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span>) <span class="highlight-keyword">As</span> Stream
+    <span class="highlight-comment">'' This simply opens a file.  You probably want to do somethinig</span>
+    <span class="highlight-comment">'' more involved here: open a stream to read from a database,</span>
+    <span class="highlight-comment">'' open a stream on an HTTP connection, and so on.</span>
+    <span class="highlight-keyword">Return</span> File.OpenRead(entryName)
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span>
+
+<span class="highlight-keyword">Sub</span> MyStreamCloser(entryName <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span>, stream <span class="highlight-keyword">As</span> Stream)
+    stream.Close()
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span>
+
+<span class="highlight-keyword">Public</span> <span class="highlight-keyword">Sub</span> Run()
+    <span class="highlight-keyword">Dim</span> dirToZip <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">"fodder"</span>
+    <span class="highlight-keyword">Dim</span> zipFileToCreate <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">"Archive.zip"</span>
+    <span class="highlight-keyword">Dim</span> opener <span class="highlight-keyword">As</span> OpenDelegate = <span class="highlight-keyword">AddressOf</span> MyStreamOpener
+    <span class="highlight-keyword">Dim</span> closer <span class="highlight-keyword">As</span> CloseDelegate = <span class="highlight-keyword">AddressOf</span> MyStreamCloser
+    <span class="highlight-keyword">Dim</span> numFilestoAdd <span class="highlight-keyword">As</span> Int32 = <span class="highlight-number">4</span>
+    <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = <span class="highlight-keyword">New</span> ZipFile
+        <span class="highlight-keyword">Dim</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>
+        <span class="highlight-keyword">For</span> i = <span class="highlight-number">0</span> <span class="highlight-keyword">To</span> numFilesToAdd - <span class="highlight-number">1</span>
+            zip.AddEntry(<span class="highlight-keyword">String</span>.Format(<span class="highlight-literal">"content-{0:000}.txt"</span>), opener, closer)
+        <span class="highlight-keyword">Next</span> i
+        zip.Save(zipFileToCreate)
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span></pre></div></span></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>

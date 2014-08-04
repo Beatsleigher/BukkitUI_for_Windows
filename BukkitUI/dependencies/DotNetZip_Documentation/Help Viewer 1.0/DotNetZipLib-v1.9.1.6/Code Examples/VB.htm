@@ -1,0 +1,275 @@
+<html>
+<head>
+<title>VB.NET</title>
+<style>
+p,body,a,tr,td
+             { font-family: Verdana, Arial, Helvetica; font-size: 10pt }
+h1,h2,h3,h4,h5,h6
+             { font-family: Verdana, Arial, Helvetica; font-weight: normal; font-style: normal; }
+h1           { font-size: 20pt }
+h2           { font-size: 18pt; font-weight:bold; color: navy }
+h3           { font-size: 16pt; font-weight:bold; color: #483d8b }
+h4           { font-size: 14pt; font-weight:bold; color:#C71585; margin-bottom:2px; }
+</style>
+<link type='text/css' rel='stylesheet' href='../styles/highlight.css' /><script type='text/javascript' src='../scripts/highlight.js'></script></head>
+
+<!-- @SortOrder 30 -->
+
+<body>
+<h1>DotNetZip - VB.NET Examples</h1>
+
+<p>Here are a bunch of examples in VB.NET showing how to use the library.
+</p>
+
+<p>There are also a few complete, working example applications shipped in the source code distribution. </p>
+
+<hr/>
+<p>Add items to a zip file: </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Try</span>
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.AddFile(<span class="highlight-literal">&quot;c:\photos\personal\7440-N49th.png&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.AddFile(<span class="highlight-literal">&quot;c:\Desktop\2005_Annual_Report.pdf&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.AddFile(<span class="highlight-literal">&quot;ReadMe.txt&quot;</span>)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.Save(<span class="highlight-literal">&quot;MyZipFile.zip&quot;</span>)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> Exception
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">&quot;exception: {0}&quot;</span>, ex1.ToString)
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre>
+
+
+<hr/>
+<p>Extract items from a zip file: </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Extract entries from a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Try</span>
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = ZipFile.Read(ZipFileToExtract)
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>       <span class="highlight-keyword">Dim</span> e <span class="highlight-keyword">As</span> ZipEntry
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>       <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> e <span class="highlight-keyword">In</span> zip
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>           e.Extract
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>       <span class="highlight-keyword">Next</span>
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> Exception
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">&quot;exception: {0}&quot;</span>, ex1.ToString)
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre>
+
+
+<hr/>
+<p>Extract all entries, and set the StatusMessageTextWriter so that verbose messages are generated:</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>ExtractAll, and use the status TextWriter</div><pre class="highlight-pre"><span class="highlight-lineno">1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span>  ZipFile = ZipFile.Read(FilePath)
+<span class="highlight-lineno">2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  zip.StatusMessageTextWriter= System.Console.Out
+<span class="highlight-lineno">3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  <span class="highlight-comment">&#39;Status Messages will be sent to the console during extraction</span>
+<span class="highlight-lineno">4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  zip.ExtractAll()
+<span class="highlight-lineno">5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+
+
+<hr/>
+<p>Add a few files to a zip file, specifying different passwords for different items: </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip, entries get passwords</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Try</span>
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39;the first entry is not protected by a password</span>
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddFile(<span class="highlight-literal">&quot;c:\datafiles\ReadMe.txt&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Password = <span class="highlight-literal">&quot;123456!&quot;</span>
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddFile(<span class="highlight-literal">&quot;c:\photos\personal\7440-N49th.png&quot;</span>, <span class="highlight-literal">&quot;images&quot;</span>)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Password= <span class="highlight-literal">&quot;!Secret1&quot;</span>;
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddFile(<span class="highlight-literal">&quot;c:\Desktop\2005_Annual_Report.pdf&quot;</span>, <span class="highlight-literal">&quot;files\documents&quot;</span>)
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Save(<span class="highlight-literal">&quot;Secret.zip&quot;</span>)
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> System.Exception
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  System.Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">&quot;exception: {0}&quot;</span>, ex1)
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre>
+
+<hr/>
+<p>Add a few files to a zip file, using WinZip-compatible AES encryption on the entries: </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip, using AES encryption for the entries</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Try</span>
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Password = <span class="highlight-literal">&quot;The.Silvertones.Box.Set!&quot;</span>
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Encryption = EncryptionAlgorithm.WinZipAes256
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddFile(<span class="highlight-literal">&quot;c:\datafiles\RawData-2008-12-20.csv&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddFile(<span class="highlight-literal">&quot;c:\photos\personal\7440-N49th.png&quot;</span>, <span class="highlight-literal">&quot;images&quot;</span>)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddFile(<span class="highlight-literal">&quot;c:\Desktop\2005_Annual_Report.pdf&quot;</span>, <span class="highlight-literal">&quot;files\documents&quot;</span>)
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Save(<span class="highlight-literal">&quot;AES-Encrypted-Secret.zip&quot;</span>)
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> System.Exception
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  System.Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">&quot;exception: {0}&quot;</span>, ex1)
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre>
+
+
+<hr/>
+<p>Extract entries using a password:</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Extract entries using a password</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> <span class="highlight-keyword">new</span> ZipFile(FilePath)
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Dim</span> e <span class="highlight-keyword">As</span> ZipEntry
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> e <span class="highlight-keyword">In</span> zip
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">If</span> (e.UsesEncryption)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          e.ExtractWithPassword(<span class="highlight-literal">&quot;Secret!&quot;</span>)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">Else</span>
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>          e.Extract
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Next</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+
+<hr/>
+<p>This example creates a zip using ZIP64 extensions. ZIP64 allows you to exceed 4gb in a zip, or 65535 entries in a zip. </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip that uses ZIP64 extensions</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Try</span>
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.UseZip64WhenSaving = Zip64Option.AsNecessary
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.AddFile(<span class="highlight-literal">&quot;c:\datafiles\RawData-2009-02-12.csv&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.AddFile(<span class="highlight-literal">&quot;ReadMe.txt&quot;</span>)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.Save(<span class="highlight-keyword">String</span>.Format(<span class="highlight-literal">&quot;backup-{0}.zip&quot;</span>, DateTime.Now.ToString(<span class="highlight-literal">&quot;yyyyMMMdd&quot;</span>)))
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> Exception
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">&quot;exception: {0}&quot;</span>, ex1.ToString)
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre>
+
+
+
+
+<hr/>
+
+<p>Create a zip file, add a file, and also add an entry from a
+string.  When the zip is unzipped, the content from the string will be
+inserted into the file "Readme.txt". </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create 3</div><pre class="highlight-pre"><span class="highlight-lineno">1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Dim</span> Content <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">&quot;This string will be the content of the Readme.txt file in the zip archive.&quot;</span>
+<span class="highlight-lineno">2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip1 <span class="highlight-keyword">As</span> ZipFile = <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.AddEntry(<span class="highlight-literal">&quot;Readme.txt&quot;</span>, <span class="highlight-literal">&quot;This is the readme content...&quot;</span>)
+<span class="highlight-lineno">4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.AddFile(<span class="highlight-literal">&quot;MyDocuments\Resume.doc&quot;</span>, <span class="highlight-literal">&quot;files&quot;</span>)
+<span class="highlight-lineno">5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.Comment = (<span class="highlight-literal">&quot;This zip file was created at &quot;</span> &amp; DateTime.Now.ToString(<span class="highlight-literal">&quot;G&quot;</span>))
+<span class="highlight-lineno">6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.Save(<span class="highlight-literal">&quot;Content.zip&quot;</span>)
+<span class="highlight-lineno">7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+<hr/>
+
+<p>Create a zip file, and add an entry taking content from a stream, like a MemoryStream or a FileStream.
+</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create 4</div><pre class="highlight-pre"><span class="highlight-lineno">1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Dim</span> Content <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">&quot;This string will be the content of the Readme.txt file in the zip archive.&quot;</span>
+<span class="highlight-lineno">2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip1 <span class="highlight-keyword">As</span> ZipFile = <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.AddEntry(<span class="highlight-literal">&quot;Readme.txt&quot;</span>, stream)
+<span class="highlight-lineno">4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.AddFile(<span class="highlight-literal">&quot;MyDocuments\Resume.doc&quot;</span>, <span class="highlight-literal">&quot;files&quot;</span>)
+<span class="highlight-lineno">5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.Comment = (<span class="highlight-literal">&quot;This zip file was created at &quot;</span> &amp; DateTime.Now.ToString(<span class="highlight-literal">&quot;G&quot;</span>))
+<span class="highlight-lineno">6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.Save(<span class="highlight-literal">&quot;Content.zip&quot;</span>)
+<span class="highlight-lineno">7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+
+
+<hr/>
+<p>Read in a zip file, remove a few entries, save the file:</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Modify a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Dim</span> sw <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> System.IO.StringWriter
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> ZipFile = ZipFile.Read(<span class="highlight-literal">&quot;PackedDocuments.zip&quot;</span>, sw)
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Dim</span> Threshold <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> DateTime(<span class="highlight-number">2007</span>, <span class="highlight-number">7</span>, <span class="highlight-number">4</span>)
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; We cannot remove the entry from the list, within the context of</span>
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; an enumeration of said list.</span>
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; So we add the doomed entry to a list to be removed later.</span>
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; pass 1: mark the entries for removal</span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Dim</span> MarkedEntries <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> System.Collections.Generic.List(<span class="highlight-keyword">Of</span> ZipEntry)
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Dim</span> e <span class="highlight-keyword">As</span> ZipEntry
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> e <span class="highlight-keyword">In</span> zip
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">If</span> (e.LastModified &lt; Threshold) <span class="highlight-keyword">Then</span>
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            MarkedEntries.Add(e)
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Next</span>
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; pass 2: actually remove the entry.</span>
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Dim</span> zombie <span class="highlight-keyword">As</span> ZipEntry
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> zombie <span class="highlight-keyword">In</span> MarkedEntries
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.RemoveEntry(zombie)
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Next</span>
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Comment = <span class="highlight-literal">&quot;This archive has been updated.&quot;</span>
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Save
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+
+
+<hr/>
+<p>Add a bunch of items, whether files or directories:</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a Zip, adding items</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Dim</span> itempaths <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span>() = _
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>  <span class="highlight-keyword">New</span> <span class="highlight-keyword">String</span>() { <span class="highlight-literal">&quot;c:\temp\Readme.txt&quot;</span>, _
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                 <span class="highlight-literal">&quot;MyProposal.docx&quot;</span>, _
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                 <span class="highlight-literal">&quot;SupportingFiles&quot;</span>, _
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                 <span class="highlight-literal">&quot;images\Image1.jpg&quot;</span> }
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Try</span>
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> ZipFile(ZipToCreate, Console.Out)
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">Dim</span> i <span class="highlight-keyword">As</span> <span class="highlight-keyword">Integer</span>
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">For</span> i = <span class="highlight-number">1</span> <span class="highlight-keyword">To</span> itempaths.Length - <span class="highlight-number">1</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-comment">&#39; will add Files or Dirs, recursing and flattening subdirectories.</span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            zip.AddItem(itempaths(i), <span class="highlight-literal">&quot;flat&quot;</span>)
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">Next</span> i
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip.Save
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Catch</span> ex1 <span class="highlight-keyword">As</span> Exception
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    Console.<span class="highlight-keyword">Error</span>.WriteLine(<span class="highlight-literal">&quot;exception: {0}&quot;</span>, ex1.ToString())
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Try</span></pre>
+
+
+<hr/>
+<p>Create a self-extracting archive:</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Create a self-extractor</div><pre class="highlight-pre"><span class="highlight-lineno">1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Dim</span> DirectoryPath <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">&quot;c:\Documents\Project7&quot;</span>
+<span class="highlight-lineno">2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> ZipFile()
+<span class="highlight-lineno">3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.AddDirectory(DirectoryPath, System.IO.Path.GetFileName(DirectoryPath))
+<span class="highlight-lineno">4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.Comment = <span class="highlight-literal">&quot;This will be embedded into a self-extracting console-based exe&quot;</span>
+<span class="highlight-lineno">5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip.SaveSelfExtractor(<span class="highlight-literal">&quot;archive.exe&quot;</span>, SelfExtractorFlavor.ConsoleApplication)
+<span class="highlight-lineno">6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+
+
+<hr/>
+<p>Update some entries in a Zip file:</p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Update some entries in a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip1 <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; the UpdateFile method works even if the entry does not yet exist.</span>
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; Really it should be called &quot;AddOrUpdateFile&quot;</span>
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.UpdateFile(<span class="highlight-literal">&quot;MyDocuments\Readme.txt&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.UpdateFile(<span class="highlight-literal">&quot;CustomerList.csv&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.Comment = <span class="highlight-literal">&quot;This zip archive has been created.&quot;</span>
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip1.Save(<span class="highlight-literal">&quot;Content.zip&quot;</span>)
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Using</span> zip2 <span class="highlight-keyword">As</span> ZipFile = ZipFile.Read(<span class="highlight-literal">&quot;Content.zip&quot;</span>)
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip2.UpdateFile(<span class="highlight-literal">&quot;Updates\Readme.txt&quot;</span>, <span class="highlight-literal">&quot;&quot;</span>)
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip2.Comment = <span class="highlight-literal">&quot;This zip archive has been updated: the Readme has been changed.&quot;</span>
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    zip2.Save
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span></pre>
+
+
+
+<hr/>
+
+<p>Produce a zip file that contains embedded zip files. </p>
+
+<div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img src="../icons/CopyCode.gif" style="margin-right: 5px;" />Copy</span>Zip containing a Zip</div><pre class="highlight-pre"><span class="highlight-lineno">&nbsp;1</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Sub</span> Run()
+<span class="highlight-lineno">&nbsp;2</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Using</span> s1 <span class="highlight-keyword">As</span> Stream = ZipIntoMemory(<span class="highlight-literal">&quot;c:\temp\dir1&quot;</span>)
+<span class="highlight-lineno">&nbsp;3</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">Using</span> s2 <span class="highlight-keyword">As</span> Stream = ZipIntoMemory(<span class="highlight-literal">&quot;c:\temp\dir2&quot;</span>)
+<span class="highlight-lineno">&nbsp;4</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-keyword">Using</span> zip1 <span class="highlight-keyword">as</span> <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">&nbsp;5</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                zip1.AddEntry(<span class="highlight-literal">&quot;test1.zip&quot;</span>, s1)
+<span class="highlight-lineno">&nbsp;6</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                zip1.AddEntry(<span class="highlight-literal">&quot;test2.zip&quot;</span>, s2)
+<span class="highlight-lineno">&nbsp;7</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                <span class="highlight-comment">&#39; save to a file.  Could also save to a stream here</span>
+<span class="highlight-lineno">&nbsp;8</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>                zip1.Save(<span class="highlight-literal">&quot;Tescher.zip&quot;</span>)
+<span class="highlight-lineno">&nbsp;9</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>            <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">10</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">11</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">12</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span>
+<span class="highlight-lineno">13</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>
+<span class="highlight-lineno">14</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Function</span> ZipIntoMemory(<span class="highlight-keyword">ByVal</span> path <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span>) <span class="highlight-keyword">As</span> Stream
+<span class="highlight-lineno">15</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Dim</span> ms <span class="highlight-keyword">As</span> <span class="highlight-keyword">New</span> MemoryStream
+<span class="highlight-lineno">16</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Using</span> zip1 <span class="highlight-keyword">as</span> <span class="highlight-keyword">New</span> ZipFile
+<span class="highlight-lineno">17</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip1.AddDirectory(path, <span class="highlight-literal">&quot;Result&quot;</span>)
+<span class="highlight-lineno">18</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>        zip1.Save(ms)
+<span class="highlight-lineno">19</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-lineno">20</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-comment">&#39; move the stream position to the beginning</span>
+<span class="highlight-lineno">21</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    ms.Seek(<span class="highlight-number">0</span>,SeekOrigin.Begin)
+<span class="highlight-lineno">22</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span>    <span class="highlight-keyword">Return</span> ms
+<span class="highlight-lineno">23</span><span class="highlight-lnborder"></span><span class="highlight-spacerShort"></span><span class="highlight-keyword">End</span> <span class="highlight-keyword">Function</span></pre>
+
+
+
+</body>
+</html>

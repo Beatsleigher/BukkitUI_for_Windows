@@ -1,0 +1,11 @@
+Information before installing BukkitUI for Windows:
+
+Please note, that this installation is for test builds only!
+
+A lot of things, if not, everything may be broken.
+You might find newer builds in the Updater.
+
+Before installing this program, please note, this is for testing purposes and you, by installing this program,
+agree to send bug reports to me, Beatsleigher, by whatever means necessary.
+
+There will be no changelogs for the test builds.

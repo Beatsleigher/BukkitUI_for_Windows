@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?><html xmlns:MSHelp="http://msdn.microsoft.com/mshelp" xmlns="http://www.w3.org/1999/xhtml"><head><META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8" /><title>ExtractProgress Event</title><link rel="stylesheet" type="text/css" href="../styles/presentation.css" /><link rel="stylesheet" type="text/css" href="ms-help://Hx/HxRuntime/HxLink.css" /><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><script type="text/javascript"></script><meta name="file" content="01318049-51bf-3876-e766-ad83e62fdcf5" /><xml xmlns:msxsl="urn:schemas-microsoft-com:xslt"><MSHelp:Attr Name="AssetID" Value="E:Ionic.Zip.ZipFile.ExtractProgress" /><MSHelp:Keyword Index="A" Term="E:Ionic.Zip.ZipFile.ExtractProgress" /><MSHelp:Keyword Index="A" Term="frlrfIonicZipZipFileClassExtractProgressTopic" /><MSHelp:Keyword Index="K" Term="ExtractProgress event" /><MSHelp:Keyword Index="K" Term="ZipFile.ExtractProgress event" /><MSHelp:Keyword Index="F" Term="ExtractProgress" /><MSHelp:Keyword Index="F" Term="ZipFile.ExtractProgress" /><MSHelp:Keyword Index="F" Term="Ionic.Zip.ZipFile.ExtractProgress" /><MSHelp:Attr Name="TopicType" Value="apiref" /><MSHelp:Attr Name="TopicType" Value="kbSyntax" /><MSHelp:Attr Name="APIType" Value="Managed" /><MSHelp:Attr Name="APILocation" Value="Ionic.Zip.dll" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.ExtractProgress" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.add_ExtractProgress" /><MSHelp:Attr Name="APIName" Value="Ionic.Zip.ZipFile.remove_ExtractProgress" /><MSHelp:Attr Name="Locale" Value="en-us" /><MSHelp:Attr Name="Abstract" Value="An event handler invoked before, during, and after extraction of entries in the zip archive." /></xml><link type="text/css" rel="stylesheet" /><script type="text/javascript"></script><meta name="SelfBranded" content="true" /><meta name="ContentType" content="Reference" /><meta name="Microsoft.Help.TopicVersion" content="100" /><meta name="Microsoft.Help.Keywords" content="ExtractProgress event" /><meta name="Microsoft.Help.Keywords" content="ZipFile.ExtractProgress event" /><meta name="Microsoft.Help.F1" content="ExtractProgress" /><meta name="Microsoft.Help.F1" content="ZipFile.ExtractProgress" /><meta name="Microsoft.Help.F1" content="Ionic.Zip.ZipFile.ExtractProgress" /><meta name="Description" content="An event handler invoked before, during, and after extraction of entries in the zip archive." /><meta name="Microsoft.Help.Locale" content="en-us" /><meta name="Microsoft.Help.TopicLocale" content="en-us" /><meta name="Microsoft.Help.Id" content="E:Ionic.Zip.ZipFile.ExtractProgress" /><meta name="Microsoft.Help.TocParent" content="T:Ionic.Zip.ZipFile" /><meta name="Microsoft.Help.TOCParentTopicVersion" content="100" /><meta name="Microsoft.Help.TocOrder" content="33" /></head><body><div id="control"><span class="productTitle">Ionic Zip Library v1.9.1.6</span><br /><span class="topicTitle">ExtractProgress Event</span><br /><div id="toolbar"><span id="chickenFeet"><a href="ms-xhelp://?Id=R:Project">Reference</a> ► <a href="ms-xhelp://?Id=N:Ionic.Zip">Ionic.Zip</a> ► <a href="ms-xhelp://?Id=T:Ionic.Zip.ZipFile">ZipFile</a> ► <span class="selflink">ExtractProgress</span></span><span id="languageFilter"><select id="languageSelector" onchange="var names = this.value.split(' '); toggleVisibleLanguage(names[1]); lfc.switchLanguage(names[0]); store.set('lang',this.value); store.save();"><option value="CSharp cs" /><option value="VisualBasic vb" /><option value="ManagedCPlusPlus cpp" /></select></span></div></div><div id="main"><span style="color: DarkGray"></span><div class="summary">
+               An event handler invoked before, during, and after extraction of
+               entries in the zip archive.
+             </div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Declaration Syntax</div><div class="sectionContent"><div id="syntaxSection"><table class="filter"><tr class="tabs" id="syntaxTabs"><td class="tab" x-lang="CSharp" onclick="toggleClass('syntaxTabs','x-lang','CSharp','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','CSharp','display','block','none');" /><td class="tab" x-lang="VisualBasic" onclick="toggleClass('syntaxTabs','x-lang','VisualBasic','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','VisualBasic','display','block','none');" /><td class="tab" x-lang="ManagedCPlusPlus" onclick="toggleClass('syntaxTabs','x-lang','ManagedCPlusPlus','activeTab','tab'); toggleStyle('syntaxBlocks','x-lang','ManagedCPlusPlus','display','block','none');" /></tr></table><div id="syntaxBlocks"><div class="code" x-lang="CSharp"><pre xml:space="preserve">
+<span class="keyword">public</span> event <a href="http://msdn2.microsoft.com/en-us/library/db0etb8x" target="_blank">EventHandler</a>&lt;<a href="ms-xhelp://?Id=T:Ionic.Zip.ExtractProgressEventArgs">ExtractProgressEventArgs</a>&gt; <span class="identifier">ExtractProgress</span></pre></div><div class="code" x-lang="VisualBasic"><pre xml:space="preserve">
+<span class="keyword">Public</span> Event <span class="identifier">ExtractProgress</span> <span class="keyword">As</span> <a href="http://msdn2.microsoft.com/en-us/library/db0etb8x" target="_blank">EventHandler</a>(<span class="keyword">Of</span> <a href="ms-xhelp://?Id=T:Ionic.Zip.ExtractProgressEventArgs">ExtractProgressEventArgs</a>)</pre></div><div class="code" x-lang="ManagedCPlusPlus"><pre xml:space="preserve">
+<span class="keyword">public</span>:
+ <span class="keyword">event</span> <a href="http://msdn2.microsoft.com/en-us/library/db0etb8x" target="_blank">EventHandler</a>&lt;<a href="ms-xhelp://?Id=T:Ionic.Zip.ExtractProgressEventArgs">ExtractProgressEventArgs</a>^&gt;^ <span class="identifier">ExtractProgress</span> {
+	<span class="keyword">void</span> <span class="keyword">add</span> (<a href="http://msdn2.microsoft.com/en-us/library/db0etb8x" target="_blank">EventHandler</a>&lt;<a href="ms-xhelp://?Id=T:Ionic.Zip.ExtractProgressEventArgs">ExtractProgressEventArgs</a>^&gt;^ <span class="parameter">value</span>);
+	<span class="keyword">void</span> <span class="keyword">remove</span> (<a href="http://msdn2.microsoft.com/en-us/library/db0etb8x" target="_blank">EventHandler</a>&lt;<a href="ms-xhelp://?Id=T:Ionic.Zip.ExtractProgressEventArgs">ExtractProgressEventArgs</a>^&gt;^ <span class="parameter">value</span>);
+}</pre></div></div></div></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Remarks</div><div class="sectionContent"><p>
+               Depending on the particular event, different properties on the <a href="ms-xhelp://?Id=T:Ionic.Zip.ExtractProgressEventArgs">ExtractProgressEventArgs</a> parameter are set.  The following
+               table summarizes the available EventTypes and the conditions under
+               which this event handler is invoked with a
+               <span class="code">ExtractProgressEventArgs</span> with the given EventType.
+             </p><table class="authoredTable"><tr><th>value of EntryType</th><th>Meaning and conditions</th></tr><tr><td>ZipProgressEventType.Extracting_BeforeExtractAll<br /></td><td>
+               Set when ExtractAll() begins. The ArchiveName, Overwrite, and
+               ExtractLocation properties are meaningful.<br /></td></tr><tr><td>ZipProgressEventType.Extracting_AfterExtractAll<br /></td><td>
+               Set when ExtractAll() has completed.  The ArchiveName, Overwrite,
+               and ExtractLocation properties are meaningful.
+             <br /></td></tr><tr><td>ZipProgressEventType.Extracting_BeforeExtractEntry<br /></td><td>
+               Set when an Extract() on an entry in the ZipFile has begun.
+               Properties that are meaningful: ArchiveName, EntriesTotal,
+               CurrentEntry, Overwrite, ExtractLocation, EntriesExtracted.
+             <br /></td></tr><tr><td>ZipProgressEventType.Extracting_AfterExtractEntry<br /></td><td>
+               Set when an Extract() on an entry in the ZipFile has completed.
+               Properties that are meaningful: ArchiveName, EntriesTotal,
+               CurrentEntry, Overwrite, ExtractLocation, EntriesExtracted.
+             <br /></td></tr><tr><td>ZipProgressEventType.Extracting_EntryBytesWritten<br /></td><td>
+               Set within a call to Extract() on an entry in the ZipFile, as data
+               is extracted for the entry.  Properties that are meaningful:
+               ArchiveName, CurrentEntry, BytesTransferred, TotalBytesToTransfer.
+             <br /></td></tr><tr><td>ZipProgressEventType.Extracting_ExtractEntryWouldOverwrite<br /></td><td>
+               Set within a call to Extract() on an entry in the ZipFile, when the
+               extraction would overwrite an existing file. This event type is used
+               only when <span class="code">ExtractExistingFileAction</span> on the <span class="code">ZipFile</span> or
+               <span class="code">ZipEntry</span> is set to <span class="code">InvokeExtractProgressEvent</span>.
+             <br /></td></tr></table></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> Examples</div><div class="sectionContent"><span id="cbc_1" x-lang="CSharp" codeLanguage="CSharp"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>C#</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">private</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">bool</span> justHadByteUpdate = <span class="highlight-keyword">false</span>;
+<span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> <span class="highlight-keyword">void</span> ExtractProgress(<span class="highlight-keyword">object</span> sender, ExtractProgressEventArgs e)
+{
+  <span class="highlight-keyword">if</span>(e.EventType == ZipProgressEventType.Extracting_EntryBytesWritten)
+  {
+    <span class="highlight-keyword">if</span> (justHadByteUpdate)
+      Console.SetCursorPosition(<span class="highlight-number">0</span>, Console.CursorTop);
+
+    Console.Write(<span class="highlight-literal">"   {0}/{1} ({2:N0}%)"</span>, e.BytesTransferred, e.TotalBytesToTransfer,
+                  e.BytesTransferred / (<span class="highlight-number">0.01</span> * e.TotalBytesToTransfer ));
+    justHadByteUpdate = <span class="highlight-keyword">true</span>;
+  }
+  <span class="highlight-keyword">else</span> <span class="highlight-keyword">if</span>(e.EventType == ZipProgressEventType.Extracting_BeforeExtractEntry)
+  {
+    <span class="highlight-keyword">if</span> (justHadByteUpdate)
+      Console.WriteLine();
+    Console.WriteLine(<span class="highlight-literal">"Extracting: {0}"</span>, e.CurrentEntry.FileName);
+    justHadByteUpdate= <span class="highlight-keyword">false</span>;
+  }
+}
+
+<span class="highlight-keyword">public</span> <span class="highlight-keyword">static</span> ExtractZip(<span class="highlight-keyword">string</span> zipToExtract, <span class="highlight-keyword">string</span> directory)
+{
+  <span class="highlight-keyword">string</span> TargetDirectory= <span class="highlight-literal">"extract"</span>;
+  <span class="highlight-keyword">using</span> (var zip = ZipFile.Read(zipToExtract)) {
+    zip.ExtractProgress += ExtractProgress;
+    <span class="highlight-keyword">foreach</span> (var e <span class="highlight-keyword">in</span> zip1)
+    {
+      e.Extract(TargetDirectory, <span class="highlight-keyword">true</span>);
+    }
+  }
+}</pre></div></span><span id="cbc_2" x-lang="VisualBasic" codeLanguage="VisualBasic"><div class="highlight-title"><span class="highlight-copycode" onkeypress="javascript:CopyColorizedCodeCheckKey(this.parentNode, event);" tabindex="0" onmouseover="CopyCodeChangeIcon(this)" onmouseout="CopyCodeChangeIcon(this)" onclick="javascript:CopyColorizedCode(this.parentNode);"><img style="margin-right: 5px;" />Copy</span>VB.NET</div><div class="code"><pre xml:space="preserve"><span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> Main(<span class="highlight-keyword">ByVal</span> args <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span>())
+    <span class="highlight-keyword">Dim</span> ZipToUnpack <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">"C1P3SML.zip"</span>
+    <span class="highlight-keyword">Dim</span> TargetDir <span class="highlight-keyword">As</span> <span class="highlight-keyword">String</span> = <span class="highlight-literal">"ExtractTest_Extract"</span>
+    Console.WriteLine(<span class="highlight-literal">"Extracting file {0} to {1}"</span>, ZipToUnpack, TargetDir)
+    <span class="highlight-keyword">Using</span> zip1 <span class="highlight-keyword">As</span> ZipFile = ZipFile.Read(ZipToUnpack)
+        <span class="highlight-keyword">AddHandler</span> zip1.ExtractProgress, <span class="highlight-keyword">AddressOf</span> MyExtractProgress
+        <span class="highlight-keyword">Dim</span> e <span class="highlight-keyword">As</span> ZipEntry
+        <span class="highlight-keyword">For</span> <span class="highlight-keyword">Each</span> e <span class="highlight-keyword">In</span> zip1
+            e.Extract(TargetDir, <span class="highlight-keyword">True</span>)
+        <span class="highlight-keyword">Next</span>
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">Using</span>
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span>
+
+<span class="highlight-keyword">Private</span> <span class="highlight-keyword">Shared</span> justHadByteUpdate <span class="highlight-keyword">As</span> <span class="highlight-keyword">Boolean</span> = <span class="highlight-keyword">False</span>
+
+<span class="highlight-keyword">Public</span> <span class="highlight-keyword">Shared</span> <span class="highlight-keyword">Sub</span> MyExtractProgress(<span class="highlight-keyword">ByVal</span> sender <span class="highlight-keyword">As</span> <span class="highlight-keyword">Object</span>, <span class="highlight-keyword">ByVal</span> e <span class="highlight-keyword">As</span> ExtractProgressEventArgs)
+    <span class="highlight-keyword">If</span> (e.EventType = ZipProgressEventType.Extracting_EntryBytesWritten) <span class="highlight-keyword">Then</span>
+        <span class="highlight-keyword">If</span> ExtractTest.justHadByteUpdate <span class="highlight-keyword">Then</span>
+            Console.SetCursorPosition(<span class="highlight-number">0</span>, Console.CursorTop)
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+        Console.Write(<span class="highlight-literal">"   {0}/{1} ({2:N0}%)"</span>, e.BytesTransferred, e.TotalBytesToTransfer, (<span class="highlight-keyword">CDbl</span>(e.BytesTransferred) / (<span class="highlight-number">0.01</span> * e.TotalBytesToTransfer)))
+        ExtractTest.justHadByteUpdate = <span class="highlight-keyword">True</span>
+    <span class="highlight-keyword">ElseIf</span> (e.EventType = ZipProgressEventType.Extracting_BeforeExtractEntry) <span class="highlight-keyword">Then</span>
+        <span class="highlight-keyword">If</span> ExtractTest.justHadByteUpdate <span class="highlight-keyword">Then</span>
+            Console.WriteLine
+        <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+        Console.WriteLine(<span class="highlight-literal">"Extracting: {0}"</span>, e.CurrentEntry.FileName)
+        ExtractTest.justHadByteUpdate = <span class="highlight-keyword">False</span>
+    <span class="highlight-keyword">End</span> <span class="highlight-keyword">If</span>
+<span class="highlight-keyword">End</span> <span class="highlight-keyword">Sub</span></pre></div></span></div></div><div class="section"><div class="sectionTitle" onclick="toggleSection(this.parentNode)"><img /> See Also</div><div class="sectionContent"><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.SaveProgress">SaveProgress</a><br /><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.ReadProgress">ReadProgress</a><br /><a href="ms-xhelp://?Id=E:Ionic.Zip.ZipFile.AddProgress">AddProgress</a><br /></div></div><p><div id="footer"><p />Send comments on this topic to
+        <a id="HT_MailLink" href="mailto:dpchiesa%40hotmail.com?Subject=Ionic Zip Library v1.9.1.6">dpchiesa@hotmail.com</a><script type="text/javascript">
+        var HT_mailLink = document.getElementById("HT_MailLink");
+        var HT_mailLinkText = HT_mailLink.innerHTML;
+        HT_mailLink.href += ": " + document.title;
+        HT_mailLink.innerHTML = HT_mailLinkText;
+        </script><p />Copyright 2009-2011, Dino Chiesa</div>Assembly: <span sdata="assembly">Ionic.Zip</span> (Module: Ionic.Zip) Version: 1.9.1.8 (1.9.1.8)</p></div></body></html>
