@@ -16,6 +16,7 @@ program="BukkitUI for Windows" >>
 	--> This file contains update information.
 	--> I'm calling this file type SML. Simple Markup Language.
 	--> Enjoy.
+<<<<<<< HEAD
 	update=>[name="v0.1-alpha", desc="First public release of BukkitUI for Windows", priority="Lower"] >>
 		minAppVersion="0.0.0.0"
 		--> I'd like to note, that maxAppVersion basically is the newer version. 
@@ -25,3 +26,8 @@ program="BukkitUI for Windows" >>
 		updateType="Update"
 	<<
 << 
+=======
+	
+	
+<< 
+>>>>>>> d25aaea12aa25c21617b3e615c135396e9da1130
