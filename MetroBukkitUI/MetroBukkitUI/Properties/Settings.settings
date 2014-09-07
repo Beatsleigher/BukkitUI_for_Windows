@@ -1,0 +1,45 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MetroBukkitUI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ignorePerformanceWarnings" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="autoStartServer" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="enableDynamicLoading" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="enableWebServerOutput" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="javaBinaryPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Windows\System32\java.exe</Value>
+    </Setting>
+    <Setting Name="customJVMArgs" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="javaInitHeap" Type="System.String" Scope="User">
+      <Value Profile="(Default)">1024m</Value>
+    </Setting>
+    <Setting Name="javaMaxHeap" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2048m</Value>
+    </Setting>
+    <Setting Name="windowColour" Type="System.String" Scope="User">
+      <Value Profile="(Default)">#41b1e1</Value>
+    </Setting>
+    <Setting Name="titleAllCaps" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="bukkit_executable" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="bukkit_path" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="bukkit_args" Type="System.String" Scope="User">
+      <Value Profile="(Default)">--nojline</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

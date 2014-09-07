@@ -1,0 +1,513 @@
+﻿<controls:MetroWindow x:Name="Main" x:Class="MetroBukkitUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:behaviours="http://metro.mahapps.com/winfx/xaml/shared"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:s="clr-namespace:MetroBukkitUI.Properties"
+        GlowBrush="{DynamicResource AccentColorBrush}"
+        Title="BukkitUI - © Beatsleigher 2014" Height="550" Width="1000"
+        EnableDWMDropShadow="True" >
+    <controls:MetroWindow.Effect>
+        <DropShadowEffect/>
+    </controls:MetroWindow.Effect>
+
+    <i:Interaction.Behaviors>
+        <behaviours:BorderlessWindowBehavior AllowsTransparency="False"
+                                         EnableDWMDropShadow="True" />
+        <behaviours:WindowsSettingBehaviour />
+        <behaviours:GlowWindowBehavior />
+    </i:Interaction.Behaviors>
+
+    <controls:MetroWindow.RightWindowCommands>
+        <controls:WindowCommands>
+            <Button x:Name="settingsWindowButton" >
+                <Grid>
+                    <Image x:Name="settingsIcon" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+                    <TextBlock x:Name="settingsText" Text="Settings" Margin="30, 0, 0, 0" Padding="5" />
+                </Grid>
+            </Button>
+            <Button x:Name="updateWindowButton">
+                <Grid>
+                    <Image x:Name="updateIcon" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
+                    <TextBlock x:Name="updateText" Text="Updates" Margin="30, 0, 0, 0" Padding="5" />
+                </Grid>
+            </Button>
+        </controls:WindowCommands>
+    </controls:MetroWindow.RightWindowCommands>
+
+    <Grid>
+        <TabControl x:Name="tabs">
+            <TabItem x:Name="serverTab" Header="Server">
+                <Grid>
+                    <Image x:Name="serverStatusImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" 
+                           Source="pack://siteoforigin:,,,/Resources/1409534148_heart_monitor.png" Width="48" />
+                    <GroupBox x:Name="cpuAndRamContainer" Header="CPU and RAM" Height="150" VerticalAlignment="Top" Margin="00, 5, 55, 00" >
+                        <Grid>
+                            <Label x:Name="cpuLabel" Content="CPU Time:" Margin="10, 5" />
+                            <controls:MetroProgressBar x:Name="cpuTime" Value="100" VerticalAlignment="Top" Margin="10, 30" />
+                            
+                            <Label x:Name="ramLabel" Content="RAM Level:" VerticalAlignment="Bottom" Margin="10, 30" />
+                            <controls:MetroProgressBar x:Name="ramLevel" Value="100" VerticalAlignment="Bottom" Margin="10, 25" />
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="serverControlContainer" Header="Server Controls" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0, 170, 0, 0" Height="170"  >
+                        <Grid>
+                            <controls:Tile x:Name="startServerTile" HorizontalAlignment="Left" Click="startServerTile_onClick" >
+                                <Grid>
+                                    <Image x:Name="startServerTileIcon" Source="pack://siteoforigin:,,,/Resources/1409545913_play.png" 
+                                       Width="48" Height="48" VerticalAlignment="Top"  />
+                                    <TextBlock x:Name="startServerTileText" Text="Start Server" HorizontalAlignment="Stretch" Margin="50" />
+                                </Grid>
+                            </controls:Tile>
+                            <controls:Tile x:Name="stopServerTile" HorizontalAlignment="Center" >
+                                <Grid>
+                                    <Image x:Name="stopServerTileIcon" Source="pack://siteoforigin:,,,/Resources/1409545971_stop.png" 
+                                       Width="48" Height="48" VerticalAlignment="Top"  />
+                                    <TextBlock x:Name="stopServerTileLabel" Text="Stop Server" HorizontalAlignment="Stretch" Margin="50" />
+                                </Grid>
+                            </controls:Tile>
+                            <controls:Tile x:Name="restartServerTile" HorizontalAlignment="Right">
+                                <Grid>
+                                    <Image x:Name="restartServerTileIcon" Source="pack://siteoforigin:,,,/Resources/1409546231_POWER - RESTART.png" 
+                                       Width="48" Height="48" VerticalAlignment="Top"  />
+                                    <TextBlock x:Name="restartServerTileText" Text="Restart Server" HorizontalAlignment="Stretch" Margin="50" />
+                                </Grid>
+                            </controls:Tile>
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="consoleTab" Header="Console">
+                <Grid>
+                    <Image x:Name="consoleImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" 
+                           Source="pack://siteoforigin:,,,/Resources/1409536156_console.png" Width="48" />
+                    <GroupBox x:Name="consoleContainer" Margin="5, 5, 200, 0" Header="Console" >
+                        <Grid>
+                            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                                <ListView x:Name="consoleListView" Margin="0, 5, 00, 50" />
+                            </ScrollViewer>
+                            <TextBox x:Name="consoleInputTextBox" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" />
+                            <Button x:Name="consoleCommandExecuteButton" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="[[ ENTER ]]"
+                                    Style="{StaticResource AccentedSquareButtonStyle}"/>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="onlinePlayerContainer" HorizontalAlignment="Right" Header="Online Players" Margin="0,53,5,0" Width="190"  >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                            <ListView x:Name="console_onlinePlayersListView" />
+                        </ScrollViewer>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="scheduleTab" Header="Schedule">
+                <Grid>
+                    <Image x:Name="scheduleImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" 
+                           Width="48" Source="pack://siteoforigin:,,,/Resources/1409536743_calendar.png" />
+                    <GroupBox x:Name="scheduleContainer" Header="Scheduled Tasks" Margin="5, 5, 200, 0" >
+                        <ListView x:Name="schedulesListView" >
+                            <ListViewItem x:Name="task1" >
+                                <Grid>
+                                    <TextBlock Text="Restart Server" FontSize="24" FontWeight="Bold" />
+                                    <TextBlock Text="&#x0d;&#x0a;&#x0d;&#x0a;   Run at: Every Day at 08:00" FontSize="12" />
+                                    <TextBlock Text="&#x0d;&#x0a;&#x0d;&#x0a;&#x0d;&#x0a;   Set by: Administrator" />
+                                </Grid>
+                            </ListViewItem>
+                        </ListView>
+                    </GroupBox>
+                    <GroupBox x:Name="scheduleTaskControlContainer" HorizontalAlignment="Right" Header="Task Management" Margin="0,53,5,0" Width="190" >
+                        <Grid>
+                            <Button x:Name="addTaskButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Add New Task..."
+                                    VerticalAlignment="Top"/>
+                            <Button x:Name="removeSelectedTaskButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Remove Selected Task..."
+                                    IsEnabled="False" VerticalAlignment="Top" Margin="0, 50" />
+                            <Button x:Name="removeAllTasksButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Remove All Tasks..."
+                                    VerticalAlignment="Top" Margin="0, 100" />
+                            <TextBlock x:Name="taskCountTextBlock" VerticalAlignment="Bottom" Text="Total Schedules: 1 &#x0d;&#x0a;Selected Schedules: 0" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="backupTab" Header="Backups">
+                <Grid>
+                    <Image x:Name="backupImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" 
+                           Width="48" Source="pack://siteoforigin:,,,/Resources/1409537506_data_backup.png" />
+                    <GroupBox x:Name="backupContainer" Header="Server Backups" Margin="5, 5, 200, 0">
+                        <Grid>
+                            <ListView x:Name="backupListView" >
+                                
+                            </ListView>
+                        </Grid>
+                    </GroupBox>
+                    <GroupBox x:Name="backupOptionsContainer" HorizontalAlignment="Right" Header="Task Management" Margin="0,53,5,0" Width="190" >
+                        <Grid>
+                            <Button x:Name="backupNowButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Backup Now..."
+                                    VerticalAlignment="Top"/>
+                            <Button x:Name="deleteSelectedBackupButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Delete Selected Backup..."
+                                    IsEnabled="False" VerticalAlignment="Top" Margin="0, 50" />
+                            <Button x:Name="deleteAllBackupsButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Delete All Backups..."
+                                    VerticalAlignment="Top" Margin="0, 100" />
+                            <Button x:Name="backupOptionsButton" Style="{StaticResource AccentedSquareButtonStyle}" Content="Backup Options..."
+                                    VerticalAlignment="Top" Margin="0, 150" />
+                            <TextBlock x:Name="backupCountTextBlock" VerticalAlignment="Bottom" Text="Total Backups: 1 &#x0d;&#x0a;Selected Backups: 0" />
+                        </Grid>
+                    </GroupBox>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="userTab" Header="Users and Groups">
+                <Grid>
+                    <Image x:Name="userImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" 
+                           Width="48" Source="pack://siteoforigin:,,,/Resources/1409538134_user.png" />
+                    <TabControl TabStripPlacement="Left" Margin="0, 0, 60, 0" >
+                        <TabItem Header="Banned IPs" >
+                            <Grid>
+                                <GroupBox x:Name="ipAddressContainer" Header="IP Addresses" Margin="5, 5, 5, 80" >
+                                    <ListView x:Name="bannedIPsListView" />
+                                </GroupBox>
+                                <GroupBox x:Name="ipAddressTaskContainer" Header="Player Management" VerticalAlignment="Bottom" >
+                                    <Grid>
+                                        <Button x:Name="addBannedIPButton" Content="Ban IP..." HorizontalAlignment="Left" Style="{StaticResource AccentedSquareButtonStyle}" />
+                                        <Button x:Name="unbanSelectedIP" Content="Pardon Selected IP" Margin="60, 0, 0, 0" HorizontalAlignment="Left" IsEnabled="False"
+                                                Style="{StaticResource AccentedSquareButtonStyle}"/>
+                                        <Button x:Name="pardonAllIPsButton" Content="Pardon All IP Addresses" Style="{StaticResource AccentedSquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="180, 0"/>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Banned Players" >
+                            <Grid>
+                                <GroupBox x:Name="bannedPlayersContainer" Header="Banned Players" Margin="5, 5, 5, 80" >
+                                    <ListView x:Name="bannedPlayerssListView" />
+                                </GroupBox>
+                                <GroupBox x:Name="bannedPlayersTaskContainer" Header="Player Management" VerticalAlignment="Bottom" >
+                                    <Grid>
+                                        <Button x:Name="banPlayerButton" Content="Ban Player..." HorizontalAlignment="Left" Style="{StaticResource AccentedSquareButtonStyle}" />
+                                        <Button x:Name="unbanPlayerButton" Content="Pardon Selected Player" Margin="80, 0, 0, 0" HorizontalAlignment="Left" IsEnabled="False"
+                                                Style="{StaticResource AccentedSquareButtonStyle}"/>
+                                        <Button x:Name="pardonAllPlayersButton" Content="Pardon All Players" Style="{StaticResource AccentedSquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="220, 0"/>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Operators" >
+                            <Grid>
+                                <GroupBox x:Name="opsAndModsContainer" Header="Operators / Moderators" Margin="5, 5, 5, 80" >
+                                    <ListView x:Name="operatorsListView" />
+                                </GroupBox>
+                                <GroupBox x:Name="opsAndModsTaskContainer" Header="Player Management" VerticalAlignment="Bottom" >
+                                    <Grid>
+                                        <Button x:Name="addOP" Content="Add OP..." HorizontalAlignment="Left" Style="{StaticResource AccentedSquareButtonStyle}" />
+                                        <Button x:Name="removeSelectedOP" Content="Remove Selected OP" Margin="60, 0, 0, 0" HorizontalAlignment="Left" IsEnabled="False"
+                                                Style="{StaticResource AccentedSquareButtonStyle}"/>
+                                        <Button x:Name="removeAllOPs" Content="Remove All OPs " Style="{StaticResource AccentedSquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="180, 0"/>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Players" >
+                            <Grid>
+                                <GroupBox x:Name="serverPlayerContainer" Header="Server Players" Margin="5, 5, 5, 80" >
+                                    <ListView x:Name="serverPlayersListView" />
+                                </GroupBox>
+                                <GroupBox x:Name="serverPlayerManagementContainer" Header="Player Management" VerticalAlignment="Bottom" IsEnabled="False" >
+                                    <Grid>
+                                        <Button x:Name="viewServerPlayerDetailsButton" Content="View Player Details" HorizontalAlignment="Left" 
+                                                Style="{StaticResource AccentedSquareButtonStyle}" IsEnabled="True" />
+                                        <Button x:Name="kickServerPlayerFromServerButton" Content="Kick Player" Margin="120, 0, 0, 0" HorizontalAlignment="Left"
+                                                Style="{StaticResource AccentedSquareButtonStyle}" IsEnabled="True" />
+                                        <Button x:Name="banServerPlayerButton" Content="Ban Player" Style="{StaticResource AccentedSquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="200, 0, 0, 0" IsEnabled="True" />
+                                        <Button x:Name="banServerPlayerIP" Content="Ban IP" Style="{StaticResource AccentedSquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="280, 0, 0, 0" IsEnabled="True" />
+                                        <Button x:Name="resetServerPlayerData" Content="Reset Player" Style="{StaticResource AccentedSquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="340, 0, 0, 0" IsEnabled="True" />
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Remote" FontSize="18">
+                            <Grid>
+                                <GroupBox x:Name="remoteAdminsContainer" HorizontalAlignment="Left" Header="Administrators" Width="200" Margin="5, 10, 0, 5" >
+                                    <Grid>
+                                        <ListView x:Name="remoteAdminsListView" Margin="0, 0, 0, 80" />
+                                        <Button x:Name="addRemoteAdmin" VerticalAlignment="Bottom" Content="Add New Admin" Margin="0, 0, 0, 40" />
+                                        <Button x:Name="removeRemoteAdmin" VerticalAlignment="Bottom" Content="Remove Admin" />
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox x:Name="remoteModsContainer" HorizontalAlignment="Left" Header="Moderators" Width="200" Margin="230, 10, 0, 5" >
+                                    <Grid>
+                                        <ListView x:Name="remoteModsListView" Margin="0, 0, 0, 80" />
+                                        <Button x:Name="addRemoteMod" VerticalAlignment="Bottom" Content="Add New Moderator" Margin="0, 0, 0, 40" />
+                                        <Button x:Name="removeRemoteMod" VerticalAlignment="Bottom" Content="Remove Moderator" />
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Whitelist" >
+                            <Grid>
+                                <GroupBox x:Name="whiteListPlayerContainer" Header="Whitelisted Players" Margin="0, 0, 0, 80" >
+                                    <ListView x:Name="whitelistPlayerListView" />
+                                </GroupBox>
+                                <GroupBox x:Name="whiteListPlayerTaskContainer" Header="Player Management" VerticalAlignment="Bottom">
+                                    <Grid>
+                                        <Button x:Name="addWhitelistPlayerButton" Content="Whitelist Player..." HorizontalAlignment="Left"
+                                                Style="{StaticResource AccentedSquareButtonStyle}" />
+                                        <Button x:Name="removeWhitelistPlayerButton" Content="Remove Player from Whitelist" IsEnabled="False"
+                                                Style="{StaticResource AccentedSquareButtonStyle}" HorizontalAlignment="Left"
+                                                Margin="110, 0, 0, 0"/>
+                                        <Button x:Name="clearWhitelistButton" Content="Clear Whitelist"
+                                                Style="{StaticResource AccentedSquareButtonStyle}" HorizontalAlignment="Left"
+                                                Margin="285, 0, 0, 0"/>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="configTab" Header="Configuration">
+                <Grid>
+                    <Image x:Name="configImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="5" 
+                           Width="48" Source="pack://siteoforigin:,,,/Resources/1409538316_services.png" />
+                    <TabControl Margin="0, 0, 60, 0" TabStripPlacement="Bottom" >
+                        <TabItem Header="BukkitUI" >
+                            <Grid>
+                                <GroupBox x:Name="bukkitui_generalSettingsContainer" Header="General" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="110" >
+                                    <Grid>
+                                        <ToggleButton x:Name="autoStartServerToggleButton" Content="Auto-Start Server" HorizontalAlignment="Left"
+                                                      Margin="5, 5, 0, 0" VerticalAlignment="Top" Width="150" />
+                                        <ToggleButton x:Name="ignorePerformanceWarningsToggleButton" Content="Ignore Performance Warnings" HorizontalAlignment="Left"
+                                                      Margin="5, 38, 0, 0" VerticalAlignment="Top" Width="150" />
+                                        <ToggleButton x:Name="enableDynamicLoadingToggleButton" Content="Enable Dynamic Loading" HorizontalAlignment="Left" 
+                                                      VerticalAlignment="Top" Margin="170, 5, 0, 0" IsChecked="True" Width="150" />
+                                        <ToggleButton x:Name="enableWebServerOutputViaDebugStream" Content="Enable Web Server Output" HorizontalAlignment="Left"
+                                                      VerticalAlignment="Top" Margin="170, 38, 0, 0" Width="150" />
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox x:Name="bukkitui_apperanceSettingsContainer" Header="Apperance" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5,290, 60, 5" >
+                                    <Grid>
+                                        <Label x:Name="colourBlue" Height="32" Width="32" Background="#41b1e1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5, 5, 0, 0" />
+                                        <Label x:Name="colourRed" Height="32" Width="32" Background="#FF0000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45, 5, 0, 0" />
+                                        <Label x:Name="colourDarkOrange" Height="32" Width="32" Background="#FF4000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85, 5, 0, 0" />
+                                        <Label x:Name="colourOrange" Height="32" Width="32" Background="#FF8000" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="125, 5, 0, 0" />
+                                        <Label x:Name="colourDarkYellow" Height="32" Width="32" Background="#FFBF00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="165, 5, 0, 0" />
+                                        <Label x:Name="colourYellow" Height="32" Width="32" Background="#FFFF00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="205, 5, 0, 0" />
+                                        <Label x:Name="colourDarkGreen" Height="32" Width="32" Background="#BFFF00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="245, 5, 0, 0" />
+                                        <Label x:Name="colourPoisenGreen" Height="32" Width="32" Background="#74DF00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="285, 5, 0, 0" />
+                                        <Label x:Name="colourBrightGreen" Height="32" Width="32" Background="#00FF00" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="325, 5, 0, 0" />
+                                        <Label x:Name="colourLightBlue" Height="32" Width="32" Background="#00FFFF" HorizontalAlignment="Left"  VerticalAlignment="Top" Margin="365, 5, 0, 0" />
+                                        <Label x:Name="colourDarkBlue" Height="32" Width="32" Background="#0000FF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="405, 5, 0, 0" />
+                                        <Label x:Name="colourDarkPurple" Height="32" Width="32" Background="#8000FF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="445, 5, 0, 0" />
+                                        <Label x:Name="colourLightPurple" Height="32" Width="32" Background="#A901DB" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="485, 5, 0, 0" />
+                                        <Label x:Name="colourMagenta" Height="32" Width="32" Background="#DF01A5" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="525, 5, 0, 0" />
+                                        <Label x:Name="colourPink" Height="32" Width="32" Background="#FF00BF" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="565, 5, 0, 0" />
+                                        <controls:ToggleSwitch x:Name="titleAllCapsSwitch" IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5, 37, 0, 0"
+                                                               Header="Title All-Caps" />
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox x:Name="bukkitui_serverExecutionSettingsContainer" Header="Server Execution" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="5, 130" >
+                                    <Grid>
+                                        <TextBlock Text="Java Binary Location: " HorizontalAlignment="Left" Padding="4" Margin="5, 0" />
+                                        <TextBox x:Name="javaBinaryLocationTextBox" HorizontalAlignment="Stretch" Text="C:\Windows\System32\java.exe" Margin="130, 0, 0, 0" VerticalAlignment="Top"  
+                                                 IsReadOnly="True" />
+                                        <Button x:Name="selectJavaLocation" HorizontalAlignment="Right" VerticalAlignment="Top" Content="..." Height="24"
+                                                Style="{DynamicResource AccentedSquareButtonStyle}" Padding="4" Width="30" />
+                                        
+                                        <TextBlock Text="JVM Args (Advanced): " Margin="5, 30, 0, 0" Padding="4" />
+                                        <TextBox x:Name="customJVMArgsTextBox" HorizontalAlignment="Stretch" Margin="130, 30, 0, 0" VerticalAlignment="Top"
+                                                 IsReadOnly="True" />
+                                        <Button x:Name="addJavaArgButton" Content="Add Arg..." VerticalAlignment="Top" HorizontalAlignment="Right"
+                                                Margin="0, 30, 0, 5" Style="{DynamicResource AccentedSquareButtonStyle}" Height="24" Padding="4" />
+                                        <Button x:Name="clearJavaArgsButton" Content="Clear Args..." VerticalAlignment="Top" HorizontalAlignment="Right"
+                                                Margin="0, 30, 70, 0" Style="{DynamicResource AccentedSquareButtonStyle}" Height="24" Padding="4" />
+                                        
+                                        <TextBlock Text="Java Init Heap: " Margin="5, 60, 0, 0" Padding="4" />
+                                        <TextBox x:Name="javaInitHeapTextBox" Margin="130, 60, 0, 0" Text="1024m" VerticalAlignment="Top" />
+                                        
+                                        <TextBlock Text="Java Max Heap: " Margin="5, 90, 0, 0" Padding="4" />
+                                        <TextBox x:Name="javaMaxHeapTextBox" Margin="130, 90, 0, 0" Text="4096m" VerticalAlignment="Top" />
+                                    </Grid>
+                                </GroupBox>
+                                <Button x:Name="savePrefs" Style="{StaticResource AccentedSquareButtonStyle}" Content="Save" VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Right" Margin="10" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Craftbukkit" >
+                            <Grid>
+                                <GroupBox x:Name="craftbukkit_generalSettingsContainer" Header="General" VerticalAlignment="Top" >
+                                    <Grid>
+                                        <TextBlock Text="Server Location: " Padding="4" />
+                                        <TextBox x:Name="serverFileTextBox" Margin="120, 0, 0, 0" VerticalAlignment="Top" />
+                                        <Button x:Name="selectServerJarButton" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                                Content="..." Style="{StaticResource AccentedSquareButtonStyle}" Height="24" Margin="80, 0"
+                                                Width="30"/>
+                                        <Button x:Name="downloadServerJarButton" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                                Content="Download..." Style="{StaticResource AccentedSquareButtonStyle}" Height="24" />
+                                        <TextBox x:Name="serverDirLocationTextBox" Margin="120, 35, 0, 0" VerticalAlignment="Top"  IsEnabled="False" />
+                                        
+                                        <TextBlock Text="Craftbukkit Args: " Padding="4" Margin="5, 70, 0, 0" />
+                                        <TextBox x:Name="craftbukkitArgsTextBox" Margin="120, 70, 0, 0" VerticalAlignment="Top"
+                                                 Text="--nojline;" ToolTip="The arguments to provide to the Craftbukkit server. Seperate with spaces."
+                                                 IsReadOnly="True" />
+                                        <Button x:Name="addBukkitArgButton" Content="Add..." Margin="120, 70, 0, 0" VerticalAlignment="Top"
+                                                HorizontalAlignment="Right" Style="{DynamicResource AccentedSquareButtonStyle}" />
+                                        <Button x:Name="clearBukkitArgsButton" Content="Clear Args..." Margin="0, 70, 45, 0" VerticalAlignment="Top"
+                                                HorizontalAlignment="Right" Style="{DynamicResource AccentedSquareButtonStyle}"/>
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox x:Name="craftbukkit_serverPropertiesContainer" Header="Server Properties" VerticalAlignment="Top" Margin="5, 160" >
+                                    <Grid>
+                                        <Button x:Name="editServerPropsButton" Content="Edit Server Properties..." Style="{DynamicResource SquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="5" />
+                                        <Button x:Name="importServerPropsButton" Content="Import Properties..." Style="{DynamicResource SquareButtonStyle}" 
+                                                HorizontalAlignment="Left" Margin="150, 5" />
+                                        <Button x:Name="exportServerPropsButton" Content="Export Properties..." Style="{DynamicResource SquareButtonStyle}"
+                                                HorizontalAlignment="Left" Margin="275, 5" />
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox x:Name="craftbukkit_bukkitSettingsContainer" Header="Craftbukkit Settings (bukkit.yml)" VerticalAlignment="Top"
+                                          Margin="5, 260, 5, 0" >
+                                    <Grid>
+                                        <Button x:Name="editBukkitYmlButton" Content="Edit Bukkit Settings..." HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                Margin="5, 5, 0, 5" Style="{DynamicResource SquareButtonStyle}" />
+                                        <Button x:Name="importBukkitYmlButton" Content="Import Bukkit Settings..." HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                Margin="135, 5, 0, 5" Style="{DynamicResource SquareButtonStyle}" />
+                                        <Button x:Name="exportBukkitYmlButton" Content="Export Bukkit Settings..." HorizontalAlignment="Left" VerticalAlignment="Top"
+                                                Margin="281, 5, 0, 5" Style="{DynamicResource SquareButtonStyle}" />
+                                    </Grid>
+                                </GroupBox>
+                                <Button x:Name="saveCraftbukkitPrefsButton" Content="Save..." VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                                        Margin="10" Style="{DynamicResource AccentedSquareButtonStyle}" />
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Remote" >
+                            <Grid>
+                                <GroupBox x:Name="webserver_generalSettingsContainer" Header="General Settings" VerticalAlignment="Top" >
+                                    <Grid>
+                                        <TextBlock Text="IP Address(es - Separate with ;): " VerticalAlignment="Top" HorizontalAlignment="Left"
+                                                   Margin="5, 5, 0, 5" Padding="4" />
+                                        <TextBox x:Name="webserver_IpAddresses" VerticalAlignment="Top" HorizontalAlignment="Stretch"
+                                                 Margin="200, 5, 0, 5" />
+                                        <ToggleButton x:Name="webserver_autoSelectIP" VerticalAlignment="Top" HorizontalAlignment="Right"
+                                                Margin="5, 5, 0, 0" Content="Auto" Height="24" />
+                                        
+                                        <TextBlock Text="Port: " VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5, 40, 0, 0" Padding="4" />
+                                        <TextBox x:Name="webserver_port" VerticalAlignment="Top" HorizontalAlignment="Stretch" Margin="200, 40, 0, 0" Text="27238" />
+                                        
+                                        <controls:ToggleSwitch x:Name="webserver_PowerSwitch" Header="WebServer" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                                Margin="5, 80, 0, 5" IsChecked="False" />
+                                    </Grid>
+                                </GroupBox>
+                                <GroupBox x:Name="webserver_userSettingsContainer" Header="User Settings" VerticalAlignment="Top" IsEnabled="False"
+                                          Margin="5, 200, 5, 0" Height="200" >
+                                    <Grid>
+                                        <TabControl>
+                                            <TabItem Header="Administrators" >
+                                                <Grid>
+                                                    <ToggleButton x:Name="webserver_enableRemoteAdminToggleButton" Content="Enable Remote Administrator Accounts" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5, 5, 0, 0" />
+                                                    
+                                                    <ToggleButton x:Name="webserver_admin_canPowerServerToggleButton" Content="Can Power Server" IsChecked="True"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220, 5, 0, 0" Width="130" />
+                                                    <ToggleButton x:Name="webserver_admin_canIssueCommandsToggleButton" Content="Can Issue Commands"
+                                                                  IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220, 40, 0, 0" Width="130" />
+                                                    <ToggleButton x:Name="webserver_admin_canSetSchedulesToggleButton" Content="Can Set Schedules" IsChecked="True"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220, 75, 0, 0" Width="130" />
+                                                    
+                                                    <ToggleButton x:Name="webserver_admin_canCreateAndRestoreBackupsToggleButton" Content="Can Create/Restore Backups"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="380, 5, 0, 0" Width="150" IsChecked="True" />
+                                                    <ToggleButton x:Name="webserver_admin_canModifyUserLists" Content="Can Modify Users"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="380, 40, 0, 0" Width="150" IsChecked="True" />
+                                                    <ToggleButton x:Name="webserver_admin_canEditSettings" Content="Can Edit Settings"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="380, 75, 0, 0" Width="150" IsChecked="True" />
+                                                </Grid>
+                                            </TabItem>
+                                            <TabItem Header="Moderators" >
+                                                <Grid>
+                                                    <ToggleButton x:Name="webserver_enableRemoteModToggleButton" Content="Enable Remote Moderator Accounts" 
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5, 5, 0, 0" />
+
+                                                    <ToggleButton x:Name="webserver_mod_canPowerServerToggleButton" Content="Can Power Server" IsChecked="True"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220, 5, 0, 0" Width="130" />
+                                                    <ToggleButton x:Name="webserver_mod_canIssueCommandsToggleButton" Content="Can Issue Commands"
+                                                                  IsChecked="True" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220, 40, 0, 0" Width="130" />
+                                                    <ToggleButton x:Name="webserver_mod_canModifyUserLists" Content="Can Modify Users"
+                                                                  HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220, 75, 0, 0" Width="130" IsChecked="True" />
+                                                </Grid>
+                                            </TabItem>
+                                        </TabControl>
+                                    </Grid>
+                                </GroupBox>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="aboutTab" Header="About">
+                <Grid>
+                    <Image x:Name="aboutImage" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,5,5,0" 
+                           Width="48" Source="pack://siteoforigin:,,,/Resources/1409538506_about.png" Grid.Column="1" />
+                    <TextBlock Text="About: BukkitUI" TextAlignment="Center" HorizontalAlignment="Stretch" VerticalAlignment="Top"
+                               FontSize="34" FontWeight="Bold" Foreground="#00BFFF" />
+                    <GroupBox x:Name="about_bukkitui_whatIsIt" Header="What Is It?" HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                              Margin="5, 50, 0, 5" Width="300" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                            <!-- Beatsy Likesy Hrrr -->
+                            <TextBlock x:Name="whatIsBukkitUITextBlock" TextWrapping="Wrap" />
+                        </ScrollViewer>
+
+                    </GroupBox>
+                    <GroupBox x:Name="about_bukkitui_creditsContainter" Header="Credits" HorizontalAlignment="Left" VerticalAlignment="Stretch"
+                              Margin="320, 50, 0, 5" Width="300" >
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+                            <ListView Margin="5, 0, 5, 0">
+                                <ListViewItem>
+                                    <TextBlock Text="Here are all the projects and other cool things &#x0d;&#x0a;I used to make BukkitUI possible!" />
+                                </ListViewItem>
+                                <ListViewItem>
+                                    <Grid>
+                                        <TextBlock Text="C# and WPF" FontSize="18" />
+                                        <TextBlock Text="&#x0d;&#x0a;  Developed and Maintained by Microsoft" FontSize="14" />
+                                    </Grid>
+                                </ListViewItem>
+                                <ListViewItem>
+                                    <Grid>
+                                        <TextBlock Text="MahApps.Metro" FontSize="18" />
+                                        <TextBlock Text="&#x0d;&#x0a;  Developed and Maintained by MahApps." FontSize="14" />
+                                        <TextBlock Text="&#x0d;&#x0a;&#x0d;&#x0a;&#x0d;&#x0a;  All the controls and styles were&#x0d;&#x0a;  provided by this awesome library!"
+                                                   FontSize="12" />
+                                    </Grid>
+                                </ListViewItem>
+                                <ListViewItem>
+                                    <Grid>
+                                        <TextBlock Text="My Followers!" FontSize="18" />
+                                        <TextBlock Text="&#x0d;&#x0a;  They're awesome." FontSize="14" />
+                                        <TextBlock Text="&#x0d;&#x0a;&#x0d;&#x0a;&#x0d;&#x0a;  Helped me when I needed it,&#x0d;&#x0a;  and gave me feedback on the design!"
+                                                   FontSize="12" />
+                                    </Grid>
+                                </ListViewItem>
+                                <ListViewItem>
+                                    <Grid>
+                                        <TextBlock Text="VisualPharm!" FontSize="18" />
+                                        <TextBlock Text="&#x0d;&#x0a;  Most of the Icons come from there!" FontSize="14" />
+                                    </Grid>
+                                </ListViewItem>
+                                <ListViewItem>
+                                    <Grid>
+                                        <TextBlock Text="Paomedia!" FontSize="18" />
+                                        <TextBlock Text="&#x0d;&#x0a;  Those lovely, flat and colourful icons!" FontSize="14" />
+                                    </Grid>
+                                </ListViewItem>
+                            </ListView>
+                        </ScrollViewer>
+                    </GroupBox>
+                    <Button x:Name="donateViaPayPalButton" Background="{x:Null}" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Cursor="Hand" >
+                        <Image Source="https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif" Width="128" />
+                    </Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</controls:MetroWindow>

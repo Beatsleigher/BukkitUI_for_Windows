@@ -1,1 +1,0 @@
-This zip contains the documentation for DotNetZip in various help formats. This is for DotNetZip v1.9.  This package was packed Sat-08-06-2011-215945.06. 
